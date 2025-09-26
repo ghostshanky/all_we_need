@@ -2,7 +2,7 @@ name: 🚀 Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
     paths:
       - 'projects/**'
       - 'assets/**'
@@ -11,13 +11,12 @@ on:
       - 'package.json'
       - '.github/workflows/**'
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
     paths:
       - 'projects/**'
       - 'assets/**'
   workflow_dispatch: # Allow manual trigger
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -25,7 +24,6 @@ permissions:
   issues: write
   pull-requests: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -188,9 +186,6 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     name: 🚀 Build & Deploy
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -202,9 +197,6 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
 
       - name: Install dependencies
         run: |
@@ -222,14 +214,15 @@ jobs:
           echo "- Processed $(find projects -name "*.md" 2>/dev/null | wc -l) project files"
           echo "- Site size: $(du -sh docs | cut -f1)"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './docs'
-
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: '🚀 Deploy site to gh-pages'
 
       - name: Update README stats
         run: |
