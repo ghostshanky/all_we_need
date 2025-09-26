@@ -58,15 +58,30 @@ all_we_need/
 
 ---
 
-## 🤝 Contribute  
-Contributions welcome from all devs!  
+# Contributing to all_we_need
 
-- Add a new `.md` file under `/projects/`  
-- Keep it short, structured, and simple  
-- Add screenshot in `/assets/` (optional)  
-- Open a Pull Request  
+To add a project:
+1. Add a markdown file to `/projects/` named `<slug>.md`.
+2. **Frontmatter** (YAML) is required at top of the file. Example:
 
-👉 See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
+---
+```
+title: "Emailnator"
+link: "https://emailnator.example"
+description: "Generate disposable Gmail-style emails"
+tags: ["email", "productivity"]
+screenshot: "assets/emailnator.png" # optional, relative path
+```
+---
+
+Optional: longer README-like details after the frontmatter.
+
+3. If the link is a GitHub repo, use its repo URL (https://github.com/owner/repo). The build will auto-fetch contributors.
+4. Add screenshots to `/assets/` if you want.
+5. Create PR. The GitHub Action will validate and build the site on merge.
+
+**Validation**: PRs must include the required frontmatter fields. If a field is missing the build will fail and the bot will comment.
+
 
 ---
 
