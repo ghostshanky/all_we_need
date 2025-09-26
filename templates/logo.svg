@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b6efd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0959d9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#gradient)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Code brackets -->
+  <path d="M25 35 L15 50 L25 65" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M75 35 L85 50 L75 65" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Center diamond -->
+  <path d="M50 25 L65 50 L50 75 L35 50 Z" fill="white" opacity="0.9"/>
+  
+  <!-- Inner symbol -->
+  <circle cx="50" cy="50" r="8" fill="url(#gradient)"/>
+</svg>

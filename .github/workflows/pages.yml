@@ -1,0 +1,347 @@
+name: 🚀 Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'projects/**'
+      - 'assets/**'
+      - 'scripts/**'
+      - 'templates/**'
+      - 'package.json'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'projects/**'
+      - 'assets/**'
+  workflow_dispatch: # Allow manual trigger
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  issues: write
+  pull-requests: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Validate PR contributions
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: 🔍 Validate Contribution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund --prefer-offline
+
+      - name: Validate project files
+        run: |
+          echo "🔍 Validating project contributions..."
+          
+          # Get changed files in projects/ directory
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- projects/)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "ℹ️ No project files changed"
+            exit 0
+          fi
+          
+          echo "📄 Changed project files:"
+          echo "$CHANGED_FILES"
+          
+          # Validate each changed markdown file
+          ERROR_COUNT=0
+          for file in $CHANGED_FILES; do
+            if [[ $file == *.md ]]; then
+              echo "🔍 Validating $file..."
+              
+              # Check if file exists
+              if [ ! -f "$file" ]; then
+                echo "❌ File $file does not exist"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+                continue
+              fi
+              
+              # Check frontmatter
+              if ! grep -q "^---$" "$file"; then
+                echo "❌ $file: Missing frontmatter"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              fi
+              
+              # Check required fields
+              if ! grep -q "^title:" "$file"; then
+                echo "❌ $file: Missing 'title' field"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              fi
+              
+              if ! grep -q "^link:" "$file"; then
+                echo "❌ $file: Missing 'link' field"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              fi
+              
+              if ! grep -q "^description:" "$file"; then
+                echo "❌ $file: Missing 'description' field"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              fi
+              
+              if ! grep -q "^tags:" "$file"; then
+                echo "❌ $file: Missing 'tags' field"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              fi
+              
+              # Validate file naming (should be lowercase with hyphens)
+              filename=$(basename "$file" .md)
+              if [[ ! "$filename" =~ ^[a-z0-9-]+$ ]]; then
+                echo "⚠️ $file: Filename should be lowercase with hyphens only"
+              fi
+              
+              echo "✅ $file validation completed"
+            fi
+          done
+          
+          if [ $ERROR_COUNT -gt 0 ]; then
+            echo "❌ Validation failed with $ERROR_COUNT errors"
+            echo "Please fix the errors above and update your PR"
+            exit 1
+          fi
+          
+          echo "✅ All validations passed!"
+
+      - name: Test build
+        run: |
+          echo "🔨 Testing site build..."
+          npm run build
+          
+          # Check if docs directory was created
+          if [ ! -d "docs" ]; then
+            echo "❌ Build failed: docs directory not created"
+            exit 1
+          fi
+          
+          # Check if index.html was created
+          if [ ! -f "docs/index.html" ]; then
+            echo "❌ Build failed: index.html not created"
+            exit 1
+          fi
+          
+          echo "✅ Build test successful!"
+
+      - name: Comment on PR
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+            const success = '${{ job.status }}' === 'success';
+            
+            const body = success 
+              ? `## ✅ Validation Successful
+              
+              Your contribution has been validated and the site builds successfully!
+              
+              **What happens next:**
+              - Once merged, your project will be automatically deployed
+              - The site will be updated within 2-3 minutes
+              - Your project will be searchable and categorized automatically
+              
+              Thank you for contributing to all_we_need! 🎉`
+              : `## ❌ Validation Failed
+              
+              There are some issues with your contribution that need to be fixed:
+              
+              Please check the validation logs above and fix the errors.
+              
+              **Common issues:**
+              - Missing required frontmatter fields (title, link, description, tags)
+              - Invalid file naming (use lowercase with hyphens)
+              - Incorrect YAML format in frontmatter
+              
+              Feel free to ask for help if you need assistance! 💪`;
+            
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: number,
+              body
+            });
+
+  # Build and deploy job
+  build-deploy:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: 🚀 Build & Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund --prefer-offline
+
+      - name: Build site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔨 Building all_we_need website..."
+          npm run build
+          
+          echo "📊 Build summary:"
+          echo "- Generated $(find docs -name "*.html" | wc -l) HTML pages"
+          echo "- Processed $(find projects -name "*.md" 2>/dev/null | wc -l) project files"
+          echo "- Site size: $(du -sh docs | cut -f1)"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Update README stats
+        run: |
+          # Update repository README with latest stats
+          if [ -f "README.md" ]; then
+            PROJECT_COUNT=$(find projects -name "*.md" 2>/dev/null | wc -l)
+            LAST_UPDATED=$(date -u +"%Y-%m-%d %H:%M UTC")
+            
+            # Create/update stats badge
+            sed -i "s/Projects-[0-9]*-/Projects-$PROJECT_COUNT-/" README.md 2>/dev/null || true
+            sed -i "s/Last Updated: .*/Last Updated: $LAST_UPDATED/" README.md 2>/dev/null || true
+            
+            # Commit if changes
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add README.md
+            git diff --staged --quiet || git commit -m "📊 Update stats [skip ci]"
+            git push || echo "No changes to push"
+          fi
+
+      - name: Ping search engines
+        run: |
+          echo "🔍 Notifying search engines..."
+          
+          # Google
+          curl -s "https://www.google.com/ping?sitemap=https://allweneed.github.io/sitemap.xml" || echo "Google ping failed"
+          
+          # Bing
+          curl -s "https://www.bing.com/ping?sitemap=https://allweneed.github.io/sitemap.xml" || echo "Bing ping failed"
+          
+          echo "✅ Search engine notifications sent"
+
+      - name: Deployment summary
+        run: |
+          echo "🎉 Deployment completed successfully!"
+          echo "🌐 Site URL: https://allweneed.github.io"
+          echo "📄 Pages deployed: $(find docs -name "*.html" | wc -l)"
+          echo "🔍 Sitemap updated with latest projects"
+          echo "📊 Search engines notified"
+
+  # Cleanup old deployments
+  cleanup:
+    if: github.event_name != 'pull_request'
+    needs: build-deploy
+    runs-on: ubuntu-latest
+    name: 🧹 Cleanup
+    steps:
+      - name: Delete old workflow runs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            
+            // Keep last 10 workflow runs
+            const workflows = await github.rest.actions.listWorkflowRunsForRepo({
+              owner,
+              repo,
+              per_page: 100
+            });
+            
+            const oldRuns = workflows.data.workflow_runs.slice(10);
+            
+            for (const run of oldRuns) {
+              if (run.status === 'completed') {
+                await github.rest.actions.deleteWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: run.id
+                });
+              }
+            }
+            
+            console.log(`🧹 Cleaned up ${oldRuns.length} old workflow runs`);
+
+  # Auto-create project template for new contributors
+  create-template:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    name: 📝 Create Project Template
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create example project
+        run: |
+          mkdir -p projects
+          cat > projects/example-project.md << 'EOF'
+          ---
+          title: "Your Project Name"
+          link: "https://your-project-url.com"
+          description: "Brief description of what your project does"
+          tags: ["category1", "category2"]
+          screenshot: "assets/your-project.png"
+          ---
+          
+          ## About Your Project
+          
+          Add more details about your project here. You can include:
+          
+          - Features and capabilities
+          - How to use it
+          - Installation instructions
+          - Screenshots or demos
+          
+          ## Why It's Useful
+          
+          Explain why developers would find this tool helpful.
+          
+          ## Getting Started
+          
+          Provide quick start instructions or links to documentation.
+          EOF
+          
+          echo "📝 Example project template created at projects/example-project.md"
+          echo "ℹ️ Contributors can copy this template to add new projects"
