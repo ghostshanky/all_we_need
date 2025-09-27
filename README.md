@@ -2,7 +2,7 @@
 
 # 🚀 all_we_need 
 
-[![Projects](https://img.shields.io/badge/Projects-0-blue.svg)](https://allweneed.github.io)
+[![Projects](https://img.shields.io/badge/Projects-3-blue.svg)](https://allweneed.github.io)
 [![Website](https://img.shields.io/badge/Website-Live-green.svg)](https://allweneed.github.io)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -11,7 +11,7 @@
 
 🌐 **Live Site:** [https://allweneed.github.io](https://allweneed.github.io)
 
-Last Updated: 2025-09-26 12:00 UTC
+Last Updated: 2025-09-27 15:56 UTC
 
 ## ✨ What is all_we_need?
 
