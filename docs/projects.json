@@ -1,0 +1,47 @@
+[
+  {
+    "title": "GitHub Copilot",
+    "link": "https://github.com/features/copilot",
+    "description": "AI-powered code completion and assistance directly in your editor",
+    "tags": [
+      "ai",
+      "productivity",
+      "coding",
+      "github"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "slug": "github-copilot",
+    "page": "/projects/github-copilot.html",
+    "contributors": []
+  },
+  {
+    "title": "Postman",
+    "link": "https://www.postman.com",
+    "description": "Powerful API development and testing platform for modern developers",
+    "tags": [
+      "api",
+      "testing",
+      "development",
+      "tools"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=www.postman.com&sz=128",
+    "slug": "postman",
+    "page": "/projects/postman.html",
+    "contributors": []
+  },
+  {
+    "title": "Visual Studio Code",
+    "link": "https://code.visualstudio.com",
+    "description": "Free, powerful source code editor with extensive extension ecosystem",
+    "tags": [
+      "editor",
+      "development",
+      "microsoft",
+      "opensource"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128",
+    "slug": "visual-studio-code",
+    "page": "/projects/visual-studio-code.html",
+    "contributors": []
+  }
+]

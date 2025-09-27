@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>all_we_need · Developer Tools &amp; Hidden Gems</title>
+  <meta name="description" content="Discover amazing developer tools, hidden gems, and useful resources curated by the community." />
+  <link rel="canonical" href="https://allweneed.github.io" />
+  <meta name="robots" content="index,follow" />
+  
+  <!-- SEO & Social Meta -->
+  <meta property="og:title" content="all_we_need · Developer Tools &amp; Hidden Gems" />
+  <meta property="og:description" content="Discover amazing developer tools, hidden gems, and useful resources curated by the community." />
+  <meta property="og:url" content="https://allweneed.github.io" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="all_we_need" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="all_we_need · Developer Tools &amp; Hidden Gems" />
+  <meta name="twitter:description" content="Discover amazing developer tools, hidden gems, and useful resources curated by the community." />
+  
+  <!-- Favicon & Theme -->
+  <link rel="icon" href="/logo.svg" />
+  <meta name="theme-color" content="#0b6efd" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+<header class="site-header" id="site-header">
+  <div class="header-content">
+    <a class="brand" href="/"><img src="/logo.svg" alt="All We Need" /> <span>all_we_need</span></a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="https://github.com/ghostshanky/allweneed.github.io">GitHub</a>
+    </nav>
+    <div class="search-icon-container" id="search-icon" style="display: none;">
+      <button class="search-icon-btn" onclick="focusMainSearch()">🔍</button>
+    </div>
+  </div>
+</header>
+<main class="container">
+
+    <section class="hero">
+      <h1>all_we_need</h1>
+      <p class="lead">Discover amazing developer tools, hidden gems, and useful resources curated by the community.</p>
+      <div class="search-container">
+        <input id="main-search" type="text" placeholder="🔍 Search what are you looking for..." />
+        <div id="search-results" class="search-results" style="display: none;"></div>
+      </div>
+      
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">11</span>
+        <span class="stat-label">Categories</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">0</span>
+        <span class="stat-label">Contributors</span>
+      </div>
+    </div>
+  
+    </section>
+
+    <div id="categories-container">
+      
+      <section class="category" data-category="development">
+        <div class="category-header">
+          <h2>development <span class="count">(2)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="development">
+          <article class="project-card" data-slug="postman" data-tags="api testing development tools">
+    <a class="project-link" href="/projects/postman.html" aria-label="View Postman details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=www.postman.com&sz=128" alt="Postman logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Postman</h3>
+        <p class="desc">Powerful API development and testing platform for modern developers</p>
+        <div class="tags"><span class="tag">api</span><span class="tag">testing</span><span class="tag">development</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://www.postman.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              www.postman.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+<article class="project-card" data-slug="visual-studio-code" data-tags="editor development microsoft opensource">
+    <a class="project-link" href="/projects/visual-studio-code.html" aria-label="View Visual Studio Code details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128" alt="Visual Studio Code logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Visual Studio Code</h3>
+        <p class="desc">Free, powerful source code editor with extensive extension ecosystem</p>
+        <div class="tags"><span class="tag">editor</span><span class="tag">development</span><span class="tag">microsoft</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://code.visualstudio.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              code.visualstudio.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="ai">
+        <div class="category-header">
+          <h2>ai <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="ai">
+          <article class="project-card" data-slug="github-copilot" data-tags="ai productivity coding github">
+    <a class="project-link" href="/projects/github-copilot.html" aria-label="View GitHub Copilot details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="GitHub Copilot logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>GitHub Copilot</h3>
+        <p class="desc">AI-powered code completion and assistance directly in your editor</p>
+        <div class="tags"><span class="tag">ai</span><span class="tag">productivity</span><span class="tag">coding</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://github.com/features/copilot" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              github.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="productivity">
+        <div class="category-header">
+          <h2>productivity <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="productivity">
+          <article class="project-card" data-slug="github-copilot" data-tags="ai productivity coding github">
+    <a class="project-link" href="/projects/github-copilot.html" aria-label="View GitHub Copilot details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="GitHub Copilot logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>GitHub Copilot</h3>
+        <p class="desc">AI-powered code completion and assistance directly in your editor</p>
+        <div class="tags"><span class="tag">ai</span><span class="tag">productivity</span><span class="tag">coding</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://github.com/features/copilot" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              github.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="coding">
+        <div class="category-header">
+          <h2>coding <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="coding">
+          <article class="project-card" data-slug="github-copilot" data-tags="ai productivity coding github">
+    <a class="project-link" href="/projects/github-copilot.html" aria-label="View GitHub Copilot details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="GitHub Copilot logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>GitHub Copilot</h3>
+        <p class="desc">AI-powered code completion and assistance directly in your editor</p>
+        <div class="tags"><span class="tag">ai</span><span class="tag">productivity</span><span class="tag">coding</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://github.com/features/copilot" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              github.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="github">
+        <div class="category-header">
+          <h2>github <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="github">
+          <article class="project-card" data-slug="github-copilot" data-tags="ai productivity coding github">
+    <a class="project-link" href="/projects/github-copilot.html" aria-label="View GitHub Copilot details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="GitHub Copilot logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>GitHub Copilot</h3>
+        <p class="desc">AI-powered code completion and assistance directly in your editor</p>
+        <div class="tags"><span class="tag">ai</span><span class="tag">productivity</span><span class="tag">coding</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://github.com/features/copilot" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              github.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="api">
+        <div class="category-header">
+          <h2>api <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="api">
+          <article class="project-card" data-slug="postman" data-tags="api testing development tools">
+    <a class="project-link" href="/projects/postman.html" aria-label="View Postman details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=www.postman.com&sz=128" alt="Postman logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Postman</h3>
+        <p class="desc">Powerful API development and testing platform for modern developers</p>
+        <div class="tags"><span class="tag">api</span><span class="tag">testing</span><span class="tag">development</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://www.postman.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              www.postman.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="testing">
+        <div class="category-header">
+          <h2>testing <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="testing">
+          <article class="project-card" data-slug="postman" data-tags="api testing development tools">
+    <a class="project-link" href="/projects/postman.html" aria-label="View Postman details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=www.postman.com&sz=128" alt="Postman logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Postman</h3>
+        <p class="desc">Powerful API development and testing platform for modern developers</p>
+        <div class="tags"><span class="tag">api</span><span class="tag">testing</span><span class="tag">development</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://www.postman.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              www.postman.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="tools">
+        <div class="category-header">
+          <h2>tools <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="tools">
+          <article class="project-card" data-slug="postman" data-tags="api testing development tools">
+    <a class="project-link" href="/projects/postman.html" aria-label="View Postman details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=www.postman.com&sz=128" alt="Postman logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Postman</h3>
+        <p class="desc">Powerful API development and testing platform for modern developers</p>
+        <div class="tags"><span class="tag">api</span><span class="tag">testing</span><span class="tag">development</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://www.postman.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              www.postman.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="editor">
+        <div class="category-header">
+          <h2>editor <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="editor">
+          <article class="project-card" data-slug="visual-studio-code" data-tags="editor development microsoft opensource">
+    <a class="project-link" href="/projects/visual-studio-code.html" aria-label="View Visual Studio Code details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128" alt="Visual Studio Code logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Visual Studio Code</h3>
+        <p class="desc">Free, powerful source code editor with extensive extension ecosystem</p>
+        <div class="tags"><span class="tag">editor</span><span class="tag">development</span><span class="tag">microsoft</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://code.visualstudio.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              code.visualstudio.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="microsoft">
+        <div class="category-header">
+          <h2>microsoft <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="microsoft">
+          <article class="project-card" data-slug="visual-studio-code" data-tags="editor development microsoft opensource">
+    <a class="project-link" href="/projects/visual-studio-code.html" aria-label="View Visual Studio Code details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128" alt="Visual Studio Code logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Visual Studio Code</h3>
+        <p class="desc">Free, powerful source code editor with extensive extension ecosystem</p>
+        <div class="tags"><span class="tag">editor</span><span class="tag">development</span><span class="tag">microsoft</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://code.visualstudio.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              code.visualstudio.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+      <section class="category" data-category="opensource">
+        <div class="category-header">
+          <h2>opensource <span class="count">(1)</span></h2>
+          
+        </div>
+        <div class="projects-grid " data-category-grid="opensource">
+          <article class="project-card" data-slug="visual-studio-code" data-tags="editor development microsoft opensource">
+    <a class="project-link" href="/projects/visual-studio-code.html" aria-label="View Visual Studio Code details">
+      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128" alt="Visual Studio Code logo" loading="lazy" /></div>
+      <div class="project-body">
+        <h3>Visual Studio Code</h3>
+        <p class="desc">Free, powerful source code editor with extensive extension ecosystem</p>
+        <div class="tags"><span class="tag">editor</span><span class="tag">development</span><span class="tag">microsoft</span></div>
+        <div class="meta">
+          <span class="site-link">
+            <a href="https://code.visualstudio.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              code.visualstudio.com
+            </a>
+          </span>
+          
+        </div>
+      </div>
+    </a>
+  </article>
+        </div>
+      </section>
+    </div>
+    
+    <div id="no-results" class="no-results" style="display: none;">
+      <h3>No projects found</h3>
+      <p>Try different keywords or browse categories above.</p>
+    </div>
+  
+</main>
+<footer class="site-footer">
+  <div class="footer-content">
+    <div>
+      <p>MIT License · Open source · Built with ❤️</p>
+      <p>Auto-generated from <a href="https://github.com/ghostshanky/allweneed.github.io">GitHub repository</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="/sitemap.xml">Sitemap</a>
+      <a href="https://github.com/ghostshanky/allweneed.github.io/blob/main/CONTRIBUTING.md">Contribute</a>
+    </div>
+  </div>
+</footer>
+<script src="/search.js"></script>
+</body>
+</html>
