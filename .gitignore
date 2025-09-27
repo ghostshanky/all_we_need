@@ -2,7 +2,7 @@
 node_modules/
 
 # Build output
-docs/
+# docs/  # Uncomment if you want to ignore docs locally, but it's needed for GitHub Pages
 
 # Logs
 *.log

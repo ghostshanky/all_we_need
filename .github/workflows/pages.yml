@@ -18,7 +18,7 @@ on:
   workflow_dispatch: # Allow manual trigger
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   issues: write
@@ -208,21 +208,19 @@ jobs:
         run: |
           echo "🔨 Building all_we_need website..."
           npm run build
-          
+
           echo "📊 Build summary:"
           echo "- Generated $(find docs -name "*.html" | wc -l) HTML pages"
           echo "- Processed $(find projects -name "*.md" 2>/dev/null | wc -l) project files"
           echo "- Site size: $(du -sh docs | cut -f1)"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: '🚀 Deploy site to gh-pages'
+      - name: Commit and push docs to main
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "🚀 Update site [skip ci]"
+          git push origin main
 
       - name: Update README stats
         run: |
@@ -259,7 +257,7 @@ jobs:
         run: |
           echo "🎉 Deployment completed successfully!"
           echo "🌐 Site URL: https://allweneed.github.io"
-          echo "📄 Pages deployed: $(find docs -name "*.html" | wc -l)"
+          echo "📄 Pages committed to main/docs/: $(find docs -name "*.html" | wc -l)"
           echo "🔍 Sitemap updated with latest projects"
           echo "📊 Search engines notified"
 
