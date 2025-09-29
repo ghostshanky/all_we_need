@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://allweneed.github.io/sitemap.xml
-
-# Optimize crawling
-Crawl-delay: 1
