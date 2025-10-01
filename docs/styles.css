@@ -327,6 +327,8 @@ body.dark .site-footer {
 .switch {
   margin: auto;
   position: relative;
+  width: 3.5em;
+  height: 2em;
 }
 .switch__icon,
 .switch__input {
@@ -334,10 +336,10 @@ body.dark .site-footer {
 }
 .switch__icon {
   position: absolute;
-  top: 0.375em;
-  right: 0.375em;
-  width: 0.75em;
-  height: 0.75em;
+  top: 0.5em;
+  right: 0.5em;
+  width: 1em;
+  height: 1em;
   transition:
     opacity calc(var(--trans-dur) / 2),
     transform calc(var(--trans-dur) / 2);
@@ -352,19 +354,19 @@ body.dark .site-footer {
 }
 .switch__icon--dark {
   opacity: 0;
-  transform: translateX(-0.75em) rotate(30deg) scale(0.75);
+  transform: translateX(-1em) rotate(30deg) scale(0.75);
   transition-timing-function: var(--trans-timing-in);
 }
 .switch__input {
   background-color: hsl(223, 90%, 70%);
-  border-radius: 0.75em;
+  border-radius: 1em;
   box-shadow:
     0 0 0 0.125em hsla(var(--hue), 90%, 50%, 0),
     0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
   outline: transparent;
   position: relative;
-  width: 3em;
-  height: 1.5em;
+  width: 3.5em;
+  height: 2em;
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
@@ -395,10 +397,10 @@ body.dark .site-footer {
   background-color: hsl(0, 0%, 100%);
   border-radius: 50%;
   box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
-  top: 0.125em;
-  left: 0.125em;
-  width: 1.25em;
-  height: 1.25em;
+  top: 0.25em;
+  left: 0.25em;
+  width: 1.5em;
+  height: 1.5em;
   transition:
     background-color var(--trans-dur) var(--trans-timing),
     transform var(--trans-dur) var(--trans-timing);
@@ -421,7 +423,7 @@ body.dark .site-footer {
 }
 .switch__input:checked ~ .switch__icon--light {
   opacity: 0;
-  transform: translateX(-0.75em) rotate(-30deg) scale(0.75);
+  transform: translateX(-1em) rotate(-30deg) scale(0.75);
 }
 .switch__input:checked ~ .switch__icon--light polyline {
   stroke-dashoffset: 1.5;

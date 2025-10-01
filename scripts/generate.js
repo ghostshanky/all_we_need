@@ -44,7 +44,7 @@ function copyStaticAssets() {
   }
   // copy css
   fs.copyFileSync(path.join(__dirname, '..', 'templates', 'styles.css'), path.join(OUT_DIR, 'styles.css'));
-  fs.copyFileSync(path.join(__dirname, '..', 'templates', 'logo.svg'), path.join(OUT_DIR, 'logo.svg'));
+  fs.copyFileSync(path.join(__dirname, '..', 'templates', 'logo.png'), path.join(OUT_DIR, 'logo.png'));
   fs.copyFileSync(path.join(__dirname, '..', 'templates', 'search.js'), path.join(OUT_DIR, 'search.js'));
 }
 
@@ -62,7 +62,7 @@ function renderLayout(title, description, body, canonical) {
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="/"><img src="/logo.svg" alt="All We Need" /> <span>all_we_need</span></a>
+  <a class="brand" href="/"><img src="/logo.png" alt="All We Need" /> <span>all_we_need</span></a>
   <nav>
     <a href="/">Home</a>
     <a href="/projects">Projects</a>
@@ -132,7 +132,7 @@ async function getLogoForLink(link) {
     // Use Google favicon service
     return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
   } catch (err) {
-    return '/logo.svg';
+    return '/logo.png';
   }
 }
 
