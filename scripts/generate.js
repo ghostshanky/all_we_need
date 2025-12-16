@@ -62,7 +62,7 @@ function renderLayout(title, description, body, canonical) {
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="/"><img src="/logo.png" alt="All We Need" /> <span>all_we_need</span></a>
+  <a class="brand" href="/"><img src="/logo.png" alt="All We Need" height="25" width="25" /> <span>all_we_need</span></a>
   <nav>
     <a href="/">Home</a>
     <a href="/projects">Projects</a>

@@ -159,6 +159,11 @@ header {
   gap: 10px;
 }
 
+.brand img {
+  height: 40px;
+  width: auto;
+}
+
 .brand span {
   color: var(--accent-primary);
 }
