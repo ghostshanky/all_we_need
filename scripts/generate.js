@@ -69,6 +69,19 @@ function renderLayout(title, description, body, canonical) {
     <a href="https://github.com/ghostshanky/all_we_need">Repo</a>
   </nav>
 </header>
+<div class="loader" id="sys-loader">
+  <div class="loader-text">SYSTEM INITIALIZING...</div>
+</div>
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('sys-loader');
+    if(loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1000);
+    }
+  });
+</script>
 <main class="container">
 ${body}
 </main>
@@ -81,21 +94,22 @@ ${body}
 }
 
 function escapeHtml(str) {
-  return String(str || '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'<','>':'>','"':'"',"'":"&#39;"}[s]));
+  return String(str || '').replace(/[&<>"']/g, s => ({ '&': '&amp;', '<': '<', '>': '>', '"': '"', "'": "&#39;" }[s]));
 }
 
 function projectCardHtml(p) {
   const logoTag = p.logo ? `<img class="project-logo" src="${p.logo}" alt="${escapeHtml(p.title)} logo" />` : `<div class="project-logo placeholder"></div>`;
-  const contributorsHtml = (p.contributors || []).slice(0,6).map(c => `<a class="contrib" href="${c.html_url}" target="_blank" rel="noopener">${escapeHtml(c.login)}</a>`).join(' ');
-  return `<article class="project-card">
-    <a class="project-link" href="${p.page}" aria-label="${escapeHtml(p.title)}">
-      <div class="project-left">${logoTag}</div>
-      <div class="project-body">
-        <h2>${escapeHtml(p.title)}</h2>
-        <p class="desc">${escapeHtml(p.description || '')}</p>
-        <div class="meta">
-          <span class="site-link"><a href="${p.link}" target="_blank" rel="noopener">${escapeHtml(hostnameOnly(p.link))}</a></span>
-          <span class="contributors">${contributorsHtml}</span>
+  const contributorsHtml = (p.contributors || []).slice(0, 6).map(c => `<a class="contrib" href="${c.html_url}" target="_blank" rel="noopener">${escapeHtml(c.login)}</a>`).join(' ');
+  return `<article class="card">
+    <a class="card-link" href="${p.page}" aria-label="${escapeHtml(p.title)}" style="text-decoration:none; color:inherit;">
+      <div class="card-body">
+        <div class="card-title">
+          <span>${escapeHtml(p.title)}</span>
+          ${logoTag}
+        </div>
+        <p class="card-desc">${escapeHtml(p.description || '')}</p>
+        <div class="card-tags">
+          ${(p.tags || ['Tool']).map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
       </div>
     </a>
@@ -125,7 +139,7 @@ async function getLogoForLink(link) {
         if (ownerData && ownerData.avatar_url) return ownerData.avatar_url;
       }
     }
-  } catch (err) {}
+  } catch (err) { }
   // fallback: use google s2 favicons
   try {
     const domain = (new URL(link)).hostname;
@@ -231,9 +245,9 @@ async function build() {
   for (const [tag, items] of Object.entries(categories)) {
     const cards = items.map(projectCardHtml).join("\n");
     const collapsed = items.length > 6
-      ? `<div class="projects-grid limited" data-tag="${tag}">${cards}</div>
-         <button class="show-more" data-tag="${tag}">Show more</button>`
-      : `<div class="projects-grid">${cards}</div>`;
+      ? `<div class="grid limited" data-tag="${tag}">${cards}</div>
+         <button class="show-more btn-primary" data-tag="${tag}">Show more</button>`
+      : `<div class="grid">${cards}</div>`;
     categorySections += `
       <section class="category">
         <h2>${escapeHtml(tag)}</h2>
@@ -245,8 +259,10 @@ async function build() {
   const indexBody = `
     <section class="hero">
       <h1>all_we_need</h1>
-      <p class="lead">Search what are you looking for...</p>
-      <input id="search" type="text" placeholder="🔍 Search tools, keywords, contributors..." />
+      <p class="lead">Access the world's most coveted developer tools.</p>
+      <div class="search-container">
+        <input id="search" type="text" placeholder="SEARCH DATABASE..." />
+      </div>
     </section>
     ${categorySections}
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
@@ -256,7 +272,8 @@ async function build() {
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml, 'utf8');
 
   // projects listing page (optional)
-  const projectsListingBody = `<h1>Projects</h1><div class="projects-grid">${projects.map(projectCardHtml).join('\n')}</div>`;
+  // projects listing page (optional)
+  const projectsListingBody = `<h1>Projects</h1><div class="grid">${projects.map(projectCardHtml).join('\n')}</div>`;
   fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), renderLayout('Projects · all_we_need', 'All projects', projectsListingBody, 'https://allweneed.pages.dev/projects'), 'utf8');
 
   // sitemap

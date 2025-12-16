@@ -18,6 +18,19 @@
     <a href="https://github.com/ghostshanky/all_we_need">Repo</a>
   </nav>
 </header>
+<div class="loader" id="sys-loader">
+  <div class="loader-text">SYSTEM INITIALIZING...</div>
+</div>
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('sys-loader');
+    if(loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1000);
+    }
+  });
+</script>
 <main class="container">
 
       <article class="project-full">

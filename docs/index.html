@@ -18,38 +18,55 @@
     <a href="https://github.com/ghostshanky/all_we_need">Repo</a>
   </nav>
 </header>
+<div class="loader" id="sys-loader">
+  <div class="loader-text">SYSTEM INITIALIZING...</div>
+</div>
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('sys-loader');
+    if(loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1000);
+    }
+  });
+</script>
 <main class="container">
 
     <section class="hero">
       <h1>all_we_need</h1>
-      <p class="lead">Search what are you looking for...</p>
-      <input id="search" type="text" placeholder="🔍 Search tools, keywords, contributors..." />
+      <p class="lead">Access the world's most coveted developer tools.</p>
+      <div class="search-container">
+        <input id="search" type="text" placeholder="SEARCH DATABASE..." />
+      </div>
     </section>
     
       <section class="category">
         <h2>Other</h2>
-        <div class="projects-grid"><article class="project-card">
-    <a class="project-link" href="/projects/emailnator.html" aria-label="Emailnator">
-      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" alt="Emailnator logo" /></div>
-      <div class="project-body">
-        <h2>Emailnator</h2>
-        <p class="desc">Generate disposable Gmail-style emails</p>
-        <div class="meta">
-          <span class="site-link"><a href="https://emailnator.com" target="_blank" rel="noopener">emailnator.com</a></span>
-          <span class="contributors"></span>
+        <div class="grid"><article class="card">
+    <a class="card-link" href="/projects/emailnator.html" aria-label="Emailnator" style="text-decoration:none; color:inherit;">
+      <div class="card-body">
+        <div class="card-title">
+          <span>Emailnator</span>
+          <img class="project-logo" src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" alt="Emailnator logo" />
+        </div>
+        <p class="card-desc">Generate disposable Gmail-style emails</p>
+        <div class="card-tags">
+          <span class="tag">Tool</span>
         </div>
       </div>
     </a>
   </article>
-<article class="project-card">
-    <a class="project-link" href="/projects/openrouter.html" aria-label="OpenRouter">
-      <div class="project-left"><img class="project-logo" src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" alt="OpenRouter logo" /></div>
-      <div class="project-body">
-        <h2>OpenRouter</h2>
-        <p class="desc">Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint</p>
-        <div class="meta">
-          <span class="site-link"><a href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a></span>
-          <span class="contributors"></span>
+<article class="card">
+    <a class="card-link" href="/projects/openrouter.html" aria-label="OpenRouter" style="text-decoration:none; color:inherit;">
+      <div class="card-body">
+        <div class="card-title">
+          <span>OpenRouter</span>
+          <img class="project-logo" src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" alt="OpenRouter logo" />
+        </div>
+        <p class="card-desc">Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint</p>
+        <div class="card-tags">
+          <span class="tag">Tool</span>
         </div>
       </div>
     </a>
