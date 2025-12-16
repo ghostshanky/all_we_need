@@ -3,7 +3,10 @@
     "title": "Emailnator",
     "link": "https://emailnator.com",
     "description": "Generate disposable Gmail-style emails",
-    "tags": [],
+    "tags": [
+      "email",
+      "productivity"
+    ],
     "logo": "https://www.google.com/s2/favicons?domain=emailnator.com&sz=128",
     "slug": "emailnator",
     "contributors": []
@@ -12,7 +15,13 @@
     "title": "OpenRouter",
     "link": "https://openrouter.ai",
     "description": "Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint",
-    "tags": [],
+    "tags": [
+      "api",
+      "llm",
+      "models",
+      "developer",
+      "free"
+    ],
     "logo": "https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128",
     "slug": "openrouter",
     "contributors": []
