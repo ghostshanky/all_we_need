@@ -1,19 +1,21 @@
 /* templates/styles.css - Gem Aesthetic */
 :root {
   --bg-deep: #050510;
-  --bg-surface: rgba(255, 255, 255, 0.03);
-  --bg-surface-hover: rgba(255, 255, 255, 0.08);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --bg-surface: rgba(20, 25, 40, 0.7);
+  /* Much more opaque and slightly blue-tinted */
+  --bg-surface-hover: rgba(30, 35, 60, 0.8);
+  --border-color: rgba(255, 255, 255, 0.15);
   --accent-primary: #00f3ff;
   --accent-secondary: #bd00ff;
   --text-main: #ffffff;
-  --text-muted: #a0a0b0;
-  --shadow-glow: 0 0 20px rgba(0, 243, 255, 0.15);
-  --glass-blur: blur(12px);
+  --text-muted: #d0d0e0;
+  /* Brighter grey for better readability */
+  --shadow-glow: 0 0 20px rgba(0, 243, 255, 0.1);
+  --glass-blur: blur(16px);
   --radius-card: 16px;
   --radius-sm: 8px;
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  
+
   /* Retain compatibility with light mode switch but default to dark "gem" look */
   --bg: var(--bg-deep);
   --text-dark: var(--text-main);
@@ -24,7 +26,7 @@
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-deep);
-  background-image: 
+  background-image:
     radial-gradient(circle at 15% 50%, rgba(189, 0, 255, 0.08), transparent 25%),
     radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.08), transparent 25%);
   background-attachment: fixed;
@@ -141,7 +143,7 @@ nav a:hover {
   border-radius: 50px;
   outline: none;
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 #search:focus {
@@ -173,18 +175,23 @@ nav a:hover {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-card);
-  padding: 20px;
+  padding: 24px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(4px);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .project-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -193,7 +200,7 @@ nav a:hover {
   transform: translateY(-4px);
   background: var(--bg-surface-hover);
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .project-card:hover::before {
@@ -241,23 +248,26 @@ nav a:hover {
 }
 
 .project-body h2 {
-  font-size: 1.1rem;
-  margin: 0 0 6px;
+  font-size: 1.2rem;
+  margin: 0 0 8px;
   color: var(--text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .project-body .desc {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  opacity: 0.9;
 }
 
 .meta {
@@ -272,6 +282,7 @@ nav a:hover {
 .meta a {
   color: rgba(255, 255, 255, 0.5);
 }
+
 .meta a:hover {
   color: var(--accent-primary);
 }
@@ -294,7 +305,8 @@ nav a:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(0, 243, 255, 0.4);
-  color: #000; /* Ensure text remains readable */
+  color: #000;
+  /* Ensure text remains readable */
 }
 
 .show-more {
@@ -339,7 +351,7 @@ nav a:hover {
   border-radius: 20px;
   background: #000;
   border: 2px solid var(--border-color);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .project-content {
@@ -347,13 +359,15 @@ nav a:hover {
   color: #d0d0e0;
 }
 
-.project-content h1, .project-content h2, .project-content h3 {
+.project-content h1,
+.project-content h2,
+.project-content h3 {
   color: var(--text-main);
   margin-top: 1.5em;
 }
 
 .project-content code {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   padding: 2px 6px;
   border-radius: 4px;
   font-family: 'Fira Code', monospace;
@@ -372,7 +386,7 @@ nav a:hover {
 .site-footer {
   margin-top: 80px;
   padding: 40px 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   text-align: center;
   color: var(--text-muted);
   font-size: 0.9rem;
@@ -381,11 +395,28 @@ nav a:hover {
 
 /* Mobile */
 @media (max-width: 600px) {
-  .hero h1 { font-size: 2.5rem; }
-  .project-header { flex-direction: column; text-align: center; }
-  .project-full { padding: 24px; }
-  .nav-toggle-container { margin-left: auto; }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .project-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project-full {
+    padding: 24px;
+  }
+
+  .nav-toggle-container {
+    margin-left: auto;
+  }
 }
 
 /* Disable the old switch just in case or hide it if we want to force dark */
-.switch { opacity: 0.5; display: none; } /* Hiding toggle for now as we are enforcing Gem Theme */
+.switch {
+  opacity: 0.5;
+  display: none;
+}
+
+/* Hiding toggle for now as we are enforcing Gem Theme */
