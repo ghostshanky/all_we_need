@@ -1,75 +1,131 @@
-/* Custom styles for All We Need */
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+:root {
+  --bg-color: #050505;
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --accent: #ffffff;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Custom scrollbar */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  /* Prevent horizontal scroll from animations */
+}
+
+/* Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Lenis Smooth Scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar (Hidden typically for premium feel, or minimal) */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--bg-color);
 }
 
 ::-webkit-scrollbar-thumb {
   background: #333;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+/* Typography & Utilities */
+.tracking-tightest {
+  letter-spacing: -0.05em;
 }
 
-/* Avatar stacking and hover effects */
-#weeklyContributors img {
-  border: 2px solid #0a0a0a;
-  transition: transform 0.3s ease, z-index 0s;
-  position: relative;
+.font-display {
+  font-family: 'Inter', sans-serif;
 }
 
-#weeklyContributors img:hover {
-  transform: scale(1.2);
-  z-index: 50;
-  border-color: #fff;
+.text-gradient {
+  background: linear-gradient(to right, #fff, #666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Project Card Hover */
-.project-card {
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.project-card:hover {
-  transform: translateY(-4px);
+.glass-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.03);
+  /* transform: translateY(-2px); // Handled by GSAP/Tailwind usually, but good fallback */
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+/* Stacked Avatar Hover Effects */
+.avatar-stack-container:hover .avatar-item {
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transform: scale(0.95);
+}
 
+.avatar-stack-container .avatar-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.15) translateY(-5px);
+  z-index: 50;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Foldable Section Transitions */
+.foldable-content {
+  transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+/* Loader */
+.loader-enter {
+  animation: fadeOut 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeOut {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Hide scrollbar for horizontal scrolling if needed */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Horizontal Scroll Section */
+.horizontal-scroll-wrapper {
+  overflow-x: hidden;
 }

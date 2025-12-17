@@ -41,6 +41,21 @@ function escapeHtml(str) {
   return String(str || '').replace(/[&<>"']/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": "&#39;" }[s]));
 }
 
+function copyRecursiveSync(src, dest) {
+  const exists = fs.existsSync(src);
+  const stats = exists && fs.statSync(src);
+  const isDirectory = exists && stats.isDirectory();
+  if (isDirectory) {
+    mkdirp.sync(dest);
+    fs.readdirSync(src).forEach(function (childItemName) {
+      copyRecursiveSync(path.join(src, childItemName),
+        path.join(dest, childItemName));
+    });
+  } else {
+    fs.copyFileSync(src, dest);
+  }
+}
+
 // -------------------------------------------------------------------------
 // DATA FETCHING
 // -------------------------------------------------------------------------
@@ -74,10 +89,6 @@ async function getRepoDetails(link) {
 }
 
 async function getLeaderboardData() {
-  // Current Repo logic for leaderboard
-  // We want merged PRs to THIS repo: ghostshanky/allweneed.github.io
-  // This might be rate limited if we fetch too many.
-  // For now, let's fetch the last 100 PRs and aggregate.
   const repo = 'ghostshanky/allweneed.github.io';
   const prsUrl = `https://api.github.com/repos/${repo}/pulls?state=closed&per_page=100&sort=updated&direction=desc`;
 
@@ -126,15 +137,21 @@ async function build() {
   const stylesSrc = path.join(TEMPLATES_DIR, 'styles.css');
   if (fs.existsSync(stylesSrc)) fs.copyFileSync(stylesSrc, path.join(OUT_DIR, 'styles.css'));
 
-  // Copy search.js if in templates, else we need to create it
-  // The user provided search.js in doc implies it exists in root or assets.
-  // I will write search.js in next step to templates or assets using write_to_file
-  // For now assuming it is in templates
-  const searchJsSrc = path.join(TEMPLATES_DIR, 'search.js');
-  if (fs.existsSync(searchJsSrc)) fs.copyFileSync(searchJsSrc, path.join(OUT_DIR, 'search.js'));
+  // Copy local assets
+  if (fs.existsSync(ASSETS_DIR)) {
+    fs.readdirSync(ASSETS_DIR).forEach(f => {
+      copyRecursiveSync(path.join(ASSETS_DIR, f), path.join(OUT_DIR, f));
+    });
+  }
 
-  // Copy branding
-  if (fs.existsSync(path.join(REPO_ROOT, 'logo.png'))) fs.copyFileSync(path.join(REPO_ROOT, 'logo.png'), path.join(OUT_DIR, 'logo.png'));
+  // Custom Scripts (Search, Animations)
+  try { fs.copyFileSync(path.join(TEMPLATES_DIR, 'search.js'), path.join(OUT_DIR, 'search.js')); } catch (e) { }
+
+  // Create js dir and copy animations
+  ensureDir(path.join(OUT_DIR, 'js'));
+  try { fs.copyFileSync(path.join(TEMPLATES_DIR, 'animations.js'), path.join(OUT_DIR, 'js', 'animations.js')); } catch (e) { }
+
+  try { fs.copyFileSync(path.join(REPO_ROOT, 'logo.png'), path.join(OUT_DIR, 'logo.png')); } catch (e) { }
 
   // 3. Process Projects
   const projectFiles = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.md'));
@@ -214,29 +231,32 @@ async function build() {
   let projectsHtml = '';
   for (const [tag, group] of Object.entries(tagsMap)) {
     projectsHtml += `
-         <div class="mb-16 group/section">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-2xl font-semibold capitalize text-neutral-200 flex items-center gap-2">
-                    <span class="text-blue-500">#</span> ${escapeHtml(tag)}
+         <div class="mb-32 group/section scroll-mt-24" id="${tag}">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // ${escapeHtml(tag)}
                 </h3>
-                <!-- Toggle button could be implemented in client JS, for now just static grid -->
+                <button id="btn-${tag}" onclick="window.toggleGroup('${tag}')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div id="${tag}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
          `;
 
     group.forEach(p => {
       projectsHtml += `
-             <a href="${p.full_path}" class="project-card block p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 relative overflow-hidden group">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="text-xl font-bold group-hover:text-blue-400 transition">${escapeHtml(p.title)}</h4>
-                    <img src="${p.logo}" class="w-10 h-10 rounded-lg object-cover bg-neutral-800">
+             <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
-                <p class="text-neutral-400 text-sm mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
-                <div class="flex items-center justify-between mt-auto">
-                    <div class="flex -space-x-2">
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
                          ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
                     </div>
-                    <span class="text-xs font-mono text-neutral-600 group-hover:text-neutral-400 transition">View Project →</span>
                 </div>
              </a>
              `;
@@ -245,7 +265,7 @@ async function build() {
     projectsHtml += `</div></div>`;
   }
 
-  indexHtml = indexHtml.replace('<!-- categories injected by JS -->', projectsHtml);
+  indexHtml = indexHtml.replace('<!-- projects injected by JS -->', projectsHtml);
 
   // Inject Weekly Contributors (To Home)
   // For now, let's use the leaderboard data
@@ -254,16 +274,11 @@ async function build() {
 
   let contributorsHtml = '';
   top7.forEach((c, i) => {
-    // Stacked styling handled in CSS
     contributorsHtml += `
-            <a href="${c.html_url}" target="_blank" class="relative group" style="z-index: ${20 - i}">
+            <a href="${c.html_url}" target="_blank" class="avatar-item relative w-16 h-16 rounded-full border-2 border-neutral-950 bg-neutral-800 transition-all duration-300" style="z-index: ${20 - i}">
                 <img src="${c.avatar_url}" 
                      alt="${c.login}"
-                     class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover shadow-xl bg-neutral-800"
-                     title="${c.login} (${c.count} PRs)">
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition text-xs whitespace-nowrap bg-black/80 px-2 py-1 rounded pointer-events-none">
-                    ${c.login}
-                </div>
+                     class="w-full h-full rounded-full object-cover">
             </a>
         `;
   });
@@ -276,13 +291,13 @@ async function build() {
   let lbHtml = leaderboardTemplate;
 
   let lgRows = leaderboard.map((c, i) => `
-        <tr class="hover:bg-neutral-800/30 transition">
-            <td class="px-6 py-4 text-neutral-500 font-mono">#${i + 1}</td>
-            <td class="px-6 py-4 flex items-center gap-3">
-                <img src="${c.avatar_url}" class="w-8 h-8 rounded-full">
-                <a href="${c.html_url}" target="_blank" class="hover:underline hover:text-white">${c.login}</a>
+        <tr class="hover:bg-white/5 transition group">
+            <td class="px-6 py-6 text-neutral-500 font-mono text-xs">${i + 1 < 10 ? '0' + (i + 1) : i + 1}</td>
+            <td class="px-6 py-6 flex items-center gap-4">
+                <img src="${c.avatar_url}" class="w-10 h-10 rounded-full border border-neutral-800 grayscale group-hover:grayscale-0 transition-all">
+                <a href="${c.html_url}" target="_blank" class="font-medium text-neutral-300 group-hover:text-white transition-colors">${c.login}</a>
             </td>
-            <td class="px-6 py-4 text-right font-mono text-neutral-300">${c.count}</td>
+            <td class="px-6 py-6 text-right font-mono text-neutral-500 group-hover:text-white transition-colors">${c.count}</td>
         </tr>
     `).join('');
 

@@ -104,19 +104,21 @@ function renderResults(results, container) {
             <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
                 Search Results <span class="text-sm font-normal text-neutral-500">(${results.length})</span>
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 ${results.map(p => `
-                 <a href="${p.full_path}" class="project-card block p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 relative overflow-hidden group">
-                    <div class="flex justify-between items-start mb-4">
-                        <h4 class="text-xl font-bold group-hover:text-blue-400 transition">${escapeHtml(p.title)}</h4>
-                        <img src="${p.logo}" class="w-10 h-10 rounded-lg object-cover bg-neutral-800">
+                 <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                         <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                         <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
-                    <p class="text-neutral-400 text-sm mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <div class="flex -space-x-2">
+                    <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
+                    
+                    <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                        <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
+                        <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
                              ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
                         </div>
-                        <span class="text-xs font-mono text-neutral-600 group-hover:text-neutral-400 transition">View Project →</span>
                     </div>
                  </a>
                 `).join('')}

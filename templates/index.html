@@ -1,81 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="text-[16px]">
 
 <head>
     <meta charset="UTF-8" />
-    <title>All We Need — for devs, by devs</title>
-    <meta name="description" content="A community-curated collection of developer tools, ideas, and hidden gems." />
+    <title>All We Need — curated for devs</title>
+    <meta name="description" content="A premium community-curated collection of developer tools and hidden gems." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neutral: {
+                            950: '#050505',
+                            900: '#0a0a0a',
+                            800: '#1f1f1f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Custom Animations / Overrides -->
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="/styles.css">
-
-    <!-- Search + Logic -->
     <script defer src="/search.js"></script>
+    <script defer src="/js/animations.js"></script> <!-- Will be copied to docs/js/ -->
 </head>
 
-<body class="bg-neutral-950 text-neutral-100 antialiased overflow-x-hidden">
+<body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
 
-    <!-- HEADER -->
-    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur bg-neutral-950/70">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="font-semibold text-xl tracking-tight">
-                All We Need
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- HEADER (Initially transparent/hidden logic handled by JS) -->
+    <header id="header" class="fixed top-0 w-full z-50 py-6 transition-all duration-500 mix-blend-difference">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer" onclick="window.scrollTo(0,0)">
+                AWN_
             </div>
 
-            <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
-                <a href="/" class="hover:text-white transition">Home</a>
-                <a href="/projects/" class="hover:text-white transition">Projects</a>
-                <a href="/leaderboard.html" class="hover:text-white transition">Leaderboard</a>
+            <nav class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400">
+                <a href="/" class="hover:text-white transition-colors duration-300">Home</a>
+                <a href="/projects/" class="hover:text-white transition-colors duration-300">Index</a>
+                <a href="/leaderboard.html" class="hover:text-white transition-colors duration-300">Leaderboard</a>
                 <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
-                    class="hover:text-white transition">GitHub</a>
+                    class="hover:text-white transition-colors duration-300">GitHub</a>
             </nav>
 
-            <button id="headerSearchBtn" class="opacity-0 pointer-events-none scale-75 transition-all duration-300"
+            <button id="headerSearchBtn"
+                class="opacity-0 invisible w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md"
                 aria-label="Search">
-                🔍
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
             </button>
         </div>
     </header>
 
     <!-- HERO -->
-    <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+    <section id="hero"
+        class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <!-- Subtle Gradient Orb -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white opacity-[0.03] blur-[120px] rounded-full -z-10 pointer-events-none">
+        </div>
+
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tightest mb-6 leading-none">
             All We Need
         </h1>
-        <p class="text-neutral-400 mb-10">
-            for devs, by devs
+        <p class="text-neutral-400 font-mono text-sm md:text-base tracking-wide uppercase mb-16 opacity-0 translate-y-4"
+            style="animation: fadeInUp 1s ease forwards 0.5s">
+            For Devs — By Devs
         </p>
 
-        <input id="searchInput" type="text" placeholder="Search what are you looking for…"
-            class="w-full max-w-2xl px-6 py-4 rounded-xl bg-neutral-900 border border-neutral-800 text-lg focus:outline-none focus:ring-2 focus:ring-white/20 transition" />
+        <div id="heroSearchWrapper" class="w-full max-w-xl relative group">
+            <input id="searchInput" type="text" placeholder="Type to search..."
+                class="w-full px-8 py-5 rounded-full bg-white/5 border border-white/10 text-lg font-light text-center focus:text-left focus:outline-none focus:bg-neutral-900/80 focus:border-white/30 transition-all duration-500 backdrop-blur-sm placeholder:text-neutral-600" />
+            <div
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-600 p-2 border border-neutral-800 rounded-md text-xs font-mono hidden md:block pointer-events-none">
+                CMD+K
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce opacity-50">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- PROOF OF VALUE (Stats) -->
+    <section id="stats" class="py-32 border-t border-neutral-900 bg-neutral-950 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div class="stat-item">
+                <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
+                        data-target="104">0</span>+</div>
+                <div class="text-xs uppercase tracking-widest text-neutral-500">Curated Tools</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
+                        data-target="100">0</span>%</div>
+                <div class="text-xs uppercase tracking-widest text-neutral-500">Open Source</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
+                        data-target="42">0</span>+</div>
+                <div class="text-xs uppercase tracking-widest text-neutral-500">Contributors</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
+                        data-target="850">0</span></div>
+                <div class="text-xs uppercase tracking-widest text-neutral-500">Merged PRs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (Narrative) -->
+    <section id="narrative" class="py-32 max-w-5xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="text-3xl font-bold tracking-tight mb-4">The Protocol</h2>
+            <div class="h-1 w-20 bg-white/20 mx-auto"></div>
+        </div>
+
+        <div class="space-y-24">
+            <div class="narrative-step flex flex-col md:flex-row items-center gap-12 group">
+                <div class="w-full md:w-1/2 text-right md:text-right order-2 md:order-1">
+                    <h3 class="text-2xl font-bold text-white mb-2">Discover</h3>
+                    <p class="text-neutral-400 leading-relaxed">Access a highly curated list of dev tools. No SEO spam,
+                        just engineering excellence.</p>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center md:justify-start order-1 md:order-2">
+                    <div
+                        class="w-16 h-16 border border-white/20 rounded-full flex items-center justify-center text-2xl group-hover:bg-white group-hover:text-black transition-all duration-500">
+                        01</div>
+                </div>
+            </div>
+
+            <div class="narrative-step flex flex-col md:flex-row items-center gap-12 group">
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <div
+                        class="w-16 h-16 border border-white/20 rounded-full flex items-center justify-center text-2xl group-hover:bg-white group-hover:text-black transition-all duration-500">
+                        02</div>
+                </div>
+                <div class="w-full md:w-1/2 text-left">
+                    <h3 class="text-2xl font-bold text-white mb-2">Contribute</h3>
+                    <p class="text-neutral-400 leading-relaxed">Found a gem? Submit a PR via markdown. The community
+                        validates quality.</p>
+                </div>
+            </div>
+
+            <div class="narrative-step flex flex-col md:flex-row items-center gap-12 group">
+                <div class="w-full md:w-1/2 text-right md:text-right order-2 md:order-1">
+                    <h3 class="text-2xl font-bold text-white mb-2">Evolve</h3>
+                    <p class="text-neutral-400 leading-relaxed">Climb the leaderboard. Earn your place among the top
+                        open-source contributors.</p>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center md:justify-start order-1 md:order-2">
+                    <div
+                        class="w-16 h-16 border border-white/20 rounded-full flex items-center justify-center text-2xl group-hover:bg-white group-hover:text-black transition-all duration-500">
+                        03</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- TOP CONTRIBUTORS -->
-    <section class="max-w-7xl mx-auto px-6 -mt-40 relative z-10">
-        <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium">Top contributors this week</h2>
-            <a href="/leaderboard.html?filter=week" class="text-sm text-neutral-400 hover:text-white transition">
-                + View leaderboard
-            </a>
-        </div>
+    <section class="py-32 border-t border-neutral-900 bg-neutral-950/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <h2 class="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-12">Weekly Top Contributors</h2>
 
-        <div id="weeklyContributors" class="flex items-center -space-x-4 hover:space-x-1 transition-all duration-300">
-            <!-- injected avatars -->
+            <div id="weeklyContributors"
+                class="avatar-stack-container flex items-center justify-center -space-x-6 py-10">
+                <!-- injected avatars (Structure: <a href... class="avatar-item ..."> <img .../> </a> ) -->
+            </div>
+
+            <a href="/leaderboard.html?filter=week"
+                class="mt-8 px-8 py-3 rounded-full border border-white/10 text-sm font-mono hover:bg-white hover:text-black transition-all duration-300">
+                View Leaderboard
+            </a>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="max-w-7xl mx-auto px-6 mt-24 space-y-16 pb-20">
-        <!-- categories injected by JS -->
+    <!-- PROJECTS GRID -->
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-32 space-y-20 min-h-screen">
+        <!-- projects injected by JS -->
     </section>
 
     <!-- FOOTER -->
-    <footer class="mt-32 border-t border-neutral-800 py-10 text-center text-sm text-neutral-500">
-        Open source · MIT License · Built by the community
+    <footer class="py-20 border-t border-neutral-900 text-center">
+        <div class="font-bold text-2xl mb-4 tracking-tight">AWN_</div>
+        <div class="flex justify-center gap-6 mb-8 text-neutral-500 text-sm">
+            <a href="#" class="hover:text-white transition">About</a>
+            <a href="https://github.com/ghostshanky/allweneed.github.io" class="hover:text-white transition">GitHub</a>
+            <a href="/leaderboard.html" class="hover:text-white transition">Leaderboard</a>
+        </div>
+        <p class="text-neutral-600 text-xs font-mono">MIT License · Community Built</p>
     </footer>
 
 </body>
