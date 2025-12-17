@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="text-[16px]">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Replit — All We Need</title>
+    <meta name="description" content="An online IDE and cloud development environment for building and deploying applications." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts & Tailwind -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { neutral: { 950: '#050505', 900: '#0a0a0a', 800: '#1f1f1f' } }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <script defer src="/search.js"></script>
+    <script defer src="/js/animations.js"></script>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
+
+    <div class="noise-overlay"></div>
+
+    <!-- HEADER -->
+    <header id="header" class="fixed top-0 w-full z-50 py-6 mix-blend-difference pointer-events-none">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
+            <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer"><a href="/">AWN_</a></div>
+            <nav class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400">
+                <a href="/" class="hover:text-white transition-colors">Home</a>
+                <a href="/projects/" class="hover:text-white transition-colors">Projects</a>
+                <a href="/leaderboard.html" class="hover:text-white transition-colors">Leaderboard</a>
+                <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
+                    class="hover:text-white transition-colors">GitHub</a>
+            </nav>
+            <div class="w-8"></div>
+        </div>
+    </header>
+
+    <main class="min-h-screen pt-40 pb-20">
+        <!-- Project Header -->
+        <div class="max-w-4xl mx-auto px-6 mb-20 relative">
+            <a href="/"
+                class="inline-block text-xs font-mono text-neutral-500 mb-8 hover:text-white transition-colors">←
+                RETURN</a>
+
+            <div class="flex flex-col md:flex-row gap-8 items-start animate-fade-in">
+                <!-- Logo with Glow -->
+                <div class="relative group">
+                    <div
+                        class="absolute inset-0 bg-white/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <img src="/logo.png" alt="Replit" class="w-16 h-16 rounded-xl object-cover border border-neutral-800">
+                </div>
+
+                <div class="flex-1">
+                    <h1 class="text-5xl md:text-6xl font-bold tracking-tightest mb-4 leading-tight">Replit</h1>
+                    <p class="text-xl text-neutral-400 leading-relaxed font-light mb-8">An online IDE and cloud development environment for building and deploying applications.</p>
+
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <a href="https://replit.com" target="_blank"
+                            class="px-8 py-3 bg-white text-black font-medium rounded-full hover:scale-105 transition-transform duration-300">
+                            Visit Project
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metadata Grid -->
+        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xs uppercase tracking-widest text-neutral-500 mb-4 font-mono">Tags</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 text-xs font-mono border border-neutral-800 rounded-full text-neutral-400 bg-neutral-900">ide</span><span class="px-3 py-1 text-xs font-mono border border-neutral-800 rounded-full text-neutral-400 bg-neutral-900">cloud-dev</span><span class="px-3 py-1 text-xs font-mono border border-neutral-800 rounded-full text-neutral-400 bg-neutral-900">collaboration</span>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xs uppercase tracking-widest text-neutral-500 mb-4 font-mono">Contributors</h3>
+                <div class="flex items-center -space-x-3">
+                    <span class="text-neutral-500 text-sm italic">No data</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Readme Content -->
+        <article
+            class="max-w-4xl mx-auto px-6 prose prose-invert prose-lg prose-neutral prose-headings:font-bold prose-headings:tracking-tight prose-a:text-white prose-a:no-underline hover:prose-a:underline prose-pre:bg-neutral-900 prose-pre:border prose-pre:border-neutral-800">
+            <p>Replit allows developers to code, collaborate, and deploy directly from the browser without local setup.</p>
+
+        </article>
+    </main>
+
+    <footer class="py-20 border-t border-neutral-900 text-center">
+        <p class="text-neutral-600 text-xs font-mono">MIT License · Community Built</p>
+    </footer>
+
+</body>
+
+</html>

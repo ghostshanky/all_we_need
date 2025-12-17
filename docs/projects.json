@@ -1,5 +1,20 @@
 [
   {
+    "title": "Design Arena",
+    "slug": "design-arena",
+    "link": "https://www.designarena.ai",
+    "description": "An AI-powered platform for generating and comparing UI and design concepts.",
+    "tags": [
+      "design",
+      "ai",
+      "ui-ux"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Design Arena helps designers and developers explore multiple AI-generated design directions efficiently.</p>\n",
+    "full_path": "/projects/design-arena.html"
+  },
+  {
     "title": "Emailnator",
     "slug": "emailnator",
     "link": "https://emailnator.com",
@@ -12,6 +27,51 @@
     "contributors": [],
     "content": "<p>Emailnator is a simple tool to create temporary email addresses for testing and privacy. No sign-up required, emails expire after 24 hours.</p>\n<p>Useful for developers to test forms without spam.</p>\n",
     "full_path": "/projects/emailnator.html"
+  },
+  {
+    "title": "Google AI Studio",
+    "slug": "google-ai-studio",
+    "link": "https://aistudio.google.com",
+    "description": "Google’s web-based environment for experimenting with and building Gemini-powered AI apps.",
+    "tags": [
+      "ai",
+      "llm",
+      "google"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Google AI Studio lets developers prototype, test prompts, and integrate Gemini models into applications.</p>\n",
+    "full_path": "/projects/google-ai-studio.html"
+  },
+  {
+    "title": "LM Arena",
+    "slug": "lm-arena",
+    "link": "https://lmarena.ai",
+    "description": "A platform to compare large language models through blind, side-by-side evaluations.",
+    "tags": [
+      "ai",
+      "llm",
+      "benchmark"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>LM Arena enables unbiased comparison of AI models by letting users vote on responses without knowing the model.</p>\n",
+    "full_path": "/projects/lm-arena.html"
+  },
+  {
+    "title": "Netlify",
+    "slug": "netlify",
+    "link": "https://www.netlify.com",
+    "description": "An all-in-one platform for building and deploying fast, secure web applications.",
+    "tags": [
+      "hosting",
+      "static-sites",
+      "deployment"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Netlify provides CI/CD, serverless functions, and edge services for modern web development.</p>\n",
+    "full_path": "/projects/netlify.html"
   },
   {
     "title": "OpenRouter",
@@ -29,5 +89,95 @@
     "contributors": [],
     "content": "<p>OpenRouter is a unified API platform that lets you access hundreds (400+) of AI models from many providers (OpenAI, Anthropic, Google, Meta and others) via a single, consistent endpoint. It handles provider routing, fallbacks for higher availability, and exposes model-level pricing so you can choose speed vs. cost trade-offs.</p>\n<p>One API, many models — call different chat/completion/vision models with the same API shape instead of juggling many provider keys. \nOpenRouter</p>\n<p>Transparent pricing &amp; per-model costs — model pricing is shown in the UI/docs so you can compare cost per token or per request. \nOpenRouter\n+1</p>\n<p>Routing &amp; high availability — OpenRouter can route requests to different providers and fall back automatically if a provider is unavailable. \nOpenRouter</p>\n<p>Integrations &amp; ecosystem — provider support exists across SDKs, community integrations (examples, Laravel, Vercel/AI SDK provider) and official docs/GitHub.</p>\n",
     "full_path": "/projects/openrouter.html"
+  },
+  {
+    "title": "Railway",
+    "slug": "railway",
+    "link": "https://railway.app",
+    "description": "A developer-focused cloud platform to deploy apps, databases, and services quickly.",
+    "tags": [
+      "cloud",
+      "deployment",
+      "backend"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Railway enables fast setup and scaling of production-ready applications with minimal configuration.</p>\n",
+    "full_path": "/projects/railway.html"
+  },
+  {
+    "title": "Render",
+    "slug": "render",
+    "link": "https://render.com",
+    "description": "A unified cloud platform for deploying web apps, APIs, databases, and background jobs.",
+    "tags": [
+      "cloud",
+      "backend",
+      "hosting"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Render simplifies backend and full-stack deployments with automatic scaling and managed infrastructure.</p>\n",
+    "full_path": "/projects/render.html"
+  },
+  {
+    "title": "Replit",
+    "slug": "replit",
+    "link": "https://replit.com",
+    "description": "An online IDE and cloud development environment for building and deploying applications.",
+    "tags": [
+      "ide",
+      "cloud-dev",
+      "collaboration"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Replit allows developers to code, collaborate, and deploy directly from the browser without local setup.</p>\n",
+    "full_path": "/projects/replit.html"
+  },
+  {
+    "title": "Temp Mail",
+    "slug": "temp-mail",
+    "link": "https://temp-mail.org",
+    "description": "A disposable email service for quick sign-ups and privacy protection.",
+    "tags": [
+      "privacy",
+      "email",
+      "utilities"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Temp Mail provides temporary email addresses to avoid spam and protect personal inboxes.</p>\n",
+    "full_path": "/projects/temp-mail.html"
+  },
+  {
+    "title": "Vercel",
+    "slug": "vercel",
+    "link": "https://vercel.com",
+    "description": "A frontend cloud platform for building, deploying, and scaling modern web applications.",
+    "tags": [
+      "hosting",
+      "frontend",
+      "deployment"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Vercel enables seamless deployment of React, Next.js, and static sites with global edge infrastructure.</p>\n",
+    "full_path": "/projects/vercel.html"
+  },
+  {
+    "title": "Yupp AI",
+    "slug": "yupp-ai",
+    "link": "https://yupp.ai",
+    "description": "A unified interface to compare and use multiple AI models in one place.",
+    "tags": [
+      "ai",
+      "productivity",
+      "llm"
+    ],
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Yupp AI allows users to test prompts across different AI models and evaluate outputs side by side.</p>\n",
+    "full_path": "/projects/yupp-ai.html"
   }
 ]
