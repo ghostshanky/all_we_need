@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Emailnator — All We Need</title>
+    <meta name="description" content="Generate disposable Gmail-style emails" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+    <!-- Custom Animations / Overrides -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <script defer src="/search.js"></script>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 antialiased overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header id="header"
+        class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur bg-neutral-950/70 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="font-semibold text-xl tracking-tight">
+                <a href="/" class="hover:text-white transition">All We Need</a>
+            </div>
+
+            <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <a href="/projects/" class="hover:text-white transition">Projects</a>
+                <a href="/leaderboard.html" class="hover:text-white transition">Leaderboard</a>
+                <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
+                    class="hover:text-white transition">GitHub</a>
+            </nav>
+            <div class="w-8"></div> <!-- Spacer for balance if needed, or search icon -->
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <div class="mb-10">
+            <a href="/" class="text-neutral-500 hover:text-white transition mb-6 inline-block">← Back to Home</a>
+
+            <div class="flex items-center gap-6 mb-6">
+                <img src="/logo.png" alt="Emailnator" class="w-16 h-16 rounded-xl object-cover border border-neutral-800">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Emailnator</h1>
+            </div>
+
+            <p class="text-xl text-neutral-400 leading-relaxed mb-8">Generate disposable Gmail-style emails</p>
+
+            <div class="flex flex-wrap gap-4 mb-10">
+                <a href="https://emailnator.com" target="_blank"
+                    class="px-6 py-3 bg-white text-neutral-950 font-medium rounded-lg hover:bg-neutral-200 transition">Visit
+                    Project</a>
+                <!-- If we had a repo link distinct from project link, we'd use it here. Assuming link is the main one. -->
+                
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-10">
+                <span class="px-3 py-1 text-xs font-mono border border-neutral-800 rounded-full text-neutral-400 bg-neutral-900">email</span><span class="px-3 py-1 text-xs font-mono border border-neutral-800 rounded-full text-neutral-400 bg-neutral-900">productivity</span>
+            </div>
+
+            <!-- Contributors -->
+            <div class="flex items-center gap-3 mb-10 p-4 border border-neutral-800 rounded-xl bg-neutral-900/50">
+                <span class="text-sm text-neutral-400">Contributors:</span>
+                <div class="flex items-center -space-x-2">
+                    <span class="text-neutral-500 text-sm italic">No data</span>
+                </div>
+            </div>
+        </div>
+
+        <article class="prose prose-invert prose-lg max-w-none">
+            <p>Emailnator is a simple tool to create temporary email addresses for testing and privacy. No sign-up required, emails expire after 24 hours.</p>
+<p>Useful for developers to test forms without spam.</p>
+
+        </article>
+    </main>
+
+    <footer class="border-t border-neutral-800 py-10 text-center text-sm text-neutral-500">
+        Open source · MIT License · Built by the community
+    </footer>
+
+</body>
+
+</html>

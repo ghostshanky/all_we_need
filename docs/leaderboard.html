@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Leaderboard — All We Need</title>
+    <meta name="description" content="Top contributors to the All We Need community." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Animations / Overrides -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <script defer src="/search.js"></script>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 antialiased overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur bg-neutral-950/70">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="font-semibold text-xl tracking-tight">
+                <a href="/" class="hover:text-white transition">All We Need</a>
+            </div>
+
+            <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <a href="/projects/" class="hover:text-white transition">Projects</a>
+                <a href="/leaderboard.html" class="text-white">Leaderboard</a>
+                <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
+                    class="hover:text-white transition">GitHub</a>
+            </nav>
+            <div class="w-8"></div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-20 min-h-screen">
+        <h1 class="text-4xl font-bold tracking-tight mb-4">Leaderboard</h1>
+        <p class="text-neutral-400 mb-10"> celebrating our top contributors.</p>
+
+        <div class="flex gap-4 mb-8 border-b border-neutral-800 pb-4">
+            <a href="?filter=daily" class="text-neutral-400 hover:text-white transition {{active_daily}}">Daily</a>
+            <a href="?filter=week" class="text-neutral-400 hover:text-white transition {{active_week}}">Weekly</a>
+            <a href="?filter=month" class="text-neutral-400 hover:text-white transition {{active_month}}">Monthly</a>
+            <a href="?filter=all" class="text-neutral-400 hover:text-white transition text-white font-bold">All Time</a>
+        </div>
+
+        <div class="bg-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-neutral-900 text-neutral-400 text-sm">
+                    <tr>
+                        <th class="px-6 py-4 font-medium">Rank</th>
+                        <th class="px-6 py-4 font-medium">Contributor</th>
+                        <th class="px-6 py-4 font-medium text-right">Merged PRs</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-800" id="leaderboard-body">
+                    <!-- Injected Rows -->
+                    
+        <tr class="hover:bg-neutral-800/30 transition">
+            <td class="px-6 py-4 text-neutral-500 font-mono">#1</td>
+            <td class="px-6 py-4 flex items-center gap-3">
+                <img src="https://avatars.githubusercontent.com/u/186178187?v=4" class="w-8 h-8 rounded-full">
+                <a href="https://github.com/ghostshanky" target="_blank" class="hover:underline hover:text-white">ghostshanky</a>
+            </td>
+            <td class="px-6 py-4 text-right font-mono text-neutral-300">1</td>
+        </tr>
+    
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-neutral-800 py-10 text-center text-sm text-neutral-500">
+        Open source · MIT License · Built by the community
+    </footer>
+
+    <!-- Simple client-side filter logic if strict static generation isn't enough, but prompt implies build time data. 
+     For now, we might rely on URL params and JS or build separate pages. 
+     The prompt says "Projects live in /projects/*.md... Data generated at build time... Filters: daily, weekly...".
+     If generated at build time, we might need a JSON and client-side rendering for filters, OR generate 4 html files.
+     Let's assume Client JS for filtering to keep it simple single page, populated by JSON.
+-->
+    <script>
+        // Basic logic to handle 'active' class on filters based on URL
+        const params = new URLSearchParams(window.location.search);
+        const filter = params.get('filter') || 'all';
+        // ... logic to be added in search.js or inline
+    </script>
+
+</body>
+
+</html>

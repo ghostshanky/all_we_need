@@ -1,18 +1,21 @@
 [
   {
     "title": "Emailnator",
+    "slug": "emailnator",
     "link": "https://emailnator.com",
     "description": "Generate disposable Gmail-style emails",
     "tags": [
       "email",
       "productivity"
     ],
-    "logo": "https://www.google.com/s2/favicons?domain=emailnator.com&sz=128",
-    "slug": "emailnator",
-    "contributors": []
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>Emailnator is a simple tool to create temporary email addresses for testing and privacy. No sign-up required, emails expire after 24 hours.</p>\n<p>Useful for developers to test forms without spam.</p>\n",
+    "full_path": "/projects/emailnator.html"
   },
   {
     "title": "OpenRouter",
+    "slug": "openrouter",
     "link": "https://openrouter.ai",
     "description": "Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint",
     "tags": [
@@ -22,8 +25,9 @@
       "developer",
       "free"
     ],
-    "logo": "https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128",
-    "slug": "openrouter",
-    "contributors": []
+    "logo": "/logo.png",
+    "contributors": [],
+    "content": "<p>OpenRouter is a unified API platform that lets you access hundreds (400+) of AI models from many providers (OpenAI, Anthropic, Google, Meta and others) via a single, consistent endpoint. It handles provider routing, fallbacks for higher availability, and exposes model-level pricing so you can choose speed vs. cost trade-offs.</p>\n<p>One API, many models — call different chat/completion/vision models with the same API shape instead of juggling many provider keys. \nOpenRouter</p>\n<p>Transparent pricing &amp; per-model costs — model pricing is shown in the UI/docs so you can compare cost per token or per request. \nOpenRouter\n+1</p>\n<p>Routing &amp; high availability — OpenRouter can route requests to different providers and fall back automatically if a provider is unavailable. \nOpenRouter</p>\n<p>Integrations &amp; ecosystem — provider support exists across SDKs, community integrations (examples, Laravel, Vercel/AI SDK provider) and official docs/GitHub.</p>\n",
+    "full_path": "/projects/openrouter.html"
   }
 ]
