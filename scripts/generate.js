@@ -286,6 +286,37 @@ async function build() {
 
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
 
+  // 4b. Generate Projects Index (Same layout, but remove Hero/Stats/Narrative/WeeklyContributors)
+  // We want a dedicated /projects/ page that just lists the projects.
+  // We'll take the indexHtml and strip the "Home-only" sections.
+  let projectsIndexHtml = indexHtml;
+
+  // Remove Hero
+  projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `
+    <section class="max-w-7xl mx-auto px-6 pt-40 pb-10 text-center">
+        <h1 class="text-5xl font-bold tracking-tight mb-4">All Projects</h1>
+        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest">Curated Resources</p>
+    </section>
+    `);
+
+  // Remove Stats
+  projectsIndexHtml = projectsIndexHtml.replace(/<section id="stats"[\s\S]*?<\/section>/, '');
+
+  // Remove Narrative
+  projectsIndexHtml = projectsIndexHtml.replace(/<section id="narrative"[\s\S]*?<\/section>/, '');
+
+  // Remove Weekly Contributors wrapper (keep footer)
+  // The weekly contributors section targetting using class: <section class="py-32 border-t border-neutral-900 bg-neutral-950/50">
+  // Since regex matching generic tags is flakey, we will assume strict match from previous generation.
+  // However, the class strings can be multiline or have extra spaces.
+  // Let's rely on the ID inside if possible, but the section doesn't have an ID.
+  // It has `id="weeklyContributors"` on the inner div.
+  projectsIndexHtml = projectsIndexHtml.replace(/<section class="py-32 border-t border-neutral-900 bg-neutral-950\/50">[\s\S]*?<\/section>/, '');
+
+  ensureDir(path.join(OUT_DIR, 'projects'));
+  fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);
+
+
   // 5. Generate Leaderboard HTML
   const leaderboardTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'leaderboard.html'), 'utf8');
   let lbHtml = leaderboardTemplate;
