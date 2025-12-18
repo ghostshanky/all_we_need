@@ -15,6 +15,51 @@ body {
   /* Prevent horizontal scroll from animations */
 }
 
+/* Live Background System */
+.live-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+  overflow: hidden;
+}
+
+.live-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 30, 30, 0.4), transparent 60%);
+  animation: bgMove 60s infinite linear alternate;
+  opacity: 0.6;
+}
+
+.live-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #050505);
+  pointer-events: none;
+}
+
+@keyframes bgMove {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-10%, -10%) rotate(5deg);
+  }
+}
+
 /* Noise Overlay */
 .noise-overlay {
   position: fixed;

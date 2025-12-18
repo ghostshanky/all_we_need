@@ -7,28 +7,44 @@
     <meta name="description" content="Top contributors to the All We Need community." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts & Tailwind -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-                    colors: { neutral: { 950: '#050505', 900: '#0a0a0a', 800: '#1f1f1f' } }
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neutral: {
+                            950: '#050505',
+                            900: '#0a0a0a',
+                            800: '#1f1f1f',
+                        }
+                    }
                 }
             }
         }
     </script>
 
+    <!-- GSAP & Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
+    <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="styles.css">
     <script defer src="search.js"></script>
-    <script defer src="js/animations.js"></script>
+    <script defer src="js/animations.js"></script> <!-- Will be copied to docs/js/ -->
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased">

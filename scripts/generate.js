@@ -294,7 +294,16 @@ async function build() {
   // Inject Weekly Contributors (To Home)
   // For now, let's use the leaderboard data
   const leaderboard = await getLeaderboardData();
-  const top7 = leaderboard.slice(0, 7);
+  // 4. Generate Top Contributors Stack (Top 7)
+  const topContributors = leaderboard.slice(0, 7);
+  const stackHtml = topContributors.map(c => `
+    <a href="${c.html_url}" target="_blank" class="avatar-item relative w-16 h-16 rounded-full border-2 border-neutral-950 overflow-hidden transition-all duration-300">
+        <img src="${c.avatar_url}" alt="${c.login}" class="w-full h-full object-cover">
+    </a>
+  `).join('');
+
+  // Inject into Index
+  indexHtml = indexHtml.replace(/<!-- injected avatars.*?-->[\s\S]*?<\/div>/, `${stackHtml}</div>`); // ensure variable name matches usage
 
   // Calculate Real Stats
   const totalProjects = projects.length;
@@ -306,17 +315,7 @@ async function build() {
     .replace(/data-target="42"/g, `data-target="${totalContributors}"`)
     .replace(/data-target="850"/g, `data-target="${totalPRs}"`);
 
-  let contributorsHtml = '';
-  top7.forEach((c, i) => {
-    contributorsHtml += `
-            <a href="${c.html_url}" target="_blank" class="avatar-item relative w-16 h-16 rounded-full border-2 border-neutral-950 bg-neutral-800 transition-all duration-300" style="z-index: ${20 - i}">
-                <img src="${c.avatar_url}" 
-                     alt="${c.login}"
-                     class="w-full h-full rounded-full object-cover">
-            </a>
-        `;
-  });
-  indexHtml = indexHtml.replace('<!-- injected avatars -->', contributorsHtml);
+
 
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
 
