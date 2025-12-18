@@ -169,16 +169,37 @@ async function build() {
     // Enhance with GitHub Data
     const ghDetails = await getRepoDetails(data.link);
 
+    // Determine Logo
+    let logo = data.logo; // Priority 1: Frontmatter
+
+    if (!logo && ghDetails.ownerAvatar) {
+      logo = ghDetails.ownerAvatar; // Priority 2: GitHub Owner
+    }
+
+    if (!logo && data.link && !data.link.includes('github.com')) {
+      // Priority 3: Google Favicon Service for non-GitHub links
+      try {
+        const domain = new URL(data.link).hostname;
+        logo = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+      } catch (e) {
+        console.warn(`Could not extract domain from ${data.link}`);
+      }
+    }
+
+    if (!logo) {
+      logo = 'logo.png'; // Priority 4: Fallback (relative filename)
+    }
+
     const project = {
       title: data.title,
       slug: slug,
       link: data.link,
       description: data.description,
       tags: data.tags || [],
-      logo: data.logo || ghDetails.ownerAvatar || '/logo.png', // Priority: Frontmatter -> GitHub Owner -> Fallback
+      logo: logo,
       contributors: ghDetails.contributors || [],
       content: htmlContent,
-      full_path: `/projects/${slug}.html`
+      full_path: `projects/${slug}.html` // Relative path for local navigation
     };
 
     projects.push(project);
@@ -190,8 +211,11 @@ async function build() {
       .replace(/{{link}}/g, project.link)
       .replace('{{content}}', project.content);
 
-    // Inject Logo
-    const logoHtml = `<img src="${project.logo}" alt="${project.title}" class="w-16 h-16 rounded-xl object-cover border border-neutral-800">`;
+    // Inject Logo (Handle relative paths for sub-directory)
+    const isUrl = (str) => str.startsWith('http') || str.startsWith('//');
+    const projectPageLogo = isUrl(project.logo) ? project.logo : `../${project.logo}`;
+
+    const logoHtml = `<img src="${projectPageLogo}" alt="${project.title}" class="w-16 h-16 rounded-xl object-cover border border-neutral-800 bg-neutral-900">`;
     pHtml = pHtml.replace('{{logo_html}}', logoHtml);
 
     // Inject Tags
@@ -239,12 +263,12 @@ async function build() {
                 <button id="btn-${tag}" onclick="window.toggleGroup('${tag}')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="${tag}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="${tag}" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          `;
 
     group.forEach(p => {
       projectsHtml += `
-             <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
                      <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -272,6 +296,16 @@ async function build() {
   const leaderboard = await getLeaderboardData();
   const top7 = leaderboard.slice(0, 7);
 
+  // Calculate Real Stats
+  const totalProjects = projects.length;
+  const totalContributors = leaderboard.length;
+  const totalPRs = leaderboard.reduce((acc, c) => acc + c.count, 0);
+
+  // Replace Stats in Index HTML
+  indexHtml = indexHtml.replace(/data-target="104"/g, `data-target="${totalProjects}"`)
+    .replace(/data-target="42"/g, `data-target="${totalContributors}"`)
+    .replace(/data-target="850"/g, `data-target="${totalPRs}"`);
+
   let contributorsHtml = '';
   top7.forEach((c, i) => {
     contributorsHtml += `
@@ -290,6 +324,17 @@ async function build() {
   // We want a dedicated /projects/ page that just lists the projects.
   // We'll take the indexHtml and strip the "Home-only" sections.
   let projectsIndexHtml = indexHtml;
+
+  // Fix Relative Paths for Subdirectory
+  projectsIndexHtml = projectsIndexHtml
+    .replace(/href="styles.css"/g, 'href="../styles.css"')
+    .replace(/src="search.js"/g, 'src="../search.js"')
+    .replace(/src="js\/animations.js"/g, 'src="../js/animations.js"')
+    .replace(/href="index.html"/g, 'href="../index.html"')
+    .replace(/href="projects\/index.html"/g, 'href="index.html"')
+    .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
+    .replace(/href="projects\//g, 'href="') // Fix project links (projects/foo.html -> foo.html)
+    .replace(/src="logo.png"/g, 'src="../logo.png"'); // Fix footer/header logos if any
 
   // Remove Hero
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `

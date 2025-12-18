@@ -26,27 +26,42 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-    <link rel="stylesheet" href="/styles.css">
-    <script defer src="/search.js"></script>
-    <script defer src="/js/animations.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="search.js"></script>
+    <script defer src="js/animations.js"></script>
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased">
     <div class="noise-overlay"></div>
 
-    <header id="header" class="fixed top-0 w-full z-50 py-6 mix-blend-difference pointer-events-none">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
-            <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer"><a href="/">AWN_</a></div>
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 transition-all duration-500 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer" onclick="window.scrollTo(0,0)">
+                AWN_
+            </div>
+
             <nav class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400">
-                <a href="/" class="hover:text-white">Home</a>
-                <a href="/projects/" class="hover:text-white">Projects</a>
-                <a href="/leaderboard.html" class="text-white">Leaderboard</a>
+                <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
+                <a href="projects/index.html" class="hover:text-white transition-colors duration-300">Projects</a>
+                <a href="leaderboard.html" class="hover:text-white transition-colors duration-300">Leaderboard</a>
+                <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
+                    class="hover:text-white transition-colors duration-300">GitHub</a>
             </nav>
-            <div class="w-8"></div>
+
+            <button id="headerSearchBtn"
+                class="opacity-0 invisible w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md"
+                aria-label="Search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+            </button>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 pt-40 pb-20 min-h-screen">
+    <main class="max-w-5xl mx-auto px-6 pt-40 pb-20 min-h-screen animate-fade-in">
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tightest mb-4">Leaderboard</h1>
             <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest">Recognizing Excellence</p>

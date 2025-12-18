@@ -42,9 +42,9 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <!-- Custom Styles & Scripts -->
-    <link rel="stylesheet" href="/styles.css">
-    <script defer src="/search.js"></script>
-    <script defer src="/js/animations.js"></script> <!-- Will be copied to docs/js/ -->
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="search.js"></script>
+    <script defer src="js/animations.js"></script> <!-- Will be copied to docs/js/ -->
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
@@ -53,16 +53,17 @@
     <div class="noise-overlay"></div>
 
     <!-- HEADER (Initially transparent/hidden logic handled by JS) -->
-    <header id="header" class="fixed top-0 w-full z-50 py-6 transition-all duration-500 mix-blend-difference">
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 transition-all duration-500 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
             <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer" onclick="window.scrollTo(0,0)">
                 AWN_
             </div>
 
             <nav class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400">
-                <a href="/" class="hover:text-white transition-colors duration-300">Home</a>
-                <a href="/projects/" class="hover:text-white transition-colors duration-300">Projects</a>
-                <a href="/leaderboard.html" class="hover:text-white transition-colors duration-300">Leaderboard</a>
+                <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
+                <a href="projects/index.html" class="hover:text-white transition-colors duration-300">Projects</a>
+                <a href="leaderboard.html" class="hover:text-white transition-colors duration-300">Leaderboard</a>
                 <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
                     class="hover:text-white transition-colors duration-300">GitHub</a>
             </nav>
@@ -116,7 +117,7 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <div class="stat-item">
                 <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
-                        data-target="104">0</span>+</div>
+                        data-target="12">0</span>+</div>
                 <div class="text-xs uppercase tracking-widest text-neutral-500">Curated Tools</div>
             </div>
             <div class="stat-item">
@@ -126,12 +127,12 @@
             </div>
             <div class="stat-item">
                 <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
-                        data-target="42">0</span>+</div>
+                        data-target="1">0</span>+</div>
                 <div class="text-xs uppercase tracking-widest text-neutral-500">Contributors</div>
             </div>
             <div class="stat-item">
                 <div class="text-4xl md:text-5xl font-bold font-mono mb-2 text-white"><span class="stat-counter"
-                        data-target="850">0</span></div>
+                        data-target="1">0</span></div>
                 <div class="text-xs uppercase tracking-widest text-neutral-500">Merged PRs</div>
             </div>
         </div>
@@ -214,11 +215,11 @@
                 <button id="btn-design" onclick="window.toggleGroup('design')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="design" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="design" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
@@ -240,11 +241,11 @@
                 <button id="btn-ai" onclick="window.toggleGroup('ai')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="ai" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="ai" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
@@ -258,9 +259,9 @@
                 </div>
              </a>
              
-             <a href="/projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -274,9 +275,9 @@
                 </div>
              </a>
              
-             <a href="/projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -290,9 +291,9 @@
                 </div>
              </a>
              
-             <a href="/projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
@@ -314,11 +315,11 @@
                 <button id="btn-ui-ux" onclick="window.toggleGroup('ui-ux')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="ui-ux" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="ui-ux" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
@@ -340,11 +341,11 @@
                 <button id="btn-email" onclick="window.toggleGroup('email')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="email" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="email" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
@@ -358,9 +359,9 @@
                 </div>
              </a>
              
-             <a href="/projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
@@ -382,11 +383,11 @@
                 <button id="btn-productivity" onclick="window.toggleGroup('productivity')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="productivity" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="productivity" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
@@ -400,9 +401,9 @@
                 </div>
              </a>
              
-             <a href="/projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
@@ -424,11 +425,11 @@
                 <button id="btn-llm" onclick="window.toggleGroup('llm')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="llm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="llm" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -442,9 +443,9 @@
                 </div>
              </a>
              
-             <a href="/projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -458,9 +459,9 @@
                 </div>
              </a>
              
-             <a href="/projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -474,9 +475,9 @@
                 </div>
              </a>
              
-             <a href="/projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
@@ -498,11 +499,11 @@
                 <button id="btn-google" onclick="window.toggleGroup('google')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="google" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="google" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -524,11 +525,11 @@
                 <button id="btn-benchmark" onclick="window.toggleGroup('benchmark')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="benchmark" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="benchmark" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -550,11 +551,11 @@
                 <button id="btn-hosting" onclick="window.toggleGroup('hosting')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="hosting" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="hosting" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
@@ -568,9 +569,9 @@
                 </div>
              </a>
              
-             <a href="/projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
@@ -584,9 +585,9 @@
                 </div>
              </a>
              
-             <a href="/projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
@@ -608,11 +609,11 @@
                 <button id="btn-static-sites" onclick="window.toggleGroup('static-sites')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="static-sites" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="static-sites" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
@@ -634,11 +635,11 @@
                 <button id="btn-deployment" onclick="window.toggleGroup('deployment')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="deployment" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="deployment" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
@@ -652,9 +653,9 @@
                 </div>
              </a>
              
-             <a href="/projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
@@ -668,9 +669,9 @@
                 </div>
              </a>
              
-             <a href="/projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
@@ -692,11 +693,11 @@
                 <button id="btn-api" onclick="window.toggleGroup('api')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="api" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="api" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -718,11 +719,11 @@
                 <button id="btn-models" onclick="window.toggleGroup('models')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="models" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="models" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -744,11 +745,11 @@
                 <button id="btn-developer" onclick="window.toggleGroup('developer')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="developer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="developer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -770,11 +771,11 @@
                 <button id="btn-free" onclick="window.toggleGroup('free')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="free" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="free" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -796,11 +797,11 @@
                 <button id="btn-cloud" onclick="window.toggleGroup('cloud')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="cloud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="cloud" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
@@ -814,9 +815,9 @@
                 </div>
              </a>
              
-             <a href="/projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
@@ -838,11 +839,11 @@
                 <button id="btn-backend" onclick="window.toggleGroup('backend')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="backend" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="backend" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
@@ -856,9 +857,9 @@
                 </div>
              </a>
              
-             <a href="/projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
@@ -880,11 +881,11 @@
                 <button id="btn-ide" onclick="window.toggleGroup('ide')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="ide" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="ide" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -906,11 +907,11 @@
                 <button id="btn-cloud-dev" onclick="window.toggleGroup('cloud-dev')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="cloud-dev" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="cloud-dev" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -932,11 +933,11 @@
                 <button id="btn-collaboration" onclick="window.toggleGroup('collaboration')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="collaboration" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="collaboration" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -958,11 +959,11 @@
                 <button id="btn-privacy" onclick="window.toggleGroup('privacy')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="privacy" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="privacy" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
@@ -984,11 +985,11 @@
                 <button id="btn-utilities" onclick="window.toggleGroup('utilities')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="utilities" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="utilities" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
@@ -1010,11 +1011,11 @@
                 <button id="btn-frontend" onclick="window.toggleGroup('frontend')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
             </div>
             
-            <div id="frontend" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 foldable-content" style="max-height: 2000px; opacity: 1;">
+            <div id="frontend" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          
-             <a href="/projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+             <a href="projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="/logo.png" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
