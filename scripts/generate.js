@@ -137,6 +137,9 @@ async function build() {
   const stylesSrc = path.join(TEMPLATES_DIR, 'styles.css');
   if (fs.existsSync(stylesSrc)) fs.copyFileSync(stylesSrc, path.join(OUT_DIR, 'styles.css'));
 
+  const bgScriptSrc = path.join(TEMPLATES_DIR, 'background-manager.js');
+  if (fs.existsSync(bgScriptSrc)) fs.copyFileSync(bgScriptSrc, path.join(OUT_DIR, 'background-manager.js'));
+
   // Copy local assets
   if (fs.existsSync(ASSETS_DIR)) {
     fs.readdirSync(ASSETS_DIR).forEach(f => {
@@ -335,11 +338,22 @@ async function build() {
     .replace(/href="projects\//g, 'href="') // Fix project links (projects/foo.html -> foo.html)
     .replace(/src="logo.png"/g, 'src="../logo.png"'); // Fix footer/header logos if any
 
-  // Remove Hero
+  // Remove Hero (and Inject New One with Cinematic BG)
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `
-    <section class="max-w-7xl mx-auto px-6 pt-40 pb-10 text-center">
-        <h1 class="text-5xl font-bold tracking-tight mb-4">All Projects</h1>
-        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest">Curated Resources</p>
+    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-20 text-center overflow-hidden min-h-[50vh] flex flex-col justify-center items-center">
+         <!-- Layer 2-5: Cinematic BG -->
+        <div class="cinematic-bg absolute top-0 left-0 w-full h-full -z-10">
+            <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg" 
+                 class="cinematic-fallback" alt="Background">
+            <!-- Titan 5 (Accent) -->
+            <video class="cinematic-video" 
+                   src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
+                   preload="metadata" muted loop playsinline data-opacity="0.6"></video>
+            <div class="cinematic-overlay"></div>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4 relative z-10">All Projects</h1>
+        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-10">Curated Resources</p>
     </section>
     `);
 
@@ -355,7 +369,16 @@ async function build() {
   // However, the class strings can be multiline or have extra spaces.
   // Let's rely on the ID inside if possible, but the section doesn't have an ID.
   // It has `id="weeklyContributors"` on the inner div.
-  projectsIndexHtml = projectsIndexHtml.replace(/<section class="py-32 border-t border-neutral-900 bg-neutral-950\/50">[\s\S]*?<\/section>/, '');
+  // Remove Weekly Contributors wrapper (including button and title)
+  // The regex needs to cover the entire section block found in the generated HTML.
+  // The section in index.html starts with <!-- TOP CONTRIBUTORS --> usually, or just the section tag.
+  // We will target the class structure we know exist.
+  // Using a broad regex with careful start/end markers.
+
+  projectsIndexHtml = projectsIndexHtml.replace(
+    /<section class="py-32 border-t border-neutral-900 bg-neutral-950\/50[\s\S]*?<\/section>/,
+    ''
+  );
 
   ensureDir(path.join(OUT_DIR, 'projects'));
   fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);

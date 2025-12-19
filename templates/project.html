@@ -18,7 +18,7 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-                    colors: { neutral: { 950: '#050505', 900: '#0a0a0a', 800: '#1f1f1f' } }
+                    colors: { neutral: { 950: '#01010a', 900: '#030312', 800: '#15152a' } }
                 }
             }
         }
@@ -35,11 +35,20 @@
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
-
-    <div class="noise-overlay"></div>
+    <!-- Cinematic Background (Titan 5 - Projects Theme) -->
+    <div class="cinematic-bg fixed top-0 left-0 w-full h-full -z-10">
+        <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
+            class="cinematic-fallback" alt="Background">
+        <video class="cinematic-video"
+            src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
+            preload="metadata" muted loop playsinline data-opacity="0.5"></video>
+        <div class="cinematic-overlay"></div>
+    </div>
 
     <!-- HEADER -->
-    <header id="header" class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
+        data-scroll-active-class="bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-4">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
             <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer"><a href="../index.html">AWN_</a>
             </div>

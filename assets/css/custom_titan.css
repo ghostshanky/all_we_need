@@ -3,9 +3,11 @@
 
 :root {
   /* Core Titan Palette */
-  --bg-deep: #050505;
-  --bg-panel: #0a0a0a;
-  --border-color: #333333;
+  --bg-deep: #01010a;
+  /* Darker Midnight Blue (was #01011A) */
+  --bg-panel: #030312;
+  /* Darker Panel (was #05051e) */
+  --border-color: #15152a;
   --border-active: #555555;
 
   /* Text */
@@ -140,7 +142,7 @@ header {
   width: 100%;
   height: var(--header-height);
   border-bottom: 1px solid var(--border-color);
-  background: rgba(5, 5, 5, 0.8);
+  background: rgba(1, 1, 10, 0.8);
   backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
