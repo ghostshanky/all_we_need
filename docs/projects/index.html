@@ -52,6 +52,18 @@
 
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
+    <!-- Layer 2-5: Cinematic BG (Fullscreen Fixed) -->
+    <div class="cinematic-bg fixed top-0 left-0 w-full h-full z-0">
+        <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
+            class="cinematic-fallback" alt="Background">
+        <!-- Titan Video -->
+        <video class="cinematic-video"
+            src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
+            preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
+        <div class="cinematic-overlay"></div>
+        <div class="absolute inset-0 bg-neutral-950/80"></div>
+    </div>
+  
 
     <header id="header"
         class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
@@ -84,17 +96,7 @@
 
     <!-- HERO -->
     
-    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[60vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
-        <div class="absolute inset-0 w-full h-full z-0">
-            <video class="absolute inset-0 w-full h-full object-cover pointer-events-none" 
-                   src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
-                   preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
-            
-            <!-- Tint to ensure text readability -->
-            <div class="absolute inset-0 bg-black/40 z-10 transition-colors"></div>
-            <!-- Bottom fade -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#01010a] via-transparent to-transparent z-10"></div>
-        </div>
+    <section class="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[40vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
         <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">All Projects</h1>
         <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-20">Curated Resources</p>
     </section>
@@ -1006,10 +1008,10 @@
         </section>
 
     <!-- FOOTER -->
-    <footer class="py-20 border-t border-neutral-900 text-center">
+    <footer class="relative z-10 py-20 border-t border-neutral-900 text-center">
         <div class="font-bold text-2xl mb-4 tracking-tight">AWN_</div>
         <div class="flex justify-center gap-6 mb-8 text-neutral-500 text-sm">
-            <a href="#" class="hover:text-white transition">About</a>
+            <a href="../about.html" class="hover:text-white transition">About</a>
             <a href="https://github.com/ghostshanky/allweneed.github.io" class="hover:text-white transition">GitHub</a>
             <a href="/leaderboard.html" class="hover:text-white transition">Leaderboard</a>
         </div>

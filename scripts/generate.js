@@ -417,12 +417,20 @@ async function build() {
     .replace(/src="js\/animations.js"/g, 'src="../js/animations.js"')
     .replace(/href="index.html"/g, 'href="../index.html"')
     .replace(/href="projects\/index.html"/g, 'href="index.html"')
+    .replace(/href="projects\/index.html"/g, 'href="index.html"')
     .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
+    .replace(/href="about.html"/g, 'href="../about.html"')
     .replace(/href="projects\//g, 'href="') // Fix project links
     .replace(/src="logo.png"/g, 'src="../logo.png"');
 
   // Change Title
   projectsIndexHtml = projectsIndexHtml.replace('<title>All We Need — curated for devs</title>', '<title>Projects — All We Need</title>');
+
+  // -------------------------------------------------------------------------
+  // 6. Generate About Page (Simple Copy)
+  // -------------------------------------------------------------------------
+  const aboutHtml = fs.readFileSync(path.join(TEMPLATES_DIR, 'about.html'), 'utf-8');
+  fs.writeFileSync(path.join(OUT_DIR, 'about.html'), aboutHtml);
 
   // Generate HTML for ALL sections (using allSortedTags)
   const allProjectsGrid = allSortedTags.map(([tag, group]) => `
@@ -457,18 +465,36 @@ async function build() {
   `).join('');
 
   // Replace Hero
+  // Inject Fullscreen Background (Leaderboard Style)
+  // Inject Fullscreen Background (Leaderboard Style)
+  const fullscreenBg = `
+    <!-- Layer 2-5: Cinematic BG (Fullscreen Fixed) -->
+    <div class="cinematic-bg fixed top-0 left-0 w-full h-full z-0">
+        <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
+            class="cinematic-fallback" alt="Background">
+        <!-- Titan Video -->
+        <video class="cinematic-video"
+            src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
+            preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
+        <div class="cinematic-overlay"></div>
+        <div class="absolute inset-0 bg-neutral-950/80"></div>
+    </div>
+  `;
+  // Insert after body tag (approximate)
+  if (projectsIndexHtml.includes('<div class="noise-overlay"></div>')) {
+    projectsIndexHtml = projectsIndexHtml.replace('<div class="noise-overlay"></div>', '<div class="noise-overlay"></div>' + fullscreenBg);
+  } else {
+    projectsIndexHtml = projectsIndexHtml.replace('<body class="bg-neutral-950 text-neutral-100 antialiased">', '<body class="bg-neutral-950 text-neutral-100 antialiased">' + fullscreenBg);
+  }
+
+  // Ensure Body/Main content sits ABOVE the video
+  projectsIndexHtml = projectsIndexHtml.replace('<main', '<main class="relative z-10"'); // If main exists
+  projectsIndexHtml = projectsIndexHtml.replace('id="projects"', 'id="projects" class="relative z-10"'); // Ensure projects container is above
+  projectsIndexHtml = projectsIndexHtml.replace('<footer class="', '<footer class="relative z-10 '); // Ensure footer is above
+
+  // Replace Hero (Transparent, no video inside)
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `
-    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[60vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
-        <div class="absolute inset-0 w-full h-full z-0">
-            <video class="absolute inset-0 w-full h-full object-cover pointer-events-none" 
-                   src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
-                   preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
-            
-            <!-- Tint to ensure text readability -->
-            <div class="absolute inset-0 bg-black/40 z-10 transition-colors"></div>
-            <!-- Bottom fade -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#01010a] via-transparent to-transparent z-10"></div>
-        </div>
+    <section class="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[40vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
         <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">All Projects</h1>
         <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-20">Curated Resources</p>
     </section>
