@@ -400,6 +400,18 @@ async function build() {
   `;
   indexHtml = indexHtml.replace('</body>', `${dataScript}</body>`);
 
+  // HIGHLIGHT ACTIVE LINK: HOME
+  // Note: We use a specific regex to ensure we target the exact link class start
+  const baseLinkClass = 'hover:text-white transition-colors duration-300 shrink-0';
+  const activeLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300 shrink-0';
+
+  // Create a clean copy for Projects BEFORE modifying indexHtml with Home highlight? 
+  // actually, let's just reverse it later, it's safer than deep cloning strings if not needed.
+  let projectsIndexHtml = indexHtml; // Current state: No highlights
+
+  // Now Highlight HOME in the main IndexHTML
+  indexHtml = indexHtml.replace(`href="index.html" class="${baseLinkClass}"`, `href="index.html" class="${activeLinkClass}"`);
+
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
 
 
@@ -407,8 +419,10 @@ async function build() {
   // 5. Generate Projects Index (projects/index.html) - ALL TAGS VISIBLE
   // -------------------------------------------------------------------------
 
-  // Reuse indexHtml as base, but replace the content area with the FULL list
-  let projectsIndexHtml = indexHtml;
+  // projectsIndexHtml currently has NO highlights (captured before indexHtml modification) matches baseLinkClass
+
+  // Highlight PROJECTS
+  projectsIndexHtml = projectsIndexHtml.replace(`href="projects/index.html" class="${baseLinkClass}"`, `href="projects/index.html" class="${activeLinkClass}"`);
 
   // Fix Relative Paths for Subdirectory
   projectsIndexHtml = projectsIndexHtml
@@ -417,7 +431,7 @@ async function build() {
     .replace(/src="js\/animations.js"/g, 'src="../js/animations.js"')
     .replace(/href="index.html"/g, 'href="../index.html"')
     .replace(/href="projects\/index.html"/g, 'href="index.html"')
-    .replace(/href="projects\/index.html"/g, 'href="index.html"')
+    .replace(/href="projects\/index.html"/g, 'href="index.html"') // Duplicate cleanup
     .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
     .replace(/href="about.html"/g, 'href="../about.html"')
     .replace(/href="projects\//g, 'href="') // Fix project links
@@ -427,9 +441,30 @@ async function build() {
   projectsIndexHtml = projectsIndexHtml.replace('<title>All We Need — curated for devs</title>', '<title>Projects — All We Need</title>');
 
   // -------------------------------------------------------------------------
-  // 6. Generate About Page (Simple Copy)
+  // 6. Generate About Page (Dynamic Grid)
   // -------------------------------------------------------------------------
-  const aboutHtml = fs.readFileSync(path.join(TEMPLATES_DIR, 'about.html'), 'utf-8');
+  let aboutHtml = fs.readFileSync(path.join(TEMPLATES_DIR, 'about.html'), 'utf-8');
+
+  // Generate Community Grid HTML
+  const communityGridHtml = leaderboard.map(c => `
+    <div class="relative group">
+        <a href="${c.html_url}" target="_blank">
+            <img src="${c.avatar_url}" 
+                class="w-10 h-10 rounded-full border border-neutral-800 grayscale group-hover:grayscale-0 group-hover:border-white transition-all duration-300 transform group-hover:scale-110 cursor-pointer object-cover bg-neutral-900">
+        </a>
+        <!-- Tooltip -->
+        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-neutral-900 border border-white/10 rounded-lg text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-20 shadow-xl translate-y-2 group-hover:translate-y-0">
+            ${c.login}
+        </div>
+    </div>
+  `).join('');
+
+  // Inject Data
+  aboutHtml = aboutHtml.replace('{{community_grid}}', communityGridHtml);
+  aboutHtml = aboutHtml.replace('${total_contributors}', leaderboard.length);
+
+  // Highlight ABOUT
+  aboutHtml = aboutHtml.replace(`href="about.html" class="${baseLinkClass}"`, `href="about.html" class="${activeLinkClass}"`);
   fs.writeFileSync(path.join(OUT_DIR, 'about.html'), aboutHtml);
 
   // Generate HTML for ALL sections (using allSortedTags)
@@ -509,7 +544,7 @@ async function build() {
   // Replaces the existing projects section (which only has top 5 or placeholder) with the FULL list
   projectsIndexHtml = projectsIndexHtml.replace(
     /<section id="projects"[\s\S]*?<\/section>/,
-    `<section id="projects" class="max-w-7xl mx-auto px-6 py-32 min-h-screen">
+    `<section id="projects" class="relative z-10 max-w-7xl mx-auto px-6 py-32 min-h-screen">
             ${allProjectsGrid}
         </section>`
   );
@@ -535,8 +570,11 @@ async function build() {
 
   lbHtml = lbHtml.replace('{{leaderboard_rows}}', lgRows);
 
-  // Simple filter handling (Active Class) - strictly handling "All" for simpler build
-  // For real filtering we'd need multiple files or JS. The template has JS hook. 
+  // Highlight LEADERBOARD
+  const lbBaseLinkClass = 'hover:text-white transition-colors duration-300 shrink-0';
+  const lbActiveLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300 shrink-0';
+  lbHtml = lbHtml.replace(`href="leaderboard.html" class="${lbBaseLinkClass}"`, `href="leaderboard.html" class="${lbActiveLinkClass}"`);
+
   lbHtml = lbHtml.replace('{{active_all}}', 'text-white font-bold'); // Default
 
   fs.writeFileSync(path.join(OUT_DIR, 'leaderboard.html'), lbHtml);
