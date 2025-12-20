@@ -40,8 +40,49 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. Header Morph Logic
     initHeaderMorph();
 
+    // 7. Auto-Scroll Logic
+    initAutoScroll();
+
     console.log("AWN: Motion System Active");
 });
+
+function initAutoScroll() {
+    const containers = document.querySelectorAll('[data-auto-scroll="true"]');
+
+    containers.forEach(container => {
+        let isPaused = false;
+        let speed = 0.5; // Adjust for smoothness
+
+        // Pause on hover/touch
+        container.addEventListener('mouseenter', () => isPaused = true);
+        container.addEventListener('mouseleave', () => isPaused = false);
+        container.addEventListener('touchstart', () => isPaused = true);
+        container.addEventListener('touchend', () => isPaused = false);
+
+        function step() {
+            if (!isPaused) {
+                container.scrollLeft += speed;
+
+                // Infinite Loop Logic
+                // If we've scrolled past 1/4 of width (since we quadrupled content), reset to 0
+                // Using scrollWidth / 4 is a safe bet if we have 4 sets.
+                // However, exact pixel matching is better.
+                // Let's rely on the fact we have ~4 sets. reset when > scrollWidth/2 is safer but 
+                // we need to jump back to a point that looks identical.
+                // Simply: if scrollLeft + clientWidth >= scrollWidth, reset.
+                // But for seamless loop with duplicated content:
+                // If scrollLeft >= (scrollWidth / 4), scrollLeft -= (scrollWidth / 4).
+
+                if (container.scrollLeft >= (container.scrollWidth / 4)) {
+                    container.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    });
+}
 
 function initHero() {
     const tl = gsap.timeline();

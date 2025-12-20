@@ -44,20 +44,26 @@ async function initApp() {
     });
   }
 
-  // Load Data
-  try {
-    const [pRes, lRes] = await Promise.all([
-      fetch('/projects.json').then(r => r.json()),
-      fetch('/leaderboard.json').then(r => r.json())
-    ]);
-    projectsData = pRes;
-    leaderboardData = lRes;
-
+  // Load Data from Global Injection (Fast & Reliable)
+  if (window.ALL_PROJECTS) {
+    projectsData = window.ALL_PROJECTS;
     initSearch();
-    initLeaderboard();
+  } else {
+    // Fallback
+    fetch('projects.json').then(r => r.json()).then(d => {
+      projectsData = d;
+      initSearch();
+    }).catch(e => console.error("Search data missing", e));
+  }
 
-  } catch (e) {
-    console.error("Failed to load data", e);
+  if (window.LEADERBOARD) {
+    leaderboardData = window.LEADERBOARD;
+    initLeaderboard();
+  } else {
+    fetch('leaderboard.json').then(r => r.json()).then(d => {
+      leaderboardData = d;
+      initLeaderboard();
+    }).catch(e => console.warn("Leaderboard data missing", e));
   }
 }
 
@@ -72,21 +78,40 @@ function initSearch() {
 
   fuse = new Fuse(projectsData, {
     keys: [
-      { name: 'title', weight: 0.7 },
-      { name: 'description', weight: 0.5 },
-      { name: 'tags', weight: 0.4 },
-      { name: 'contributors.login', weight: 0.3 }
+      { name: 'title', weight: 0.8 },
+      { name: 'tags', weight: 0.6 }, // Tags are strong signals
+      { name: 'description', weight: 0.2 }, // Lower weight for description to reduce noise
+      { name: 'contributors.login', weight: 0.1 }
     ],
-    threshold: 0.4
+    threshold: 0.2, // Stricter matching (was 0.4)
+    minMatchCharLength: 3, // Ignore 1-2 char noise match attempts
+    ignoreLocation: true, // Search everywhere in the string, not just start
+    useExtendedSearch: true // Enable robust operators potentially
   });
 
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.trim();
 
+    // Sections to Toggle
+    const sectionsToHide = [
+      document.getElementById('stats'),
+      document.getElementById('narrative'),
+      document.getElementById('contributors-section')
+    ];
+
     if (query.length === 0) {
       projectsContainer.innerHTML = originalContent;
+      // Show sections
+      sectionsToHide.forEach(el => {
+        if (el) el.classList.remove('hidden');
+      });
       return;
     }
+
+    // Hide sections
+    sectionsToHide.forEach(el => {
+      if (el) el.classList.add('hidden');
+    });
 
     const results = fuse.search(query).map(r => r.item);
     renderResults(results, projectsContainer);

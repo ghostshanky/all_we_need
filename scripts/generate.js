@@ -246,7 +246,7 @@ async function build() {
   const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.html'), 'utf8');
   let indexHtml = indexTemplate;
 
-  // Group by Tags
+  // Group by Tags and Sort by Count
   const tagsMap = {};
   projects.forEach(p => {
     p.tags.forEach(t => {
@@ -255,25 +255,49 @@ async function build() {
     });
   });
 
+  // Sort ALL tags by count
+  const allSortedTags = Object.entries(tagsMap)
+    .sort((a, b) => b[1].length - a[1].length);
+
+  // Top 5 for Main Display
+  const topTags = allSortedTags.slice(0, 5);
+
+  // View More: Remaining Tags (n-5)
+  const remainingTags = allSortedTags.slice(5);
+
   let projectsHtml = '';
-  for (const [tag, group] of Object.entries(tagsMap)) {
+
+  // Generate Main Cards for Top 5
+  for (const [tag, group] of topTags) {
     projectsHtml += `
          <div class="mb-32 group/section scroll-mt-24" id="${tag}">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // ${escapeHtml(tag)}
                 </h3>
-                <button id="btn-${tag}" onclick="window.toggleGroup('${tag}')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                
+                <!-- Navigation Arrows -->
+                <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('scroll-${tag}').scrollBy({left: -350, behavior: 'smooth'})" 
+                            class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
+                        &lt;
+                    </button>
+                    <button onclick="document.getElementById('scroll-${tag}').scrollBy({left: 350, behavior: 'smooth'})" 
+                            class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
+                        &gt;
+                    </button>
+                </div>
             </div>
             
-            <div id="${tag}" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
+            <div id="scroll-${tag}" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 scrollbar-hide" style="max-height: 2000px; opacity: 1;">
          `;
 
     group.forEach(p => {
       projectsHtml += `
              <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
@@ -290,6 +314,52 @@ async function build() {
     });
 
     projectsHtml += `</div></div>`;
+  }
+
+  // Generate "Explore More" Section for Remaining Tags
+  if (remainingTags.length > 0) {
+    projectsHtml += `
+      <div class="mb-32 group/section scroll-mt-24">
+          <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+              <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400">
+                  // Explore More Categories
+              </h3>
+               <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('more-tags').scrollBy({left: -350, behavior: 'smooth'})" 
+                            class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
+                        &lt;
+                    </button>
+                    <button onclick="document.getElementById('more-tags').scrollBy({left: 350, behavior: 'smooth'})" 
+                            class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
+                        &gt;
+                    </button>
+                </div>
+          </div>
+
+          <div id="more-tags" class="flex overflow-x-auto gap-6 pb-8 transition-all duration-500 scrollbar-hide" data-auto-scroll="true">
+              ${[...remainingTags, ...remainingTags, ...remainingTags, ...remainingTags].map(([tag, group]) => `
+                  <a href="projects/index.html" class="glass-card block p-6 rounded-3xl relative overflow-hidden group hover:scale-[1.05] transition-transform duration-500 w-[240px] shrink-0 flex flex-col gap-4 border border-white/5 bg-neutral-950/20">
+                      <div class="flex justify-between items-center">
+                          <span class="font-mono text-base text-white font-bold uppercase tracking-wider truncate">#${escapeHtml(tag)}</span>
+                          <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">${group.length}</span>
+                      </div>
+                      
+                      <!-- Icon Collage -->
+                      <div class="grid grid-cols-4 gap-2 pt-2">
+                          ${group.slice(0, 8).map(p => `
+                              <img src="${p.logo}" 
+                                   class="w-8 h-8 rounded-md bg-neutral-900 object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+                                   title="${escapeHtml(p.title)}">
+                          `).join('')}
+                          ${group.length > 8 ? `<div class="w-8 h-8 rounded-md bg-neutral-900 flex items-center justify-center text-[10px] text-neutral-500 font-mono">+${group.length - 8}</div>` : ''}
+                      </div>
+
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                  </a>
+              `).join('')}
+          </div>
+      </div>
+      `;
   }
 
   indexHtml = indexHtml.replace('<!-- projects injected by JS -->', projectsHtml);
@@ -310,21 +380,34 @@ async function build() {
 
   // Calculate Real Stats
   const totalProjects = projects.length;
+  // Use leaderboard for contributors count
   const totalContributors = leaderboard.length;
+  // Calculate total merges (PRs)
   const totalPRs = leaderboard.reduce((acc, c) => acc + c.count, 0);
 
-  // Replace Stats in Index HTML
-  indexHtml = indexHtml.replace(/data-target="104"/g, `data-target="${totalProjects}"`)
-    .replace(/data-target="42"/g, `data-target="${totalContributors}"`)
-    .replace(/data-target="850"/g, `data-target="${totalPRs}"`);
+  // Replace Stats in Index HTML (Targeting specific dummy values from template)
+  // Template values: 104 (Projects), 42 (Contributors), 850 (PRs)
+  indexHtml = indexHtml.replace(/data-target="104"/g, `data-target="${totalProjects}"`);
+  indexHtml = indexHtml.replace(/data-target="42"/g, `data-target="${totalContributors}"`);
+  indexHtml = indexHtml.replace(/data-target="850"/g, `data-target="${totalPRs}"`);
 
-
+  // Inject Global Data for Search (Avoids Fetch/CORS issues)
+  const dataScript = `
+    <script>
+      window.ALL_PROJECTS = ${JSON.stringify(projects)};
+      window.LEADERBOARD = ${JSON.stringify(leaderboard)};
+    </script>
+  `;
+  indexHtml = indexHtml.replace('</body>', `${dataScript}</body>`);
 
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
 
-  // 4b. Generate Projects Index (Same layout, but remove Hero/Stats/Narrative/WeeklyContributors)
-  // We want a dedicated /projects/ page that just lists the projects.
-  // We'll take the indexHtml and strip the "Home-only" sections.
+
+  // -------------------------------------------------------------------------
+  // 5. Generate Projects Index (projects/index.html) - ALL TAGS VISIBLE
+  // -------------------------------------------------------------------------
+
+  // Reuse indexHtml as base, but replace the content area with the FULL list
   let projectsIndexHtml = indexHtml;
 
   // Fix Relative Paths for Subdirectory
@@ -335,56 +418,81 @@ async function build() {
     .replace(/href="index.html"/g, 'href="../index.html"')
     .replace(/href="projects\/index.html"/g, 'href="index.html"')
     .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
-    .replace(/href="projects\//g, 'href="') // Fix project links (projects/foo.html -> foo.html)
-    .replace(/src="logo.png"/g, 'src="../logo.png"'); // Fix footer/header logos if any
+    .replace(/href="projects\//g, 'href="') // Fix project links
+    .replace(/src="logo.png"/g, 'src="../logo.png"');
 
-  // Remove Hero (and Inject New One with Cinematic BG)
+  // Change Title
+  projectsIndexHtml = projectsIndexHtml.replace('<title>All We Need — curated for devs</title>', '<title>Projects — All We Need</title>');
+
+  // Generate HTML for ALL sections (using allSortedTags)
+  const allProjectsGrid = allSortedTags.map(([tag, group]) => `
+         <div class="mb-32 group/section scroll-mt-24" id="${escapeHtml(tag)}">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // ${escapeHtml(tag)}
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">${group.length} items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-${tag}">
+             ${group.map(p => `
+             <a href="${p.full_path.replace('projects/', '')}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
+                    </div>
+                </div>
+             </a>
+             `).join('')}
+             </div>
+         </div>
+  `).join('');
+
+  // Replace Hero
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `
-    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-20 text-center overflow-hidden min-h-[50vh] flex flex-col justify-center items-center">
-         <!-- Layer 2-5: Cinematic BG -->
-        <div class="cinematic-bg absolute top-0 left-0 w-full h-full -z-10">
-            <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg" 
-                 class="cinematic-fallback" alt="Background">
-            <!-- Titan 5 (Accent) -->
-            <video class="cinematic-video" 
+    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[60vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
+        <div class="absolute inset-0 w-full h-full z-0">
+            <video class="absolute inset-0 w-full h-full object-cover pointer-events-none" 
                    src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
-                   preload="metadata" muted loop playsinline data-opacity="0.6"></video>
-            <div class="cinematic-overlay"></div>
+                   preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
+            
+            <!-- Tint to ensure text readability -->
+            <div class="absolute inset-0 bg-black/40 z-10 transition-colors"></div>
+            <!-- Bottom fade -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#01010a] via-transparent to-transparent z-10"></div>
         </div>
-        
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4 relative z-10">All Projects</h1>
-        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-10">Curated Resources</p>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">All Projects</h1>
+        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-20">Curated Resources</p>
     </section>
-    `);
+  `);
 
-  // Remove Stats
+  // Remove Stats & Narrative
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="stats"[\s\S]*?<\/section>/, '');
-
-  // Remove Narrative
   projectsIndexHtml = projectsIndexHtml.replace(/<section id="narrative"[\s\S]*?<\/section>/, '');
+  projectsIndexHtml = projectsIndexHtml.replace(/<section id="contributors-section"[\s\S]*?<\/section>/, '');
 
-  // Remove Weekly Contributors wrapper (keep footer)
-  // The weekly contributors section targetting using class: <section class="py-32 border-t border-neutral-900 bg-neutral-950/50">
-  // Since regex matching generic tags is flakey, we will assume strict match from previous generation.
-  // However, the class strings can be multiline or have extra spaces.
-  // Let's rely on the ID inside if possible, but the section doesn't have an ID.
-  // It has `id="weeklyContributors"` on the inner div.
-  // Remove Weekly Contributors wrapper (including button and title)
-  // The regex needs to cover the entire section block found in the generated HTML.
-  // The section in index.html starts with <!-- TOP CONTRIBUTORS --> usually, or just the section tag.
-  // We will target the class structure we know exist.
-  // Using a broad regex with careful start/end markers.
-
+  // Inject Full Grid
+  // Replaces the existing projects section (which only has top 5 or placeholder) with the FULL list
   projectsIndexHtml = projectsIndexHtml.replace(
-    /<section class="py-32 border-t border-neutral-900 bg-neutral-950\/50[\s\S]*?<\/section>/,
-    ''
+    /<section id="projects"[\s\S]*?<\/section>/,
+    `<section id="projects" class="max-w-7xl mx-auto px-6 py-32 min-h-screen">
+            ${allProjectsGrid}
+        </section>`
   );
 
   ensureDir(path.join(OUT_DIR, 'projects'));
   fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);
 
 
-  // 5. Generate Leaderboard HTML
+  // 6. Generate Leaderboard HTML
   const leaderboardTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'leaderboard.html'), 'utf8');
   let lbHtml = leaderboardTemplate;
 

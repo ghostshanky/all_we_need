@@ -43,9 +43,6 @@
 
     <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="styles.css">
-    <script defer src="search.js"></script>
-    <script defer src="background-manager.js"></script> <!-- Cinematic BG Logic -->
-    <script defer src="js/animations.js"></script> <!-- Will be copied to docs/js/ -->
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
@@ -56,7 +53,8 @@
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
 
-    <header id="header" class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
         data-scroll-active-class="bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-4">
 
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -235,7 +233,8 @@
     </section>
 
     <!-- TOP CONTRIBUTORS -->
-    <section class="py-32 border-t border-neutral-900 bg-neutral-950/50 relative overflow-hidden">
+    <section id="contributors-section"
+        class="py-32 border-t border-neutral-900 bg-neutral-950/50 relative overflow-hidden">
         <!-- Layer 2-5: Cinematic BG -->
         <div class="cinematic-bg">
             <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
@@ -278,6 +277,15 @@
         <p class="text-neutral-600 text-xs font-mono">MIT License · Community Built</p>
     </footer>
 
+    <!-- Core Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <!-- Local Scripts -->
+    <script src="search.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="background-manager.js"></script>
 </body>
 
 </html>

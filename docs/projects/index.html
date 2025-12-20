@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>All We Need — curated for devs</title>
+    <title>Projects — All We Need</title>
     <meta name="description" content="A premium community-curated collection of developer tools and hidden gems." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -43,9 +43,6 @@
 
     <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="../styles.css">
-    <script defer src="../search.js"></script>
-    <script defer src="background-manager.js"></script> <!-- Cinematic BG Logic -->
-    <script defer src="../js/animations.js"></script> <!-- Will be copied to docs/js/ -->
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
@@ -56,7 +53,8 @@
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
 
-    <header id="header" class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
         data-scroll-active-class="bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-4">
 
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -86,22 +84,21 @@
 
     <!-- HERO -->
     
-    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-20 text-center overflow-hidden min-h-[50vh] flex flex-col justify-center items-center">
-         <!-- Layer 2-5: Cinematic BG -->
-        <div class="cinematic-bg absolute top-0 left-0 w-full h-full -z-10">
-            <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg" 
-                 class="cinematic-fallback" alt="Background">
-            <!-- Titan 5 (Accent) -->
-            <video class="cinematic-video" 
+    <section class="relative max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[60vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
+        <div class="absolute inset-0 w-full h-full z-0">
+            <video class="absolute inset-0 w-full h-full object-cover pointer-events-none" 
                    src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
-                   preload="metadata" muted loop playsinline data-opacity="0.6"></video>
-            <div class="cinematic-overlay"></div>
+                   preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
+            
+            <!-- Tint to ensure text readability -->
+            <div class="absolute inset-0 bg-black/40 z-10 transition-colors"></div>
+            <!-- Bottom fade -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#01010a] via-transparent to-transparent z-10"></div>
         </div>
-        
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4 relative z-10">All Projects</h1>
-        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-10">Curated Resources</p>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">All Projects</h1>
+        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-20">Curated Resources</p>
     </section>
-    
+  
 
     <!-- PROOF OF VALUE (Stats) -->
     
@@ -113,47 +110,21 @@
     
 
     <!-- PROJECTS GRID -->
-    <section id="projects" class="max-w-7xl mx-auto px-6 py-32 space-y-20 min-h-screen">
-        
-         <div class="mb-32 group/section scroll-mt-24" id="design">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // design
-                </h3>
-                <button id="btn-design" onclick="window.toggleGroup('design')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-32 min-h-screen">
             
-            <div id="design" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An AI-powered platform for generating and comparing UI and design concepts.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
          <div class="mb-32 group/section scroll-mt-24" id="ai">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // ai
                 </h3>
-                <button id="btn-ai" onclick="window.toggleGroup('ai')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">4 items</span>
             </div>
             
-            <div id="ai" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-ai">
+             
              <a href="design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
@@ -169,7 +140,7 @@
              
              <a href="google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -185,7 +156,7 @@
              
              <a href="lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -201,7 +172,7 @@
              
              <a href="yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
@@ -214,130 +185,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="ui-ux">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // ui-ux
-                </h3>
-                <button id="btn-ui-ux" onclick="window.toggleGroup('ui-ux')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="ui-ux" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An AI-powered platform for generating and comparing UI and design concepts.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="email">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // email
-                </h3>
-                <button id="btn-email" onclick="window.toggleGroup('email')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="email" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">Generate disposable Gmail-style emails</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
              
-             <a href="temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A disposable email service for quick sign-ups and privacy protection.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="productivity">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // productivity
-                </h3>
-                <button id="btn-productivity" onclick="window.toggleGroup('productivity')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="productivity" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">Generate disposable Gmail-style emails</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             
-             <a href="yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified interface to compare and use multiple AI models in one place.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="llm">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // llm
                 </h3>
-                <button id="btn-llm" onclick="window.toggleGroup('llm')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">4 items</span>
             </div>
             
-            <div id="llm" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-llm">
+             
              <a href="google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -353,7 +217,7 @@
              
              <a href="lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -369,7 +233,7 @@
              
              <a href="openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -385,7 +249,7 @@
              
              <a href="yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
@@ -398,20 +262,383 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="hosting">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // hosting
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">3 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-hosting">
+             
+             <a href="netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An all-in-one platform for building and deploying fast, secure web applications.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A frontend cloud platform for building, deploying, and scaling modern web applications.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="deployment">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // deployment
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">3 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-deployment">
+             
+             <a href="netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An all-in-one platform for building and deploying fast, secure web applications.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A frontend cloud platform for building, deploying, and scaling modern web applications.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="email">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // email
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">2 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-email">
+             
+             <a href="emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">Generate disposable Gmail-style emails</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A disposable email service for quick sign-ups and privacy protection.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="productivity">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // productivity
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">2 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-productivity">
+             
+             <a href="emailnator.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Emailnator</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">Generate disposable Gmail-style emails</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Yupp AI</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified interface to compare and use multiple AI models in one place.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="cloud">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // cloud
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">2 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-cloud">
+             
+             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="backend">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // backend
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">2 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-backend">
+             
+             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="design">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // design
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-design">
+             
+             <a href="design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An AI-powered platform for generating and comparing UI and design concepts.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
+         <div class="mb-32 group/section scroll-mt-24" id="ui-ux">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                    // ui-ux
+                </h3>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
+            </div>
+            
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-ui-ux">
+             
+             <a href="design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-6">
+                     <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Design Arena</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An AI-powered platform for generating and comparing UI and design concepts.</p>
+                
+                <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                    <span class="text-xs font-mono text-neutral-600">By Community</span>
+                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                         
+                    </div>
+                </div>
+             </a>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="google">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // google
                 </h3>
-                <button id="btn-google" onclick="window.toggleGroup('google')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="google" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-google">
+             
              <a href="google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Google AI Studio</h4>
@@ -424,20 +651,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="benchmark">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // benchmark
                 </h3>
-                <button id="btn-benchmark" onclick="window.toggleGroup('benchmark')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="benchmark" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-benchmark">
+             
              <a href="lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">LM Arena</h4>
@@ -450,104 +680,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="hosting">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // hosting
-                </h3>
-                <button id="btn-hosting" onclick="window.toggleGroup('hosting')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="hosting" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An all-in-one platform for building and deploying fast, secure web applications.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
              
-             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             
-             <a href="vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A frontend cloud platform for building, deploying, and scaling modern web applications.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="static-sites">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // static-sites
                 </h3>
-                <button id="btn-static-sites" onclick="window.toggleGroup('static-sites')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="static-sites" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-static-sites">
+             
              <a href="netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">An all-in-one platform for building and deploying fast, secure web applications.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="deployment">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // deployment
-                </h3>
-                <button id="btn-deployment" onclick="window.toggleGroup('deployment')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="deployment" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Netlify</h4>
@@ -561,51 +710,22 @@
                 </div>
              </a>
              
-             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             
-             <a href="vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A frontend cloud platform for building, deploying, and scaling modern web applications.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="api">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // api
                 </h3>
-                <button id="btn-api" onclick="window.toggleGroup('api')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="api" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-api">
+             
              <a href="openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -618,20 +738,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="models">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // models
                 </h3>
-                <button id="btn-models" onclick="window.toggleGroup('models')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="models" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-models">
+             
              <a href="openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -644,20 +767,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="developer">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // developer
                 </h3>
-                <button id="btn-developer" onclick="window.toggleGroup('developer')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="developer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-developer">
+             
              <a href="openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -670,20 +796,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="free">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // free
                 </h3>
-                <button id="btn-free" onclick="window.toggleGroup('free')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="free" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-free">
+             
              <a href="openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">OpenRouter</h4>
@@ -696,104 +825,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="cloud">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // cloud
-                </h3>
-                <button id="btn-cloud" onclick="window.toggleGroup('cloud')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="cloud" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
              
-             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
-         <div class="mb-32 group/section scroll-mt-24" id="backend">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // backend
-                </h3>
-                <button id="btn-backend" onclick="window.toggleGroup('backend')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
-            </div>
-            
-            <div id="backend" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
-             <a href="railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Railway</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A developer-focused cloud platform to deploy apps, databases, and services quickly.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             
-             <a href="render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Render</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">A unified cloud platform for deploying web apps, APIs, databases, and background jobs.</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By Community</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         
-                    </div>
-                </div>
-             </a>
-             </div></div>
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="ide">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // ide
                 </h3>
-                <button id="btn-ide" onclick="window.toggleGroup('ide')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="ide" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-ide">
+             
              <a href="replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -806,20 +854,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="cloud-dev">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // cloud-dev
                 </h3>
-                <button id="btn-cloud-dev" onclick="window.toggleGroup('cloud-dev')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="cloud-dev" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-cloud-dev">
+             
              <a href="replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -832,20 +883,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="collaboration">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // collaboration
                 </h3>
-                <button id="btn-collaboration" onclick="window.toggleGroup('collaboration')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="collaboration" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-collaboration">
+             
              <a href="replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Replit</h4>
@@ -858,20 +912,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="privacy">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // privacy
                 </h3>
-                <button id="btn-privacy" onclick="window.toggleGroup('privacy')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="privacy" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-privacy">
+             
              <a href="temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
@@ -884,20 +941,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="utilities">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // utilities
                 </h3>
-                <button id="btn-utilities" onclick="window.toggleGroup('utilities')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="utilities" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-utilities">
+             
              <a href="temp-mail.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Temp Mail</h4>
@@ -910,20 +970,23 @@
                     </div>
                 </div>
              </a>
-             </div></div>
+             
+             </div>
+         </div>
+  
          <div class="mb-32 group/section scroll-mt-24" id="frontend">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
                     // frontend
                 </h3>
-                <button id="btn-frontend" onclick="window.toggleGroup('frontend')" class="text-xs uppercase tracking-widest hover:text-white transition">Show Less</button>
+                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">1 items</span>
             </div>
             
-            <div id="frontend" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory transition-all duration-500 foldable-content scrollbar-hide" style="max-height: 2000px; opacity: 1;">
-         
+             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-frontend">
+             
              <a href="vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
+                     <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">Vercel</h4>
@@ -936,8 +999,11 @@
                     </div>
                 </div>
              </a>
-             </div></div>
-    </section>
+             
+             </div>
+         </div>
+  
+        </section>
 
     <!-- FOOTER -->
     <footer class="py-20 border-t border-neutral-900 text-center">
@@ -950,6 +1016,20 @@
         <p class="text-neutral-600 text-xs font-mono">MIT License · Community Built</p>
     </footer>
 
-</body>
+    <!-- Core Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <!-- Local Scripts -->
+    <script src="../search.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="background-manager.js"></script>
+
+    <script>
+      window.ALL_PROJECTS = [{"title":"Design Arena","slug":"design-arena","link":"https://www.designarena.ai","description":"An AI-powered platform for generating and comparing UI and design concepts.","tags":["design","ai","ui-ux"],"logo":"https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128","contributors":[],"content":"<p>Design Arena helps designers and developers explore multiple AI-generated design directions efficiently.</p>\n","full_path":"projects/design-arena.html"},{"title":"Emailnator","slug":"emailnator","link":"https://emailnator.com","description":"Generate disposable Gmail-style emails","tags":["email","productivity"],"logo":"https://www.google.com/s2/favicons?domain=emailnator.com&sz=128","contributors":[],"content":"<p>Emailnator is a simple tool to create temporary email addresses for testing and privacy. No sign-up required, emails expire after 24 hours.</p>\n<p>Useful for developers to test forms without spam.</p>\n","full_path":"projects/emailnator.html"},{"title":"Google AI Studio","slug":"google-ai-studio","link":"https://aistudio.google.com","description":"Google’s web-based environment for experimenting with and building Gemini-powered AI apps.","tags":["ai","llm","google"],"logo":"https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128","contributors":[],"content":"<p>Google AI Studio lets developers prototype, test prompts, and integrate Gemini models into applications.</p>\n","full_path":"projects/google-ai-studio.html"},{"title":"LM Arena","slug":"lm-arena","link":"https://lmarena.ai","description":"A platform to compare large language models through blind, side-by-side evaluations.","tags":["ai","llm","benchmark"],"logo":"https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128","contributors":[],"content":"<p>LM Arena enables unbiased comparison of AI models by letting users vote on responses without knowing the model.</p>\n","full_path":"projects/lm-arena.html"},{"title":"Netlify","slug":"netlify","link":"https://www.netlify.com","description":"An all-in-one platform for building and deploying fast, secure web applications.","tags":["hosting","static-sites","deployment"],"logo":"https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128","contributors":[],"content":"<p>Netlify provides CI/CD, serverless functions, and edge services for modern web development.</p>\n","full_path":"projects/netlify.html"},{"title":"OpenRouter","slug":"openrouter","link":"https://openrouter.ai","description":"Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint","tags":["api","llm","models","developer","free"],"logo":"https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128","contributors":[],"content":"<p>OpenRouter is a unified API platform that lets you access hundreds (400+) of AI models from many providers (OpenAI, Anthropic, Google, Meta and others) via a single, consistent endpoint. It handles provider routing, fallbacks for higher availability, and exposes model-level pricing so you can choose speed vs. cost trade-offs.</p>\n<p>One API, many models — call different chat/completion/vision models with the same API shape instead of juggling many provider keys. \nOpenRouter</p>\n<p>Transparent pricing &amp; per-model costs — model pricing is shown in the UI/docs so you can compare cost per token or per request. \nOpenRouter\n+1</p>\n<p>Routing &amp; high availability — OpenRouter can route requests to different providers and fall back automatically if a provider is unavailable. \nOpenRouter</p>\n<p>Integrations &amp; ecosystem — provider support exists across SDKs, community integrations (examples, Laravel, Vercel/AI SDK provider) and official docs/GitHub.</p>\n","full_path":"projects/openrouter.html"},{"title":"Railway","slug":"railway","link":"https://railway.app","description":"A developer-focused cloud platform to deploy apps, databases, and services quickly.","tags":["cloud","deployment","backend"],"logo":"https://www.google.com/s2/favicons?domain=railway.app&sz=128","contributors":[],"content":"<p>Railway enables fast setup and scaling of production-ready applications with minimal configuration.</p>\n","full_path":"projects/railway.html"},{"title":"Render","slug":"render","link":"https://render.com","description":"A unified cloud platform for deploying web apps, APIs, databases, and background jobs.","tags":["cloud","backend","hosting"],"logo":"https://www.google.com/s2/favicons?domain=render.com&sz=128","contributors":[],"content":"<p>Render simplifies backend and full-stack deployments with automatic scaling and managed infrastructure.</p>\n","full_path":"projects/render.html"},{"title":"Replit","slug":"replit","link":"https://replit.com","description":"An online IDE and cloud development environment for building and deploying applications.","tags":["ide","cloud-dev","collaboration"],"logo":"https://www.google.com/s2/favicons?domain=replit.com&sz=128","contributors":[],"content":"<p>Replit allows developers to code, collaborate, and deploy directly from the browser without local setup.</p>\n","full_path":"projects/replit.html"},{"title":"Temp Mail","slug":"temp-mail","link":"https://temp-mail.org","description":"A disposable email service for quick sign-ups and privacy protection.","tags":["privacy","email","utilities"],"logo":"https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128","contributors":[],"content":"<p>Temp Mail provides temporary email addresses to avoid spam and protect personal inboxes.</p>\n","full_path":"projects/temp-mail.html"},{"title":"Vercel","slug":"vercel","link":"https://vercel.com","description":"A frontend cloud platform for building, deploying, and scaling modern web applications.","tags":["hosting","frontend","deployment"],"logo":"https://www.google.com/s2/favicons?domain=vercel.com&sz=128","contributors":[],"content":"<p>Vercel enables seamless deployment of React, Next.js, and static sites with global edge infrastructure.</p>\n","full_path":"projects/vercel.html"},{"title":"Yupp AI","slug":"yupp-ai","link":"https://yupp.ai","description":"A unified interface to compare and use multiple AI models in one place.","tags":["ai","productivity","llm"],"logo":"https://www.google.com/s2/favicons?domain=yupp.ai&sz=128","contributors":[],"content":"<p>Yupp AI allows users to test prompts across different AI models and evaluate outputs side by side.</p>\n","full_path":"projects/yupp-ai.html"}];
+      window.LEADERBOARD = [{"login":"ghostshanky","avatar_url":"https://avatars.githubusercontent.com/u/186178187?v=4","html_url":"https://github.com/ghostshanky","count":1,"merged_dates":["2025-09-27T15:57:30Z"]}];
+    </script>
+  </body>
 
 </html>
