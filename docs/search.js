@@ -42,6 +42,15 @@ async function initApp() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(() => heroInput.focus(), 500);
     });
+
+    // Check URL for search trigger (from other pages)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('search') === 'true') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => heroInput.focus(), 500);
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   }
 
   // Load Data from Global Injection (Fast & Reliable)

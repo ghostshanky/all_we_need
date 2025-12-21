@@ -36,6 +36,8 @@
         }
     </script>
 
+    <!-- Custom Hamburger Menu CSS -->
+
     <!-- GSAP & Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -51,37 +53,106 @@
 <body class="bg-neutral-950 text-neutral-100 antialiased">
     <div class="noise-overlay"></div>
 
-    <header id="header" class="fixed top-0 w-full z-50 py-6 bg-neutral-950/10 backdrop-blur-md border-b border-white/5 transition-all
-    duration-500"
+    <header id="header"
+        class="fixed top-0 w-full z-50 py-6 bg-neutral-950/10 backdrop-blur-md border-b border-white/5 transition-all duration-500"
         data-scroll-active-class="bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-4">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <div class="font-semibold text-lg tracking-tight font-mono cursor-pointer" onclick="window.scrollTo(0,0)">
+            <a href="index.html"
+                class="font-semibold text-lg tracking-tight font-mono cursor-pointer hover:text-white transition-colors">
                 AWN_
-            </div>
+            </a>
 
+            <!-- Desktop Nav (Restored to Center) -->
             <nav
-                class="flex gap-6 overflow-x-auto md:overflow-visible items-center text-xs font-mono uppercase tracking-widest text-neutral-400 no-scrollbar pr-4 md:pr-0">
-                <a href="index.html" class="hover:text-white transition-colors duration-300 shrink-0">Home</a>
-                <a href="projects/index.html"
-                    class="hover:text-white transition-colors duration-300 shrink-0">Projects</a>
-                <a href="leaderboard.html"
-                    class="hover:text-white transition-colors duration-300 shrink-0">Leaderboard</a>
-                <a href="about.html" class="hover:text-white transition-colors duration-300 shrink-0">About</a>
+                class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400 absolute left-1/2 -translate-x-1/2">
+                <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
+                <a href="projects/index.html" class="hover:text-white transition-colors duration-300">Projects</a>
+                <a href="leaderboard.html" class="hover:text-white transition-colors duration-300">Leaderboard</a>
+                <a href="about.html" class="hover:text-white transition-colors duration-300">About</a>
                 <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
-                    class="hover:text-white transition-colors duration-300 shrink-0">GitHub</a>
+                    class="hover:text-white transition-colors duration-300">GitHub</a>
             </nav>
 
-            <button id="headerSearchBtn"
-                class="opacity-0 invisible w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md"
-                aria-label="Search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-            </button>
+            <div class="flex items-center gap-4">
+                <button id="headerSearchBtn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md cursor-pointer"
+                    aria-label="Search" onclick="window.location.href='index.html?search=true'">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button (Wrapper z-50) -->
+                <button id="mobileMenuBtn"
+                    class="md:hidden relative z-[60] w-10 h-10 flex flex-col justify-center items-center gap-1.5 group">
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Backdrop (Click to close) -->
+    <div id="mobileBackdrop"
+        class="fixed inset-0 bg-black/10 backdrop-blur-sm z-[40] opacity-0 invisible transition-all duration-300 md:hidden">
+    </div>
+
+    <!-- Mobile Menu Drawer (Right Side, Partial Width) -->
+    <div id="mobileDrawer"
+        class="fixed top-0 right-0 w-[75vw] max-w-xs h-full bg-neutral-900/90 backdrop-blur-md z-[45] transform translate-x-full transition-transform duration-300 ease-out md:hidden flex flex-col pt-32 px-8 border-l border-white/5 shadow-2xl">
+        <nav class="flex flex-col space-y-8 text-left">
+            <a href="index.html"
+                class="mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide">Home</a>
+            <a href="projects/index.html"
+                class="mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide">Projects</a>
+            <a href="leaderboard.html"
+                class="mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide">Leaderboard</a>
+            <a href="about.html"
+                class="mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide">About</a>
+            <div class="h-px w-full bg-white/10 my-4"></div>
+            <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
+                class="mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide flex items-center gap-2">
+                GitHub <span>↗</span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        const btn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        const backdrop = document.getElementById('mobileBackdrop');
+        const spans = btn.querySelectorAll('span');
+        let isOpen = false;
+
+        function toggleMenu() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                // Open Drawer
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'invisible');
+
+                // Animate to Cross (3 Lines)
+                spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                // Close Drawer
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'invisible');
+
+                // Revert Icon
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = '';
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+        backdrop.addEventListener('click', toggleMenu);
+    </script>
 
     <!-- Layer 2-5: Cinematic BG (Fullscreen Fixed) -->
     <div class="cinematic-bg fixed top-0 left-0 w-full h-full -z-10">

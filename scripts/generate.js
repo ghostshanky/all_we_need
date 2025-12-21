@@ -401,28 +401,62 @@ async function build() {
   indexHtml = indexHtml.replace('</body>', `${dataScript}</body>`);
 
   // HIGHLIGHT ACTIVE LINK: HOME
-  // Note: We use a specific regex to ensure we target the exact link class start
-  const baseLinkClass = 'hover:text-white transition-colors duration-300 shrink-0';
-  const activeLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300 shrink-0';
+  const baseLinkClass = 'hover:text-white transition-colors duration-300';
+  const activeLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300';
 
-  // Create a clean copy for Projects BEFORE modifying indexHtml with Home highlight? 
-  // actually, let's just reverse it later, it's safer than deep cloning strings if not needed.
-  let projectsIndexHtml = indexHtml; // Current state: No highlights
+  // Mobile Classes (Updated for "Solid Dark" Menu)
+  // Mobile Classes (Updated for "Inspired" Menu - Targeting Inner Span)
+  // Mobile Classes (Updated for "Inspired V2" Menu - Targeting Inner Span)
+  // Mobile Classes (Updated for "Right Drawer" Menu)
+  const mobileBaseClass = 'mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide';
+  const mobileActiveClass = 'mobile-link text-xl font-mono text-white transition-colors tracking-wide';
 
-  // Now Highlight HOME in the main IndexHTML
-  indexHtml = indexHtml.replace(`href="index.html" class="${baseLinkClass}"`, `href="index.html" class="${activeLinkClass}"`);
-
+  // WRITE INDEX.HTML
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
 
-
   // -------------------------------------------------------------------------
-  // 5. Generate Projects Index (projects/index.html) - ALL TAGS VISIBLE
+  // 5. Generate Projects Index (projects/index.html) - CLEAN REBUILD
   // -------------------------------------------------------------------------
 
-  // projectsIndexHtml currently has NO highlights (captured before indexHtml modification) matches baseLinkClass
+  // Generate HTML for ALL sections (using allSortedTags) - MUST BE DEFINED BEFORE USAGE
+  const allProjectsGrid = allSortedTags.map(([tag, group]) => `
+         <div class="mb-32 group/section scroll-mt-24" id="${escapeHtml(tag)}">
+             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
+                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
+                     // ${escapeHtml(tag)}
+                 </h3>
+                 <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">${group.length} items</span>
+             </div>
+             
+              <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-${tag}">
+              ${group.map(p => `
+              <a href="${p.full_path.replace('projects/', '')}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
+                 <div class="flex justify-between items-start mb-6">
+                      <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                 </div>
+                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
+                 <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
+                 
+                 <div class="flex items-center justify-between border-t border-white/5 pt-4">
+                     <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
+                     <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                          ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
+                     </div>
+                 </div>
+              </a>
+              `).join('')}
+              </div>
+          </div>
+   `).join('');
 
-  // Highlight PROJECTS
-  projectsIndexHtml = projectsIndexHtml.replace(`href="projects/index.html" class="${baseLinkClass}"`, `href="projects/index.html" class="${activeLinkClass}"`);
+  // Use Leaderboard Template as the base (Matches User Request for consistent Header/Background)
+  let projectsTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'leaderboard.html'), 'utf8');
+  let projectsIndexHtml = projectsTemplate;
+
+  projectsIndexHtml = projectsIndexHtml
+    .replace('<title>Leaderboard — All We Need</title>', '<title>Projects — All We Need</title>')
+    .replace('Leaderboard — All We Need', 'Projects — All We Need');
 
   // Fix Relative Paths for Subdirectory
   projectsIndexHtml = projectsIndexHtml
@@ -431,14 +465,59 @@ async function build() {
     .replace(/src="js\/animations.js"/g, 'src="../js/animations.js"')
     .replace(/href="index.html"/g, 'href="../index.html"')
     .replace(/href="projects\/index.html"/g, 'href="index.html"')
-    .replace(/href="projects\/index.html"/g, 'href="index.html"') // Duplicate cleanup
     .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
     .replace(/href="about.html"/g, 'href="../about.html"')
-    .replace(/href="projects\//g, 'href="') // Fix project links
     .replace(/src="logo.png"/g, 'src="../logo.png"');
 
-  // Change Title
+  // Highlight PROJECTS (Desktop) & Mobile
+  // Since we use LEADERBOARD base, it has "Leaderboard" active. We must unset it and set "Projects".
+  // Note: "Projects" link now points to "index.html" (as fixed above: projects/index.html -> index.html).
+
+  projectsIndexHtml = projectsIndexHtml.replace(`${activeLinkClass}">Leaderboard`, `${baseLinkClass}">Leaderboard`); // Unset Leaderboard Desktop
+  projectsIndexHtml = projectsIndexHtml.replace(`${mobileActiveClass}">Leaderboard`, `${mobileBaseClass}">Leaderboard`); // Unset Leaderboard Mobile
+
+  // Set Projects Active (Desktop)
+  projectsIndexHtml = projectsIndexHtml.replace(`href="index.html" class="${baseLinkClass}">Projects`, `href="index.html" class="${activeLinkClass}">Projects`);
+  // Set Projects Active (Mobile)
+  projectsIndexHtml = projectsIndexHtml.replace(`href="index.html" class="${mobileBaseClass}">Projects`, `href="index.html" class="${mobileActiveClass}">Projects`);
+
+  // INJECT GLOBAL VIDEO (Same as Leaderboard, already present).
+  // Ensure Opacity is 1.0 (Leaderboard might have it lower).
+  projectsIndexHtml = projectsIndexHtml.replace('data-opacity="0.8"', 'style="opacity: 1 !important;"');
+
+
+  // REPLACE MAIN CONTENT
+  // Leaderboard template has <main ...> ... </main>
+  // We replace it with the Projects Header + Grid.
+
+  const projectsMainHtml = `
+    <main class="max-w-7xl mx-auto px-6 pt-40 pb-20 min-h-screen animate-fade-in relative z-10">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tightest mb-4">Projects</h1>
+            <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest">Curated Engineering Excellence</p>
+        </div>
+        
+        <div class="space-y-20">
+            ${allProjectsGrid}
+        </div>
+    </main>
+  `;
+
+  projectsIndexHtml = projectsIndexHtml.replace(/<main[\s\S]*?<\/main>/, projectsMainHtml);
+
+  ensureDir(path.join(OUT_DIR, 'projects'));
+  fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);
+
+
+  // -------------------------------------------------------------------------
+  // 6. Generate About Page
+  // -------------------------------------------------------------------------
   projectsIndexHtml = projectsIndexHtml.replace('<title>All We Need — curated for devs</title>', '<title>Projects — All We Need</title>');
+
+  // STRIP HOME SECTIONS (Hero, Stats, Narrative, Weekly Contributors)
+
+
+
 
   // -------------------------------------------------------------------------
   // 6. Generate About Page (Dynamic Grid)
@@ -465,93 +544,8 @@ async function build() {
 
   // Highlight ABOUT
   aboutHtml = aboutHtml.replace(`href="about.html" class="${baseLinkClass}"`, `href="about.html" class="${activeLinkClass}"`);
+  aboutHtml = aboutHtml.replace(`href="about.html" class="${mobileBaseClass}"`, `href="about.html" class="${mobileActiveClass}"`);
   fs.writeFileSync(path.join(OUT_DIR, 'about.html'), aboutHtml);
-
-  // Generate HTML for ALL sections (using allSortedTags)
-  const allProjectsGrid = allSortedTags.map(([tag, group]) => `
-         <div class="mb-32 group/section scroll-mt-24" id="${escapeHtml(tag)}">
-            <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
-                <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // ${escapeHtml(tag)}
-                </h3>
-                <span class="text-xs font-mono text-neutral-600 bg-neutral-900 px-3 py-1 rounded-full">${group.length} items</span>
-            </div>
-            
-             <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 relative" id="scroll-${tag}">
-             ${group.map(p => `
-             <a href="${p.full_path.replace('projects/', '')}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
-                <div class="flex justify-between items-start mb-6">
-                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
-                     <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2 h-10">${escapeHtml(p.description)}</p>
-                
-                <div class="flex items-center justify-between border-t border-white/5 pt-4">
-                    <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
-                    <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
-                    </div>
-                </div>
-             </a>
-             `).join('')}
-             </div>
-         </div>
-  `).join('');
-
-  // Replace Hero
-  // Inject Fullscreen Background (Leaderboard Style)
-  // Inject Fullscreen Background (Leaderboard Style)
-  const fullscreenBg = `
-    <!-- Layer 2-5: Cinematic BG (Fullscreen Fixed) -->
-    <div class="cinematic-bg fixed top-0 left-0 w-full h-full z-0">
-        <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
-            class="cinematic-fallback" alt="Background">
-        <!-- Titan Video -->
-        <video class="cinematic-video"
-            src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
-            preload="auto" muted loop playsinline autoplay style="opacity: 1 !important; filter: none !important;"></video>
-        <div class="cinematic-overlay"></div>
-        <div class="absolute inset-0 bg-neutral-950/80"></div>
-    </div>
-  `;
-  // Insert after body tag (approximate)
-  if (projectsIndexHtml.includes('<div class="noise-overlay"></div>')) {
-    projectsIndexHtml = projectsIndexHtml.replace('<div class="noise-overlay"></div>', '<div class="noise-overlay"></div>' + fullscreenBg);
-  } else {
-    projectsIndexHtml = projectsIndexHtml.replace('<body class="bg-neutral-950 text-neutral-100 antialiased">', '<body class="bg-neutral-950 text-neutral-100 antialiased">' + fullscreenBg);
-  }
-
-  // Ensure Body/Main content sits ABOVE the video
-  projectsIndexHtml = projectsIndexHtml.replace('<main', '<main class="relative z-10"'); // If main exists
-  projectsIndexHtml = projectsIndexHtml.replace('id="projects"', 'id="projects" class="relative z-10"'); // Ensure projects container is above
-  projectsIndexHtml = projectsIndexHtml.replace('<footer class="', '<footer class="relative z-10 '); // Ensure footer is above
-
-  // Replace Hero (Transparent, no video inside)
-  projectsIndexHtml = projectsIndexHtml.replace(/<section id="hero"[\s\S]*?<\/section>/, `
-    <section class="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-32 text-center overflow-hidden min-h-[40vh] flex flex-col justify-center items-center border-b border-white/5 bg-transparent">
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">All Projects</h1>
-        <p class="text-neutral-500 font-mono text-sm uppercase tracking-widest relative z-20">Curated Resources</p>
-    </section>
-  `);
-
-  // Remove Stats & Narrative
-  projectsIndexHtml = projectsIndexHtml.replace(/<section id="stats"[\s\S]*?<\/section>/, '');
-  projectsIndexHtml = projectsIndexHtml.replace(/<section id="narrative"[\s\S]*?<\/section>/, '');
-  projectsIndexHtml = projectsIndexHtml.replace(/<section id="contributors-section"[\s\S]*?<\/section>/, '');
-
-  // Inject Full Grid
-  // Replaces the existing projects section (which only has top 5 or placeholder) with the FULL list
-  projectsIndexHtml = projectsIndexHtml.replace(
-    /<section id="projects"[\s\S]*?<\/section>/,
-    `<section id="projects" class="relative z-10 max-w-7xl mx-auto px-6 py-32 min-h-screen">
-            ${allProjectsGrid}
-        </section>`
-  );
-
-  ensureDir(path.join(OUT_DIR, 'projects'));
-  fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);
-
 
   // 6. Generate Leaderboard HTML
   const leaderboardTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'leaderboard.html'), 'utf8');
@@ -571,9 +565,17 @@ async function build() {
   lbHtml = lbHtml.replace('{{leaderboard_rows}}', lgRows);
 
   // Highlight LEADERBOARD
-  const lbBaseLinkClass = 'hover:text-white transition-colors duration-300 shrink-0';
-  const lbActiveLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300 shrink-0';
+  const lbBaseLinkClass = 'hover:text-white transition-colors duration-300';
+  const lbActiveLinkClass = 'text-white font-bold hover:text-white transition-colors duration-300';
   lbHtml = lbHtml.replace(`href="leaderboard.html" class="${lbBaseLinkClass}"`, `href="leaderboard.html" class="${lbActiveLinkClass}"`);
+
+  // Mobile Highlight (Updated for Solid Dark Menu)
+  // Mobile Highlight (Updated for Inspired Menu)
+  // Mobile Highlight (Updated for Inspired V2 Menu)
+  // Mobile Highlight (Updated for "Right Drawer" Menu)
+  const lbMobileBase = 'mobile-link text-xl font-mono text-neutral-400 hover:text-white transition-colors tracking-wide';
+  const lbMobileActive = 'mobile-link text-xl font-mono text-white transition-colors tracking-wide';
+  lbHtml = lbHtml.replace(`href="leaderboard.html" class="${lbMobileBase}"`, `href="leaderboard.html" class="${lbMobileActive}"`);
 
   lbHtml = lbHtml.replace('{{active_all}}', 'text-white font-bold'); // Default
 
