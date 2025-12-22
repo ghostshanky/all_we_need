@@ -514,8 +514,9 @@ async function build() {
     `src="${newVideoUrl}" autoplay`
   );
 
-  // Ensure Opacity is 1.0 (Leaderboard might have it lower).
-  projectsIndexHtml = projectsIndexHtml.replace('data-opacity="0.8"', 'style="opacity: 1 !important;"');
+  // Ensure Opacity is lower to make it darker (User Request)
+  // Was 1.0, changing to 0.4 to match "other videos" / darker aesthetic
+  projectsIndexHtml = projectsIndexHtml.replace('data-opacity="0.8"', 'style="opacity: 0.4 !important;"');
 
 
   // REPLACE MAIN CONTENT
