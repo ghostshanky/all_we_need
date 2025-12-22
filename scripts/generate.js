@@ -155,6 +155,7 @@ async function build() {
   try { fs.copyFileSync(path.join(TEMPLATES_DIR, 'animations.js'), path.join(OUT_DIR, 'js', 'animations.js')); } catch (e) { }
 
   try { fs.copyFileSync(path.join(REPO_ROOT, 'logo.png'), path.join(OUT_DIR, 'logo.png')); } catch (e) { }
+  try { fs.copyFileSync(path.join(REPO_ROOT, 'favicon.png'), path.join(OUT_DIR, 'favicon.png')); } catch (e) { }
 
   // 3. Process Projects
   const projectFiles = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.md'));
@@ -467,7 +468,8 @@ async function build() {
     .replace(/href="projects\/index.html"/g, 'href="index.html"')
     .replace(/href="leaderboard.html"/g, 'href="../leaderboard.html"')
     .replace(/href="about.html"/g, 'href="../about.html"')
-    .replace(/src="logo.png"/g, 'src="../logo.png"');
+    .replace(/src="logo.png"/g, 'src="../logo.png"')
+    .replace(/href="favicon.png"/g, 'href="../favicon.png"');
 
   // Highlight PROJECTS (Desktop) & Mobile
   // Since we use LEADERBOARD base, it has "Leaderboard" active. We must unset it and set "Projects".
