@@ -504,12 +504,13 @@ async function build() {
   projectsIndexHtml = projectsIndexHtml.replace(`href="index.html" class="${mobileBaseClass}">Projects`, `href="index.html" class="${mobileActiveClass}">Projects`);
 
   // INJECT GLOBAL VIDEO
-  // Swap to Titan 1 Video (Home Hero) for freshness
-  const newVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/1125882576/rendition/1440p/file.mp4?loc=external&signature=a0067ca78212d9ae569da99e8676f4bac2702af80336b7cdf8cef7ce3ef04388";
+  // Uses user-provided CloudFront Signed URL (Note: This will expire!)
+  const newVideoUrl = "https://d3v55qvjb2v012.cloudfront.net/C0IV/2025/12/22/13/00/cTl3IcnYKZI/sc.mp4?&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kM3Y1NXF2amIydjAxMi5jbG91ZGZyb250Lm5ldC9DMElWLzIwMjUvMTIvMjIvMTMvMDAvY1RsM0ljbllLWkkvc2MubXA0PyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NjQwOTIxNH19fV19&Signature=QebcC3Ifq33OKeQXLgEDb1ttjVyzV3nuw6S~tO0jG4SfGBJFvh5jxXJDWy8t9IKHA~urh~P7LfwUtrM1USfo-RQt76LMsKkAZkjwfV3rlEt4ySsjgtRLA7Wb3YAbPo9HlKmY3Z~6x6bHUHI0QLw64iz1hd1QUWwOPaZAh79Uim0_&Key-Pair-Id=APKAI4E2RN57D46ONMEQ";
 
   // Replace the src and ensure autoplay is present
+  // Matches previous injection or the original Vimeo link
   projectsIndexHtml = projectsIndexHtml.replace(
-    /src="https:\/\/player\.vimeo\.com\/progressive_redirect\/playback\/1125882288\/rendition\/1440p\/file\.mp4\?loc=external&signature=c600bbf2ed1a704161ac1e7271164262b54c67054f355b2f4cd0d6834d8c1356"/,
+    /src="https:\/\/player\.vimeo\.com\/.*?"(?: autoplay)?/,
     `src="${newVideoUrl}" autoplay`
   );
 
@@ -617,9 +618,11 @@ async function build() {
   fs.writeFileSync(path.join(OUT_DIR, 'leaderboard.json'), JSON.stringify(leaderboard, null, 2));
 
   // 7. Generate Sitemap
+  // 7. Generate Sitemap
   console.log("Generating Sitemap...");
   const baseUrl = "https://allweneed.pages.dev";
-  const today = new Date().toISOString();
+  // Use YYYY-MM-DD format for wider compatibility
+  const today = new Date().toISOString().split('T')[0];
 
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -629,7 +632,7 @@ async function build() {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${baseUrl}/projects/index.html</loc>
+    <loc>${baseUrl}/projects/</loc>
     <lastmod>${today}</lastmod>
     <priority>0.9</priority>
   </url>
@@ -646,6 +649,9 @@ async function build() {
 
   projects.forEach(p => {
     // p.full_path is 'projects/slug.html'
+    // We keep extension for files, but if you want clean URLs for projects, verify server support.
+    // GitHub Pages / Cloudflare Pages usually support clean URLs if .html exists.
+    // Let's keep .html for leaf pages to be safe, but root/index should be clean.
     sitemap += `
   <url>
     <loc>${baseUrl}/${p.full_path}</loc>
