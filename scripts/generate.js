@@ -240,6 +240,26 @@ async function build() {
       : '';
     pHtml = pHtml.replace('{{repo_button}}', repoBtn);
 
+    // SEO Injection
+    const canonicalUrl = `https://allweneed.pages.dev/projects/${slug}.html`;
+    pHtml = pHtml.replace('{{canonical_url}}', canonicalUrl);
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": project.title,
+      "description": project.description,
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": project.link,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    };
+    pHtml = pHtml.replace('{{structured_data}}', JSON.stringify(structuredData));
+
     fs.writeFileSync(path.join(OUT_DIR, 'projects', `${slug}.html`), pHtml);
   }
 
@@ -586,6 +606,51 @@ async function build() {
   // 6. JSON Outputs
   fs.writeFileSync(path.join(OUT_DIR, 'projects.json'), JSON.stringify(projects, null, 2));
   fs.writeFileSync(path.join(OUT_DIR, 'leaderboard.json'), JSON.stringify(leaderboard, null, 2));
+
+  // 7. Generate Sitemap
+  console.log("Generating Sitemap...");
+  const baseUrl = "https://allweneed.pages.dev";
+  const today = new Date().toISOString();
+
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${today}</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/projects/index.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/leaderboard.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/about.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.8</priority>
+  </url>`;
+
+  projects.forEach(p => {
+    // p.full_path is 'projects/slug.html'
+    sitemap += `
+  <url>
+    <loc>${baseUrl}/${p.full_path}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.7</priority>
+  </url>`;
+  });
+
+  sitemap += `
+</urlset>`;
+
+  fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), sitemap);
+  // Also copy robots.txt to output
+  try { fs.copyFileSync(path.join(REPO_ROOT, 'robots.txt'), path.join(OUT_DIR, 'robots.txt')); } catch (e) { console.warn("robots.txt not found"); }
 
   console.log("Build Complete!");
 }
