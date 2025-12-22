@@ -246,17 +246,48 @@ async function build() {
 
     const structuredData = {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": project.title,
-      "description": project.description,
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web",
-      "url": project.link,
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": project.title,
+          "description": project.description,
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web",
+          "url": project.link,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Person",
+            "name": project.contributors[0] ? project.contributors[0].login : "Community"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://allweneed.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Projects",
+              "item": "https://allweneed.pages.dev/projects/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": project.title,
+              "item": canonicalUrl
+            }
+          ]
+        }
+      ]
     };
     pHtml = pHtml.replace('{{structured_data}}', JSON.stringify(structuredData));
 
@@ -318,7 +349,7 @@ async function build() {
              <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
                      <!-- Randomly beautiful favicon logic: Just ensure it pops -->
-                     <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                     <img src="${p.logo}" alt="${escapeHtml(p.title)} Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
                 <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
@@ -327,7 +358,7 @@ async function build() {
                 <div class="flex items-center justify-between border-t border-white/5 pt-4">
                     <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
                     <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                         ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
+                         ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" alt="${c.login} Avatar" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
                     </div>
                 </div>
              </a>
@@ -369,6 +400,7 @@ async function build() {
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           ${group.slice(0, 8).map(p => `
                               <img src="${p.logo}" 
+                                   alt="${escapeHtml(p.title)} Logo"
                                    class="w-8 h-8 rounded-md bg-neutral-900 object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-300"
                                    title="${escapeHtml(p.title)}">
                           `).join('')}
@@ -453,7 +485,7 @@ async function build() {
               ${group.map(p => `
               <a href="${p.full_path.replace('projects/', '')}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                  <div class="flex justify-between items-start mb-6">
-                      <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                      <img src="${p.logo}" alt="${escapeHtml(p.title)} Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                       <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                  </div>
                  <h4 class="text-2xl font-bold mb-2 group-hover:text-white transition-colors tracking-tight">${escapeHtml(p.title)}</h4>
@@ -462,7 +494,7 @@ async function build() {
                  <div class="flex items-center justify-between border-t border-white/5 pt-4">
                      <span class="text-xs font-mono text-neutral-600">By ${p.contributors[0] ? p.contributors[0].login : 'Community'}</span>
                      <div class="flex -space-x-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                          ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
+                          ${p.contributors.slice(0, 3).map(c => `<img src="${c.avatar_url}" alt="${c.login} Avatar" class="w-6 h-6 rounded-full border border-neutral-900">`).join('')}
                      </div>
                  </div>
               </a>
