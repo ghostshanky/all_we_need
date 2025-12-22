@@ -503,7 +503,16 @@ async function build() {
   // Set Projects Active (Mobile)
   projectsIndexHtml = projectsIndexHtml.replace(`href="index.html" class="${mobileBaseClass}">Projects`, `href="index.html" class="${mobileActiveClass}">Projects`);
 
-  // INJECT GLOBAL VIDEO (Same as Leaderboard, already present).
+  // INJECT GLOBAL VIDEO
+  // Swap to Titan 1 Video (Home Hero) for freshness
+  const newVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/1125882576/rendition/1440p/file.mp4?loc=external&signature=a0067ca78212d9ae569da99e8676f4bac2702af80336b7cdf8cef7ce3ef04388";
+
+  // Replace the src and ensure autoplay is present
+  projectsIndexHtml = projectsIndexHtml.replace(
+    /src="https:\/\/player\.vimeo\.com\/progressive_redirect\/playback\/1125882288\/rendition\/1440p\/file\.mp4\?loc=external&signature=c600bbf2ed1a704161ac1e7271164262b54c67054f355b2f4cd0d6834d8c1356"/,
+    `src="${newVideoUrl}" autoplay`
+  );
+
   // Ensure Opacity is 1.0 (Leaderboard might have it lower).
   projectsIndexHtml = projectsIndexHtml.replace('data-opacity="0.8"', 'style="opacity: 1 !important;"');
 
