@@ -156,6 +156,7 @@ async function build() {
 
   try { fs.copyFileSync(path.join(REPO_ROOT, 'logo.png'), path.join(OUT_DIR, 'logo.png')); } catch (e) { }
   try { fs.copyFileSync(path.join(REPO_ROOT, 'favicon.png'), path.join(OUT_DIR, 'favicon.png')); } catch (e) { }
+  try { fs.copyFileSync(path.join(TEMPLATES_DIR, '404.html'), path.join(OUT_DIR, '404.html')); } catch (e) { }
 
   // 3. Process Projects
   const projectFiles = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.md'));

@@ -124,6 +124,11 @@ function initSearch() {
 
     const results = fuse.search(query).map(r => r.item);
     renderResults(results, projectsContainer);
+
+    // Auto-scroll to results for better visibility
+    setTimeout(() => {
+      projectsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   });
 }
 

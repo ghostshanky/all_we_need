@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found — All We Need</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neutral: {
+                            950: '#01010a',
+                            900: '#030312',
+                            800: '#15152a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body
+    class="bg-neutral-950 text-white min-h-screen flex items-center justify-center text-center p-6 relative overflow-hidden">
+
+
+
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,#1a1a2e_0%,#01010a_100%)] -z-10"></div>
+
+    <div class="relative z-20 max-w-md w-full">
+        <h1 class="text-9xl font-bold font-mono text-neutral-800 mb-4 select-none">404</h1>
+
+        <h2 class="text-2xl font-semibold mb-4 text-white">Lost in the Void?</h2>
+        <p class="text-neutral-400 mb-8 leading-relaxed">
+            The page you are looking for has been moved, deleted, or possibly never existed.
+        </p>
+
+        <a href="/"
+            class="inline-flex items-center justify-center px-8 py-3 bg-white text-neutral-950 font-mono text-sm font-medium rounded-lg hover:bg-neutral-200 transition-colors group">
+            <span class="mr-2">&larr;</span> Return Home
+        </a>
+    </div>
+
+</body>
+
+</html>
