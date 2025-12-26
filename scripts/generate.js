@@ -164,6 +164,17 @@ async function build() {
   try { fs.copyFileSync(path.join(REPO_ROOT, 'favicon.png'), path.join(OUT_DIR, 'favicon.png')); } catch (e) { }
   try { fs.copyFileSync(path.join(TEMPLATES_DIR, '404.html'), path.join(OUT_DIR, '404.html')); } catch (e) { }
 
+  // Copy Google Verification HTML files
+  const rootFiles = fs.readdirSync(REPO_ROOT);
+  rootFiles.forEach(file => {
+    if (file.startsWith('google') && file.endsWith('.html')) {
+      try {
+        fs.copyFileSync(path.join(REPO_ROOT, file), path.join(OUT_DIR, file));
+        console.log(`Copied verification file: ${file}`);
+      } catch (e) { console.warn(`Failed to copy ${file}`); }
+    }
+  });
+
   // 3. Process Projects
   const projectFiles = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.md'));
   const projects = [];
