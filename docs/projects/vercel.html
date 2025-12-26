@@ -13,13 +13,19 @@
     <link rel="canonical" href="https://allweneed.pages.dev/projects/vercel.html" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Vercel","description":"A frontend cloud platform for building, deploying, and scaling modern web applications.","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://vercel.com","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Community"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://allweneed.pages.dev/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://allweneed.pages.dev/projects/"},{"@type":"ListItem","position":3,"name":"Vercel","item":"https://allweneed.pages.dev/projects/vercel.html"}]}]}</script>
 
-    <!-- Open Graph / Facebook -->
+    
     <meta property="og:type" content="article" />
 
-    <!-- Fonts & Tailwind -->
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://player.vimeo.com">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
@@ -33,10 +39,10 @@
         }
     </script>
 
-    <!-- GSAP & Lenis -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <link rel="stylesheet" href="../styles.css">
     <script defer src="../search.js"></script>
@@ -44,7 +50,7 @@
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
-    <!-- Cinematic Background (Titan 5 - Projects Theme) -->
+    
     <div class="cinematic-bg fixed top-0 left-0 w-full h-full -z-10">
         <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
             class="cinematic-fallback" alt="Future City Drone View Background">
@@ -54,7 +60,7 @@
         <div class="cinematic-overlay"></div>
     </div>
 
-    <!-- HEADER -->
+    
     <header id="header"
         class="fixed top-0 w-full z-50 py-6 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-500"
         data-scroll-active-class="bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-4">
@@ -73,14 +79,14 @@
     </header>
 
     <main class="min-h-screen pt-40 pb-20">
-        <!-- Project Header -->
+        
         <div class="max-w-4xl mx-auto px-6 mb-20 relative">
             <a href="../index.html"
                 class="inline-block text-xs font-mono text-neutral-500 mb-8 hover:text-white transition-colors">←
                 RETURN</a>
 
             <div class="flex flex-col md:flex-row gap-8 items-start animate-fade-in">
-                <!-- Logo with Glow -->
+                
                 <div class="relative group">
                     <div
                         class="absolute inset-0 bg-white/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -103,7 +109,7 @@
             </div>
         </div>
 
-        <!-- Metadata Grid -->
+        
         <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
             <div class="glass-card p-6 rounded-2xl">
                 <h3 class="text-xs uppercase tracking-widest text-neutral-500 mb-4 font-mono">Tags</h3>
@@ -119,7 +125,7 @@
             </div>
         </div>
 
-        <!-- Readme Content -->
+        
         <article
             class="max-w-4xl mx-auto px-6 prose prose-invert prose-lg prose-neutral prose-headings:font-bold prose-headings:tracking-tight prose-a:text-white prose-a:no-underline hover:prose-a:underline prose-pre:bg-neutral-900 prose-pre:border prose-pre:border-neutral-800">
             <p>Vercel enables seamless deployment of React, Next.js, and static sites with global edge infrastructure.</p>

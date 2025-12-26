@@ -3,5 +3,4 @@ Allow: /
 
 Sitemap: https://allweneed.pages.dev/sitemap.xml
 
-# Optimize crawling
-Crawl-delay: 1
+

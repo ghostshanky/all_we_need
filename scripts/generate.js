@@ -41,6 +41,12 @@ function escapeHtml(str) {
   return String(str || '').replace(/[&<>"']/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": "&#39;" }[s]));
 }
 
+function minifyHtml(html) {
+  if (!html) return html;
+  // Remove comments but keep google verification if present (just in case)
+  return html.replace(/<!--(?![\s\S]*?google-site-verification)[\s\S]*?-->/g, '');
+}
+
 function copyRecursiveSync(src, dest) {
   const exists = fs.existsSync(src);
   const stats = exists && fs.statSync(src);
@@ -292,7 +298,7 @@ async function build() {
     };
     pHtml = pHtml.replace('{{structured_data}}', JSON.stringify(structuredData));
 
-    fs.writeFileSync(path.join(OUT_DIR, 'projects', `${slug}.html`), pHtml);
+    fs.writeFileSync(path.join(OUT_DIR, 'projects', `${slug}.html`), minifyHtml(pHtml));
   }
 
   // 4. Generate Index HTML
@@ -466,7 +472,7 @@ async function build() {
   const mobileActiveClass = 'mobile-link text-xl font-mono text-white transition-colors tracking-wide';
 
   // WRITE INDEX.HTML
-  fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml);
+  fs.writeFileSync(path.join(OUT_DIR, 'index.html'), minifyHtml(indexHtml));
 
   // -------------------------------------------------------------------------
   // 5. Generate Projects Index (projects/index.html) - CLEAN REBUILD
@@ -572,7 +578,7 @@ async function build() {
   projectsIndexHtml = projectsIndexHtml.replace(/<main[\s\S]*?<\/main>/, projectsMainHtml);
 
   ensureDir(path.join(OUT_DIR, 'projects'));
-  fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), projectsIndexHtml);
+  fs.writeFileSync(path.join(OUT_DIR, 'projects', 'index.html'), minifyHtml(projectsIndexHtml));
 
 
   // -------------------------------------------------------------------------
@@ -611,7 +617,7 @@ async function build() {
   // Highlight ABOUT
   aboutHtml = aboutHtml.replace(`href="about.html" class="${baseLinkClass}"`, `href="about.html" class="${activeLinkClass}"`);
   aboutHtml = aboutHtml.replace(`href="about.html" class="${mobileBaseClass}"`, `href="about.html" class="${mobileActiveClass}"`);
-  fs.writeFileSync(path.join(OUT_DIR, 'about.html'), aboutHtml);
+  fs.writeFileSync(path.join(OUT_DIR, 'about.html'), minifyHtml(aboutHtml));
 
   // 6. Generate Leaderboard HTML
   const leaderboardTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'leaderboard.html'), 'utf8');
@@ -645,7 +651,7 @@ async function build() {
 
   lbHtml = lbHtml.replace('{{active_all}}', 'text-white font-bold'); // Default
 
-  fs.writeFileSync(path.join(OUT_DIR, 'leaderboard.html'), lbHtml);
+  fs.writeFileSync(path.join(OUT_DIR, 'leaderboard.html'), minifyHtml(lbHtml));
 
   // 6. JSON Outputs
   fs.writeFileSync(path.join(OUT_DIR, 'projects.json'), JSON.stringify(projects, null, 2));

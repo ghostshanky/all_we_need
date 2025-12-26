@@ -11,14 +11,19 @@
     <meta name="description" content="About the All We Need community and mission." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind -->
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://player.vimeo.com">
+
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,14 +45,14 @@
         }
     </script>
 
-    <!-- Custom Hamburger Menu CSS -->
+    
 
-    <!-- GSAP & Lenis -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-    <!-- Custom Styles & Scripts -->
+    
     <link rel="stylesheet" href="styles.css">
     <script defer src="search.js"></script>
     <script defer src="background-manager.js"></script>
@@ -66,7 +71,7 @@
                 AWN_
             </a>
 
-            <!-- Desktop Nav (Restored to Center) -->
+            
             <nav
                 class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400 absolute left-1/2 -translate-x-1/2">
                 <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
@@ -88,7 +93,7 @@
                     </svg>
                 </button>
 
-                <!-- Mobile Menu Button (Wrapper z-50) -->
+                
                 <button id="mobileMenuBtn"
                     class="md:hidden relative z-[60] w-10 h-10 flex flex-col justify-center items-center gap-1.5 group">
                     <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
@@ -99,12 +104,12 @@
         </div>
     </header>
 
-    <!-- Mobile Menu Backdrop (Click to close) -->
+    
     <div id="mobileBackdrop"
         class="fixed inset-0 bg-black/10 backdrop-blur-sm z-[40] opacity-0 invisible transition-all duration-300 md:hidden">
     </div>
 
-    <!-- Mobile Menu Drawer (Right Side, Partial Width) -->
+    
     <div id="mobileDrawer"
         class="fixed top-0 right-0 w-[75vw] max-w-xs h-full bg-neutral-900/90 backdrop-blur-md z-[45] transform translate-x-full transition-transform duration-300 ease-out md:hidden flex flex-col pt-32 px-8 border-l border-white/5 shadow-2xl">
         <nav class="flex flex-col space-y-8 text-left">
@@ -158,12 +163,12 @@
         backdrop.addEventListener('click', toggleMenu);
     </script>
 
-    <!-- Video Correction: Remove Overlay if needed or Adjust -->
-    <!-- Layer 2-5: Cinematic BG (Fullscreen Fixed) -->
+    
+    
     <div class="cinematic-bg fixed top-0 left-0 w-full h-full z-0">
         <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
             class="cinematic-fallback" alt="Background">
-        <!-- User Provided Video -->
+        
         <video class="cinematic-video"
             src="https://player.vimeo.com/progressive_redirect/playback/1125885446/rendition/1080p/file.mp4?loc=external&signature=22238edd2077d8462a7c9f385882f85986c705f951e289986fec4a91b282fb17"
             preload="auto" muted loop playsinline autoplay
@@ -171,7 +176,7 @@
     </div>
 
     <main class="max-w-4xl mx-auto px-6 pt-40 pb-20 min-h-screen animate-fade-in relative z-10">
-        <!-- Hero Section -->
+        
         <div class="text-center mb-20">
             <h1
                 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">
@@ -181,7 +186,7 @@
             </p>
         </div>
 
-        <!-- Mission -->
+        
         <div class="prose prose-invert prose-lg mx-auto text-neutral-300 mb-32 text-center md:text-left">
             <p class="text-xl leading-relaxed text-neutral-200">
                 <strong class="text-white">All We Need</strong> is an open-source initiative to curate high-quality
@@ -210,18 +215,18 @@
             </p>
         </div>
 
-        <!-- Community Grid -->
+        
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-2xl font-bold text-white mb-8 tracking-tight">Our Community</h2>
             <div class="flex flex-wrap justify-center gap-2">
-                <!-- Injected Grid -->
+                
                 
     <div class="relative group">
         <a href="https://github.com/ghostshanky" target="_blank">
             <img src="https://avatars.githubusercontent.com/u/186178187?v=4" 
                 class="w-10 h-10 rounded-full border border-neutral-800 grayscale group-hover:grayscale-0 group-hover:border-white transition-all duration-300 transform group-hover:scale-110 cursor-pointer object-cover bg-neutral-900">
         </a>
-        <!-- Tooltip -->
+        
         <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-neutral-900 border border-white/10 rounded-lg text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-20 shadow-xl translate-y-2 group-hover:translate-y-0">
             ghostshanky
         </div>
@@ -234,7 +239,7 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
+    
     <footer class="py-20 border-t border-neutral-900 text-center relative z-10">
         <div class="font-bold text-2xl mb-4 tracking-tight">AWN_</div>
         <div class="flex justify-center gap-6 mb-8 text-neutral-500 text-sm">

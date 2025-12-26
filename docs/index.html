@@ -54,7 +54,7 @@
     }
     </script>
 
-    <!-- Open Graph / Facebook -->
+    
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://allweneed.pages.dev/" />
     <meta property="og:title" content="All We Need — Curated Developer Tools & Resources" />
@@ -62,7 +62,7 @@
         content="All We Need is a premium, community-curated collection of the best developer tools, resources, and hidden gems. Zero spam." />
     <meta property="og:image" content="https://allweneed.pages.dev/logo.png" />
 
-    <!-- Twitter -->
+    
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://allweneed.pages.dev/" />
     <meta property="twitter:title" content="All We Need — Curated Developer Tools & Resources" />
@@ -70,14 +70,21 @@
         content="All We Need is a premium, community-curated collection of the best developer tools, resources, and hidden gems. Zero spam." />
     <meta property="twitter:image" content="https://allweneed.pages.dev/logo.png" />
 
-    <!-- Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind -->
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://player.vimeo.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -99,18 +106,18 @@
         }
     </script>
 
-    <!-- GSAP & Lenis -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-    <!-- Custom Styles & Scripts -->
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
 
-    <!-- Live Background -->
+    
     <div class="live-bg"></div>
 
     <header id="header"
@@ -123,7 +130,7 @@
                 AWN_
             </a>
 
-            <!-- Desktop Nav (Restored to Center) -->
+            
             <nav
                 class="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-neutral-400 absolute left-1/2 -translate-x-1/2">
                 <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
@@ -145,7 +152,7 @@
                     </svg>
                 </button>
 
-                <!-- Mobile Menu Button (Wrapper z-50) -->
+                
                 <button id="mobileMenuBtn"
                     class="md:hidden relative z-[60] w-10 h-10 flex flex-col justify-center items-center gap-1.5 group">
                     <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
@@ -156,12 +163,12 @@
         </div>
     </header>
 
-    <!-- Mobile Menu Backdrop (Click to close) -->
+    
     <div id="mobileBackdrop"
         class="fixed inset-0 bg-black/10 backdrop-blur-sm z-[40] opacity-0 invisible transition-all duration-300 md:hidden">
     </div>
 
-    <!-- Mobile Menu Drawer (Right Side, Partial Width) -->
+    
     <div id="mobileDrawer"
         class="fixed top-0 right-0 w-[75vw] max-w-xs h-full bg-neutral-900/90 backdrop-blur-md z-[45] transform translate-x-full transition-transform duration-300 ease-out md:hidden flex flex-col pt-32 px-8 border-l border-white/5 shadow-2xl">
         <nav class="flex flex-col space-y-8 text-left">
@@ -215,29 +222,29 @@
         backdrop.addEventListener('click', toggleMenu);
     </script>
 
-    <!-- HERO -->
+    
     <section id="hero"
         class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
 
-        <!-- Layer 2-5: Cinematic BG -->
+        
         <div class="cinematic-bg">
-            <!-- Fallback -->
+            
             <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
                 class="cinematic-fallback" alt="Future City Drone View Background">
-            <!-- Titan 1 -->
+            
             <video class="cinematic-video"
                 src="https://player.vimeo.com/progressive_redirect/playback/1125882576/rendition/1440p/file.mp4?loc=external&signature=a0067ca78212d9ae569da99e8676f4bac2702af80336b7cdf8cef7ce3ef04388"
                 preload="metadata" muted loop playsinline data-opacity="1.0"></video>
             <div class="cinematic-overlay" style="opacity: 0.5;"></div>
         </div>
 
-        <!-- Concentric Circles (Restored/Added) -->
+        
         <div class="reactor-ring w-[600px] h-[600px]"></div>
         <div class="reactor-ring w-[900px] h-[900px] opacity-70"></div>
         <div class="reactor-ring w-[1200px] h-[1200px] opacity-40"></div>
         <div class="reactor-ring w-[1500px] h-[1500px] opacity-20"></div>
 
-        <!-- Subtle Gradient Orb -->
+        
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white opacity-[0.03] blur-[120px] rounded-full -z-10 pointer-events-none">
         </div>
@@ -267,13 +274,13 @@
         </div>
     </section>
 
-    <!-- PROOF OF VALUE (Stats) -->
+    
     <section id="stats" class="py-32 border-t border-neutral-900 bg-neutral-950 relative z-10 overflow-hidden">
-        <!-- Layer 2-5: Cinematic BG -->
+        
         <div class="cinematic-bg">
             <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
                 class="cinematic-fallback" alt="Background">
-            <!-- Titan 2 -->
+            
             <video class="cinematic-video"
                 src="https://player.vimeo.com/progressive_redirect/playback/1125885537/rendition/1440p/file.mp4?loc=external&signature=a5520ff66674eb10bf783202d865de09bb8ae399c074133d636c102b19173d59"
                 preload="metadata" muted loop playsinline data-opacity="0.2"></video>
@@ -304,13 +311,13 @@
         </div>
     </section>
 
-    <!-- HOW IT WORKS (Narrative) -->
+    
     <section id="narrative" class="py-32 relative overflow-hidden">
-        <!-- Layer 2-5: Cinematic BG -->
+        
         <div class="cinematic-bg">
             <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
                 class="cinematic-fallback" alt="Background">
-            <!-- Titan 3 -->
+            
             <video class="cinematic-video"
                 src="https://player.vimeo.com/progressive_redirect/playback/1125885446/rendition/1080p/file.mp4?loc=external&signature=22238edd2077d8462a7c9f385882f85986c705f951e289986fec4a91b282fb17"
                 preload="metadata" muted loop playsinline data-opacity="0.8"></video>
@@ -367,14 +374,14 @@
         </div>
     </section>
 
-    <!-- TOP CONTRIBUTORS -->
+    
     <section id="contributors-section"
         class="py-32 border-t border-neutral-900 bg-neutral-950/50 relative overflow-hidden">
-        <!-- Layer 2-5: Cinematic BG -->
+        
         <div class="cinematic-bg">
             <img src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg"
                 class="cinematic-fallback" alt="Background">
-            <!-- Titan 4 -->
+            
             <video class="cinematic-video"
                 src="https://player.vimeo.com/progressive_redirect/playback/1125882288/rendition/1440p/file.mp4?loc=external&signature=c600bbf2ed1a704161ac1e7271164262b54c67054f355b2f4cd0d6834d8c1356"
                 preload="metadata" muted loop playsinline data-opacity="0.8"></video>
@@ -399,7 +406,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS GRID -->
+    
     <section id="projects" class="relative z-10 max-w-7xl mx-auto px-6 py-32 space-y-20 min-h-screen">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Curated Tools</h2>
@@ -412,7 +419,7 @@
                     // ai
                 </h3>
                 
-                <!-- Navigation Arrows -->
+                
                 <div class="flex items-center gap-2">
                     <button onclick="document.getElementById('scroll-ai').scrollBy({left: -350, behavior: 'smooth'})" 
                             class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
@@ -429,7 +436,7 @@
          
              <a href="projects/antigravity-ide.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" alt="Antigravity IDE Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -446,7 +453,7 @@
              
              <a href="projects/design-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" alt="Design Arena Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -463,7 +470,7 @@
              
              <a href="projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" alt="Google AI Studio Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -480,7 +487,7 @@
              
              <a href="projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" alt="LM Arena Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -497,7 +504,7 @@
              
              <a href="projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" alt="Yupp AI Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -518,7 +525,7 @@
                     // llm
                 </h3>
                 
-                <!-- Navigation Arrows -->
+                
                 <div class="flex items-center gap-2">
                     <button onclick="document.getElementById('scroll-llm').scrollBy({left: -350, behavior: 'smooth'})" 
                             class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
@@ -535,7 +542,7 @@
          
              <a href="projects/google-ai-studio.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" alt="Google AI Studio Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -552,7 +559,7 @@
              
              <a href="projects/lm-arena.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" alt="LM Arena Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -569,7 +576,7 @@
              
              <a href="projects/openrouter.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" alt="OpenRouter Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -586,7 +593,7 @@
              
              <a href="projects/yupp-ai.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=yupp.ai&sz=128" alt="Yupp AI Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -607,7 +614,7 @@
                     // hosting
                 </h3>
                 
-                <!-- Navigation Arrows -->
+                
                 <div class="flex items-center gap-2">
                     <button onclick="document.getElementById('scroll-hosting').scrollBy({left: -350, behavior: 'smooth'})" 
                             class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
@@ -624,7 +631,7 @@
          
              <a href="projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" alt="Netlify Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -641,7 +648,7 @@
              
              <a href="projects/render.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=render.com&sz=128" alt="Render Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -658,7 +665,7 @@
              
              <a href="projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" alt="Vercel Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -679,7 +686,7 @@
                     // deployment
                 </h3>
                 
-                <!-- Navigation Arrows -->
+                
                 <div class="flex items-center gap-2">
                     <button onclick="document.getElementById('scroll-deployment').scrollBy({left: -350, behavior: 'smooth'})" 
                             class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
@@ -696,7 +703,7 @@
          
              <a href="projects/netlify.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" alt="Netlify Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -713,7 +720,7 @@
              
              <a href="projects/railway.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" alt="Railway Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -730,7 +737,7 @@
              
              <a href="projects/vercel.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" alt="Vercel Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -751,7 +758,7 @@
                     // ide
                 </h3>
                 
-                <!-- Navigation Arrows -->
+                
                 <div class="flex items-center gap-2">
                     <button onclick="document.getElementById('scroll-ide').scrollBy({left: -350, behavior: 'smooth'})" 
                             class="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-800 text-neutral-500 hover:text-white hover:border-white hover:bg-white/10 transition-all active:scale-95">
@@ -768,7 +775,7 @@
          
              <a href="projects/antigravity-ide.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" alt="Antigravity IDE Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -785,7 +792,7 @@
              
              <a href="projects/replit.html" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500 w-[300px] md:w-[350px] shrink-0 snap-center h-full flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-6">
-                     <!-- Randomly beautiful favicon logic: Just ensure it pops -->
+                     
                      <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" alt="Replit Logo" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                      <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
@@ -825,7 +832,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -850,7 +857,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -875,7 +882,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -900,7 +907,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -925,7 +932,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" 
@@ -945,7 +952,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -965,7 +972,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -985,7 +992,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" 
@@ -1005,7 +1012,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" 
@@ -1025,7 +1032,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" 
@@ -1045,7 +1052,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1065,7 +1072,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1085,7 +1092,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1105,7 +1112,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1125,7 +1132,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1145,7 +1152,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1165,7 +1172,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -1185,7 +1192,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -1205,7 +1212,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" 
@@ -1225,7 +1232,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -1250,7 +1257,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -1275,7 +1282,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -1300,7 +1307,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -1325,7 +1332,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" 
@@ -1345,7 +1352,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -1365,7 +1372,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -1385,7 +1392,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" 
@@ -1405,7 +1412,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" 
@@ -1425,7 +1432,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" 
@@ -1445,7 +1452,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1465,7 +1472,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1485,7 +1492,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1505,7 +1512,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1525,7 +1532,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1545,7 +1552,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1565,7 +1572,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -1585,7 +1592,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -1605,7 +1612,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" 
@@ -1625,7 +1632,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -1650,7 +1657,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -1675,7 +1682,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -1700,7 +1707,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -1725,7 +1732,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" 
@@ -1745,7 +1752,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -1765,7 +1772,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -1785,7 +1792,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" 
@@ -1805,7 +1812,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" 
@@ -1825,7 +1832,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" 
@@ -1845,7 +1852,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1865,7 +1872,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1885,7 +1892,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1905,7 +1912,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -1925,7 +1932,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1945,7 +1952,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -1965,7 +1972,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -1985,7 +1992,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -2005,7 +2012,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" 
@@ -2025,7 +2032,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -2050,7 +2057,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=emailnator.com&sz=128" 
@@ -2075,7 +2082,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -2100,7 +2107,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">2</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=railway.app&sz=128" 
@@ -2125,7 +2132,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128" 
@@ -2145,7 +2152,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -2165,7 +2172,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.designarena.ai&sz=128" 
@@ -2185,7 +2192,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" 
@@ -2205,7 +2212,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=lmarena.ai&sz=128" 
@@ -2225,7 +2232,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=www.netlify.com&sz=128" 
@@ -2245,7 +2252,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -2265,7 +2272,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -2285,7 +2292,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -2305,7 +2312,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128" 
@@ -2325,7 +2332,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -2345,7 +2352,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" 
@@ -2365,7 +2372,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -2385,7 +2392,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128" 
@@ -2405,7 +2412,7 @@
                           <span class="text-xs text-neutral-500 font-mono bg-neutral-900 px-2 py-1 rounded">1</span>
                       </div>
                       
-                      <!-- Icon Collage -->
+                      
                       <div class="grid grid-cols-4 gap-2 pt-2">
                           
                               <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=128" 
@@ -2424,7 +2431,7 @@
       
     </section>
 
-    <!-- FOOTER -->
+    
     <footer class="py-20 border-t border-neutral-900 text-center">
         <div class="font-bold text-2xl mb-4 tracking-tight">AWN_</div>
         <div class="flex justify-center gap-6 mb-8 text-neutral-500 text-sm">
@@ -2435,12 +2442,12 @@
         <p class="text-neutral-600 text-xs font-mono">MIT License · Community Built</p>
     </footer>
 
-    <!-- Core Scripts -->
+    
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
-    <!-- Local Scripts -->
+    
     <script src="search.js"></script>
     <script src="js/animations.js"></script>
     <script src="background-manager.js"></script>
