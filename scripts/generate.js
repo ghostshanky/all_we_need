@@ -221,7 +221,8 @@ async function build() {
       logo: logo,
       contributors: ghDetails.contributors || [],
       content: htmlContent,
-      full_path: `projects/${slug}.html` // Relative path for local navigation
+      full_path: `projects/${slug}.html`, // Relative path for local navigation
+      birthtime: fs.statSync(path.join(PROJECTS_DIR, file)).birthtime
     };
 
     projects.push(project);
@@ -328,6 +329,46 @@ async function build() {
   // Sort ALL tags by count
   const allSortedTags = Object.entries(tagsMap)
     .sort((a, b) => b[1].length - a[1].length);
+
+  // --- NEW: Newly Added Section ---
+  // Sort projects by creation time (newest first)
+  const sortedByDate = [...projects].sort((a, b) => b.birthtime - a.birthtime).slice(0, 5);
+
+  let newlyAddedHtml = `
+      <div class="mb-32">
+          <div class="text-center mb-12">
+               <h3 class="text-2xl font-mono uppercase tracking-widest text-white mb-2">// Newly Added</h3>
+               <p class="text-neutral-500 text-sm">Fresh from the community pipeline</p>
+          </div>
+
+          <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide justify-center">
+              ${sortedByDate.map(p => `
+                  <a href="${p.full_path}" class="block p-1 rounded-2xl relative group hover:scale-[1.02] transition-transform duration-500 w-[280px] shrink-0 snap-center">
+                      <!-- Gradient Border Effect -->
+                      <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                      
+                      <div class="bg-neutral-900/90 backdrop-blur-xl h-full rounded-xl p-6 relative z-10 border border-white/5 flex flex-col gap-4">
+                          <div class="flex justify-between items-start">
+                              <img src="${p.logo}" alt="${escapeHtml(p.title)}" class="w-10 h-10 rounded-lg bg-neutral-950 object-cover border border-white/10">
+                              <span class="text-[10px] font-bold bg-white text-black px-2 py-0.5 rounded-full uppercase tracking-wider">New</span>
+                          </div>
+                          
+                          <div>
+                              <h4 class="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">${escapeHtml(p.title)}</h4>
+                              <p class="text-neutral-400 text-xs line-clamp-2">${escapeHtml(p.description)}</p>
+                          </div>
+
+                          <div class="flex flex-wrap gap-1 mt-auto">
+                              ${p.tags.slice(0, 2).map(t => `<span class="text-[10px] px-1.5 py-0.5 bg-neutral-800 rounded text-neutral-400 border border-white/5">#${t}</span>`).join('')}
+                          </div>
+                      </div>
+                  </a>
+              `).join('')}
+          </div>
+      </div>
+  `;
+
+  indexHtml = indexHtml.replace('<!-- newly_added injected by JS -->', newlyAddedHtml);
 
   // Top 5 for Main Display
   const topTags = allSortedTags.slice(0, 5);
