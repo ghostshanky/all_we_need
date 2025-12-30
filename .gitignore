@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+# Note: we are keeping docs/ as it seems to be the deployment source for GitHub Pages in this setup
+# docs/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+
+# Temp
+debug_output.txt
