@@ -3,6 +3,7 @@ title: "Emailnator"
 link: "https://emailnator.com"
 description: "Generate disposable Gmail-style emails"
 tags: ["email", "productivity"]
+date: '2024-01-01'
 screenshot: "assets/emailnator.png" # optional
 ---
 

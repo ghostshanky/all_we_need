@@ -3,6 +3,7 @@ title: "OpenRouter"
 link: "https://openrouter.ai"
 description: "Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint"
 tags: ["api", "llm", "models", "developer", "free"]
+date: '2024-01-01'
 screenshot: "https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2025-10-01T03:38:31.180Z/content/assets/logo.png" # optional
 ---
 

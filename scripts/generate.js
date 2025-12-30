@@ -222,7 +222,7 @@ async function build() {
       contributors: ghDetails.contributors || [],
       content: htmlContent,
       full_path: `projects/${slug}.html`, // Relative path for local navigation
-      birthtime: fs.statSync(path.join(PROJECTS_DIR, file)).birthtime
+      date: data.date || '2020-01-01' // Default to old date if missing
     };
 
     projects.push(project);
@@ -332,8 +332,7 @@ async function build() {
 
   // --- NEW: Newly Added Section ---
   // Sort projects by creation time (newest first)
-  const sortedByDate = [...projects].sort((a, b) => b.birthtime - a.birthtime).slice(0, 5);
-
+  const sortedByDate = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
 
   let newlyAddedHtml = `
       <div class="mb-32">
@@ -344,7 +343,7 @@ async function build() {
 
           <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide px-6">
               ${sortedByDate.map(p => `
-                  <a href="${p.full_path}" class="block p-1 rounded-2xl relative group hover:scale-[1.02] transition-transform duration-500 w-[280px] shrink-0 snap-center">
+                  <a href="${p.full_path}" class="block p-1 rounded-2xl relative group hover:scale-[1.02] transition-transform duration-500 w-[280px] shrink-0 snap-start">
                       <!-- Gradient Border Effect -->
                       <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
                       
