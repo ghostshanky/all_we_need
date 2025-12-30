@@ -6,7 +6,7 @@
 ---
 
 ## 🚀 What is this?
-**All We Need** is a curated, community-driven directory of high-quality developer tools. No SEO spam. No ads. Just tools that pass the engineering test.
+**All We Need** is a curated, community-driven directory of high-quality developer tools, libraries, and resources for modern software engineering. No SEO spam. No ads. Just tools that pass the engineering test.
 
 - 🛠 **Dev Tools**: Essential utilities for your workflow.
 - 💎 **Hidden Gems**: Underrated libraries and services.
