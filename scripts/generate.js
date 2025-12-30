@@ -334,6 +334,7 @@ async function build() {
   // Sort projects by creation time (newest first)
   const sortedByDate = [...projects].sort((a, b) => b.birthtime - a.birthtime).slice(0, 5);
 
+
   let newlyAddedHtml = `
       <div class="mb-32">
           <div class="text-center mb-12">
@@ -341,7 +342,7 @@ async function build() {
                <p class="text-neutral-500 text-sm">Fresh from the community pipeline</p>
           </div>
 
-          <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide justify-center">
+          <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide px-6">
               ${sortedByDate.map(p => `
                   <a href="${p.full_path}" class="block p-1 rounded-2xl relative group hover:scale-[1.02] transition-transform duration-500 w-[280px] shrink-0 snap-center">
                       <!-- Gradient Border Effect -->
