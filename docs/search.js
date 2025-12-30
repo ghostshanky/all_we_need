@@ -58,8 +58,8 @@ async function initApp() {
     projectsData = window.ALL_PROJECTS;
     initSearch();
   } else {
-    // Fallback
-    fetch('projects.json').then(r => r.json()).then(d => {
+    // Fallback - Use absolute path for robustness on subpages
+    fetch('/projects.json').then(r => r.json()).then(d => {
       projectsData = d;
       initSearch();
     }).catch(e => console.error("Search data missing", e));
@@ -69,7 +69,7 @@ async function initApp() {
     leaderboardData = window.LEADERBOARD;
     initLeaderboard();
   } else {
-    fetch('leaderboard.json').then(r => r.json()).then(d => {
+    fetch('/leaderboard.json').then(r => r.json()).then(d => {
       leaderboardData = d;
       initLeaderboard();
     }).catch(e => console.warn("Leaderboard data missing", e));
@@ -92,10 +92,10 @@ function initSearch() {
       { name: 'description', weight: 0.2 }, // Lower weight for description to reduce noise
       { name: 'contributors.login', weight: 0.1 }
     ],
-    threshold: 0.2, // Stricter matching (was 0.4)
-    minMatchCharLength: 3, // Ignore 1-2 char noise match attempts
-    ignoreLocation: true, // Search everywhere in the string, not just start
-    useExtendedSearch: true // Enable robust operators potentially
+    threshold: 0.3, // Adjusted threshold
+    minMatchCharLength: 2,
+    ignoreLocation: true,
+    useExtendedSearch: true
   });
 
   searchInput.addEventListener('input', (e) => {
@@ -110,10 +110,15 @@ function initSearch() {
 
     if (query.length === 0) {
       projectsContainer.innerHTML = originalContent;
+      projectsContainer.style.zIndex = ''; // Reset z-index
+
       // Show sections
       sectionsToHide.forEach(el => {
         if (el) el.classList.remove('hidden');
       });
+
+      // Re-trigger scroll reveals if needed (optional)
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
       return;
     }
 
@@ -126,13 +131,17 @@ function initSearch() {
     renderResults(results, projectsContainer);
 
     // Auto-scroll to results for better visibility
-    setTimeout(() => {
-      projectsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    // setTimeout(() => {
+    //   projectsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // }, 100);
   });
 }
 
 function renderResults(results, container) {
+  // Enforce visibility
+  container.style.position = 'relative';
+  container.style.zIndex = '50';
+
   if (results.length === 0) {
     container.innerHTML = `<div class="text-center text-neutral-500 py-20">No projects found.</div>`;
     return;
@@ -145,7 +154,7 @@ function renderResults(results, container) {
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 ${results.map(p => `
-                 <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group reveal-stagger hover:scale-[1.02] transition-transform duration-500">
+                 <a href="${p.full_path}" class="glass-card block p-8 rounded-3xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500 opacity-0 translate-y-4 search-result-item">
                     <div class="flex justify-between items-start mb-6">
                          <img src="${p.logo}" class="w-12 h-12 rounded-xl object-cover bg-neutral-900 shadow-lg group-hover:shadow-white/10 transition-all">
                          <svg class="w-6 h-6 text-neutral-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -166,6 +175,17 @@ function renderResults(results, container) {
     `;
 
   container.innerHTML = html;
+
+  // Manually trigger animations for dynamic content
+  if (typeof gsap !== 'undefined') {
+    gsap.to(container.querySelectorAll('.search-result-item'), {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power2.out"
+    });
+  }
 }
 
 function initLeaderboard() {
