@@ -15,7 +15,7 @@
 
   <br />
   <a href="https://allweneed.pages.dev">                                  
-    <img src="https://api.screenshotone.com/take?access_key=ri64lH5j8yEEfg&url=https%3A%2F%2Fallweneed.pages.dev&format=jpg&block_ads=true&block_cookie_banners=true&block_banners_by_heuristics=false&block_trackers=true&delay=3&timeout=60&response_type=by_format&image_quality=100" alt="Website Preview" width="100%">
+    <img src="https://api.screenshotone.com/take?access_key=ri64lH5j8yEEfg&url=https%3A%2F%2Fallweneed.pages.dev&format=jpg&block_ads=true&block_cookie_banners=true&block_banners_by_heuristics=false&block_trackers=true&delay=0&timeout=60&response_type=by_format&image_quality=80" alt="Website Preview" width="100%">
   </a>
   <br />
   <h3>🌐 <a href="https://allweneed.pages.dev">Visit Website</a></h3>
