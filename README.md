@@ -1,7 +1,25 @@
-# 🌐 All We Need
-**by devs, for devs**
+<div align="center">
+  <img src="favicon.png" width="80" alt="Logo" />
+  <h1>All We Need</h1>
+  <p><strong>by devs, for devs</strong></p>
+  
+  <p>
+    A curated, community-driven directory of high-quality developer tools, libraries, and resources for modern software engineering.<br>
+    No SEO spam. No ads. Just tools that pass the engineering test.
+  </p>
 
-[**Visit Website**](https://allweneed.pages.dev/) | [**Contribute**](CONTRIBUTING.md) | [**GitHub**](https://github.com/ghostshanky/all_we_need)
+  <p>
+    <a href="https://github.com/ghostshanky/allweneed.github.io/stargazers"><img src="https://img.shields.io/github/stars/ghostshanky/allweneed.github.io?style=for-the-badge&color=blue" alt="Stars"></a>
+    <a href="https://github.com/ghostshanky/allweneed.github.io/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ghostshanky/allweneed.github.io?style=for-the-badge&color=orange" alt="License"></a>
+  </p>
+
+  <br />
+  <a href="https://allweneed.pages.dev">                                  
+    <img src="https://api.screenshotone.com/take?access_key=ri64lH5j8yEEfg&url=https%3A%2F%2Fallweneed.pages.dev&format=jpg&block_ads=true&block_cookie_banners=true&block_banners_by_heuristics=false&block_trackers=true&delay=3&timeout=60&response_type=by_format&image_quality=100" alt="Website Preview" width="100%">
+  </a>
+  <br />
+  <h3>🌐 <a href="https://allweneed.pages.dev">Visit Website</a></h3>
+</div>
 
 ---
 
