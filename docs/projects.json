@@ -177,6 +177,23 @@
     "birthtime": "2025-12-17T17:03:34.840Z"
   },
   {
+    "title": "SSYouTube",
+    "slug": "ssyoutube",
+    "link": "https://ssyoutube.online",
+    "description": "Download YouTube videos in max quality. Free & no ads.",
+    "tags": [
+      "youtube",
+      "downloader",
+      "video",
+      "productivity"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=ssyoutube.online&sz=128",
+    "contributors": [],
+    "content": "<p>SSYouTube is one of the best free online YouTube video downloaders available. It allows you to effortlessly download multimedia in the maximum possible quality.</p>\n<p><strong>Features:</strong></p>\n<ul>\n<li><strong>Max Quality:</strong> Retains original video quality.</li>\n<li><strong>No Ads:</strong> Clean experience with minimal redirects (only one).</li>\n<li><strong>Unlimited &amp; Free:</strong> No hidden costs or limits.</li>\n</ul>\n<blockquote>\n<p><strong>Note:</strong> For extremely large files or playlists where online tools might time out, we recommend using <strong><a href=\"https://github.com/yt-dlp/yt-dlp\">yt-dlp</a></strong>, an open-source command-line tool.</p>\n</blockquote>\n",
+    "full_path": "projects/ssyoutube.html",
+    "birthtime": "2025-12-30T15:23:14.201Z"
+  },
+  {
     "title": "Temp Mail",
     "slug": "temp-mail",
     "link": "https://temp-mail.org",
