@@ -16,6 +16,22 @@
     "date": "2024-01-01"
   },
   {
+    "title": "cron-job.org",
+    "slug": "cron-joborg",
+    "description": "Free external cron job service. Perfect for keeping free-tier services alive.",
+    "tags": [
+      "utilities",
+      "devops",
+      "automation",
+      "free"
+    ],
+    "logo": "https://cron-job.org/en/img/logo-v2.svg",
+    "contributors": [],
+    "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>cron-job.org</strong> is a free service that allows you to execute scheduled tasks (cron jobs) via HTTP requests. It&#39;s an essential tool for developers who need reliable scheduling without managing their own server infrastructure.</p>\n<blockquote>\n<p>[!TIP]\n<strong>Prevent App Sleeping</strong>: Many free hosting providers (like Render, Glitch, or Replit) put your app to &quot;sleep&quot; after 15 minutes of inactivity. You can use cron-job.org to send a request to your app every 10 minutes, ensuring it stays active and responsive 24/7.</p>\n</blockquote>\n<h2 id=\"key-features\">Key Features</h2>\n<ul>\n<li><strong>High Frequency</strong>: Execute jobs up to 60x/hour (once per minute).</li>\n<li><strong>Versatile Scheduling</strong>: Use pre-defined intervals or typical cron syntax.</li>\n<li><strong>Execution Prediction</strong>: Preview upcoming run times.</li>\n<li><strong>Detailed History</strong>: View timing and response data for past executions.</li>\n<li><strong>Custom Requests</strong>: Configure HTTP methods (GET, POST, etc.), headers, and body data.</li>\n<li><strong>Test Runs</strong>: Immediate verification of job configuration.</li>\n<li><strong>Status Notifications</strong>: Alerts for job failures or recoveries.</li>\n<li><strong>Status Pages &amp; Badges</strong>: Monitor and display service uptime.</li>\n<li><strong>Security</strong>: Supports multi-factor authentication (MFA) and YubiKey.</li>\n<li><strong>API</strong>: Manage jobs programmatically via REST API.</li>\n<li><strong>Eco-Friendly</strong>: Runs on 100% CO₂-neutral hydropower.</li>\n<li><strong>Open Source</strong>: GPL-licensed source code available on GitHub.</li>\n<li><strong>100% Free</strong>: Supported entirely by donations.</li>\n</ul>\n",
+    "full_path": "projects/cron-joborg.html",
+    "date": "2026-01-02"
+  },
+  {
     "title": "Design Arena",
     "slug": "design-arena",
     "link": "https://www.designarena.ai",
