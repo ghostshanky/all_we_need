@@ -1,11 +1,9 @@
 ---
-title: cron-job.org
-url: https://cron-job.org/
-
-description: Free external cron job service. Perfect for keeping free-tier services alive.
-tags: [utilities, devops, automation, free]
-contributors: [community]
-date: "2026-01-02"
+title: "cron-job.org"
+link: "https://cron-job.org/"
+description: "Free external cron job service. Perfect for keeping free-tier services alive."
+tags: ["utilities", "devops", "automation", "free"]
+date: '2026-01-02'
 ---
 
 ## Overview
