@@ -20,5 +20,3 @@ Routing & high availability — OpenRouter can route requests to different provi
 OpenRouter
 
 Integrations & ecosystem — provider support exists across SDKs, community integrations (examples, Laravel, Vercel/AI SDK provider) and official docs/GitHub.
-
-![Screenshot](https://binaryverseai.com/wp-content/uploads/2025/12/openrouter-how-works-infographics.webp)
