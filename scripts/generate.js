@@ -263,6 +263,24 @@ async function build() {
     const canonicalUrl = `https://allweneed.pages.dev/projects/${slug}.html`;
     pHtml = pHtml.replace('{{canonical_url}}', canonicalUrl);
 
+    // Inject Screenshot
+    let screenshotHtml = '';
+    if (data.screenshot) {
+      const isUrl = (str) => str.startsWith('http') || str.startsWith('//');
+      // If it's a local asset, prefix with ../ since we are in projects/ subdir
+      const screenshotSrc = isUrl(data.screenshot) ? data.screenshot : `../${data.screenshot}`;
+
+      screenshotHtml = `
+        <div class="max-w-4xl mx-auto px-6 mb-16 animate-fade-in">
+            <div class="relative group rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900">
+                <img src="${screenshotSrc}" alt="${escapeHtml(project.title)} Screenshot" class="w-full h-auto object-cover">
+                <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none"></div>
+            </div>
+        </div>
+      `;
+    }
+    pHtml = pHtml.replace('{{screenshot_html}}', screenshotHtml);
+
     const structuredData = {
       "@context": "https://schema.org",
       "@graph": [
