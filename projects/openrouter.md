@@ -4,7 +4,7 @@ link: "https://openrouter.ai"
 description: "Unified API gateway that gives developers access to hundreds of LLMs and multimodal models through a single endpoint"
 tags: ["api", "llm", "models", "developer", "free"]
 date: '2024-01-01'
-screenshot: "https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2025-10-01T03:38:31.180Z/content/assets/logo.png" # optional
+screenshot: "https://binaryverseai.com/wp-content/uploads/2025/12/openrouter-how-works-infographics.webp" # optional
 ---
 
 OpenRouter is a unified API platform that lets you access hundreds (400+) of AI models from many providers (OpenAI, Anthropic, Google, Meta and others) via a single, consistent endpoint. It handles provider routing, fallbacks for higher availability, and exposes model-level pricing so you can choose speed vs. cost trade-offs.
