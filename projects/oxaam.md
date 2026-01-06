@@ -4,6 +4,7 @@ link: "https://www.oxaam.com/"
 description: "Access shared premium accounts for services like Canva Pro, ChatGPT, and more."
 tags: ["premium", "accounts", "bypass", "utilities", "free"]
 date: '2026-01-06'
+screenshot: 'https://pbs.twimg.com/media/FAYx2JlUUAA-AVL.jpg'
 ---
 
 ## Overview

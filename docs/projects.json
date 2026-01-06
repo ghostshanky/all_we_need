@@ -146,6 +146,24 @@
     "date": "2024-01-01"
   },
   {
+    "title": "Oxaam",
+    "slug": "oxaam",
+    "link": "https://www.oxaam.com/",
+    "description": "Access shared premium accounts for services like Canva Pro, ChatGPT, and more.",
+    "tags": [
+      "premium",
+      "accounts",
+      "bypass",
+      "utilities",
+      "free"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=www.oxaam.com&sz=128",
+    "contributors": [],
+    "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>Oxaam</strong> provides access to shared premium accounts for various popular services. It bypasses paywalls by sharing session cookies or credentials.</p>\n<blockquote>\n<p>[!CAUTION]\n<strong>Use at your own risk.</strong> These are shared accounts. Do not store sensitive data. This service resides in a legal gray area.</p>\n</blockquote>\n<h2 id=\"supported-services\">Supported Services</h2>\n<ul>\n<li><strong>Kaanvah Pro</strong> (Canva Pro)</li>\n<li><strong>ChatGPT Premium</strong></li>\n<li><strong>Crunchyroll Premium</strong></li>\n<li><strong>Perplexity Max</strong></li>\n<li><strong>Scribd Premium</strong></li>\n<li><strong>Skillshare Premium</strong></li>\n<li><strong>TradingView Premium</strong></li>\n</ul>\n<p><em>(Note: Names are often intentionally misspelled on the site to avoid detection)</em></p>\n<h2 id=\"how-to-access\">How to Access</h2>\n<ol>\n<li><strong>Login</strong>: The site asks for login credentials, but <strong>NO authentication is enforced</strong>. You can enter <strong>ANY</strong> random email, password, or mobile number to get in.</li>\n<li><strong>Canva Pro</strong>: The OTP login method is currently broken. Use the <strong>Cookie-Editor method</strong> provided on the page to access Canva Pro.</li>\n</ol>\n<blockquote>\n<p>[!WARNING]\n<strong>Privacy Alert</strong>: Since these are shared accounts, your edits (e.g., in Canva) are visible to other users.\n<strong>Pro Tip</strong>: Always <strong>delete your data</strong> and designs after downloading them. Do not leave personal work in these accounts.</p>\n</blockquote>\n",
+    "full_path": "projects/oxaam.html",
+    "date": "2026-01-06"
+  },
+  {
     "title": "Railway",
     "slug": "railway",
     "link": "https://railway.app",
@@ -225,6 +243,24 @@
     "content": "<p>Temp Mail provides temporary email addresses to avoid spam and protect personal inboxes.</p>\n",
     "full_path": "projects/temp-mail.html",
     "date": "2024-01-01"
+  },
+  {
+    "title": "Unmute.sh",
+    "slug": "unmutesh",
+    "link": "https://unmute.sh/",
+    "description": "Speak to an AI using Kyutai's new low-latency open-source speech-to-text and text-to-speech models.",
+    "tags": [
+      "ai",
+      "speech-to-text",
+      "text-to-speech",
+      "open-source",
+      "audio"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=unmute.sh&sz=128",
+    "contributors": [],
+    "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>Unmute.sh</strong> is a demo platform by <strong>Kyutai</strong> showcasing their low-latency open-source audio foundation models. It enables real-time, natural spoken conversations with AI.</p>\n<h2 id=\"features\">Features</h2>\n<ul>\n<li><strong>Real-time Interaction</strong>: Extremely low latency speech processing.</li>\n<li><strong>End-to-End Audio</strong>: Speech-to-text and text-to-speech integration.</li>\n<li><strong>Open Source</strong>: Based on Kyutai&#39;s open research and models.</li>\n<li><strong>Kyutai Labs</strong>: Developed by the Kyutai research lab.</li>\n</ul>\n",
+    "full_path": "projects/unmutesh.html",
+    "date": "2026-01-04"
   },
   {
     "title": "Vercel",
