@@ -14,6 +14,16 @@ const ASSETS_DIR = path.join(REPO_ROOT, 'assets'); // If any standard assets
 const OUT_DIR = path.join(REPO_ROOT, 'docs');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 
+// Category Renaming Map
+const categoryMap = {
+  'ai': 'AI & Models',
+  'utilities': 'Utilities & Tools',
+  'media-tools': 'Media Downloaders',
+  'developer-tools': 'Developer Productivity',
+  'security': 'Security & Privacy',
+  'education': 'Learning & Resources'
+};
+
 // Github API Headers
 const HEADERS = GITHUB_TOKEN ? { Authorization: `token ${GITHUB_TOKEN}` } : {};
 
@@ -222,7 +232,8 @@ async function build() {
       contributors: ghDetails.contributors || [],
       content: htmlContent,
       full_path: `projects/${slug}.html`, // Relative path for local navigation
-      date: data.date || '2020-01-01' // Default to old date if missing
+      date: data.date || '2020-01-01', // Default to old date if missing
+      filename: file
     };
 
     projects.push(project);
@@ -350,7 +361,23 @@ async function build() {
 
   // --- NEW: Newly Added Section ---
   // Sort projects by creation time (newest first)
-  const sortedByDate = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+  let sortedByDate = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Pin Viral Hooks (Oxaam and SSYouTube)
+  const pinnedSlugs = ['oxaam', 'ssyoutube'];
+  const pinnedProjects = [];
+
+  // Extract pinned projects
+  for (const slug of pinnedSlugs) {
+    const idx = sortedByDate.findIndex(p => p.filename.replace('.md', '').toLowerCase() === slug);
+    if (idx !== -1) {
+      pinnedProjects.push(sortedByDate[idx]);
+      sortedByDate.splice(idx, 1);
+    }
+  }
+
+  // Combine pinned + rest
+  sortedByDate = [...pinnedProjects, ...sortedByDate].slice(0, 5); // display top 5
 
   let newlyAddedHtml = `
       <div class="mb-32">
@@ -360,19 +387,24 @@ async function build() {
           </div>
 
           <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide px-6">
-              ${sortedByDate.map(p => `
+              ${sortedByDate.map(p => {
+    const isOxaam = p.filename.includes('oxaam');
+    const glowClass = isOxaam ? 'border-amber-500/50 shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'border-white/5';
+    const titleColor = isOxaam ? 'text-amber-400' : 'text-white';
+
+    return `
                   <a href="${p.full_path}" class="block p-1 rounded-2xl relative group hover:scale-[1.02] transition-transform duration-500 w-[280px] shrink-0 snap-start">
                       <!-- Gradient Border Effect -->
                       <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
                       
-                      <div class="bg-neutral-900/90 backdrop-blur-xl h-full rounded-xl p-6 relative z-10 border border-white/5 flex flex-col gap-4">
+                      <div class="bg-neutral-900/90 backdrop-blur-xl h-full rounded-xl p-6 relative z-10 border ${glowClass} flex flex-col gap-4">
                           <div class="flex justify-between items-start">
                               <img src="${p.logo}" alt="${escapeHtml(p.title)}" class="w-10 h-10 rounded-lg bg-neutral-950 object-cover border border-white/10">
                               <span class="text-[10px] font-bold bg-white text-black px-2 py-0.5 rounded-full uppercase tracking-wider">New</span>
                           </div>
                           
                           <div>
-                              <h4 class="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">${escapeHtml(p.title)}</h4>
+                              <h4 class="text-lg font-bold ${titleColor} mb-1 group-hover:text-amber-300 transition-colors">${escapeHtml(p.title)}</h4>
                               <p class="text-neutral-400 text-xs line-clamp-2">${escapeHtml(p.description)}</p>
                           </div>
 
@@ -381,7 +413,7 @@ async function build() {
                           </div>
                       </div>
                   </a>
-              `).join('')}
+              `}).join('')}
           </div>
       </div>
   `;
@@ -402,7 +434,7 @@ async function build() {
          <div class="mb-32 group/section scroll-mt-24" id="${tag}">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-900 pb-4">
                 <h3 class="text-xl font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-                    // ${escapeHtml(tag)}
+                    // ${escapeHtml(categoryMap[tag] || tag)}
                 </h3>
                 
                 <!-- Navigation Arrows -->

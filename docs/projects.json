@@ -13,7 +13,8 @@
     "contributors": [],
     "content": "<p>Antigravity is a powerful AI agent IDE that pairs with developers to build, debug, and refine software. It integrates deeply with your local environment to plan, execute, and verify complex coding workflows autonomously. \nGoogle Antigravity is currently free for individual developers during its public preview, offering unlimited AI-powered coding features, tab completions, and access to models like Gemini 3 Pro, but this is a temporary preview, and future enterprise or heavy usage might involve costs. </p>\n",
     "full_path": "projects/antigravity-ide.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "antigravity-ide.md"
   },
   {
     "title": "cron-job.org",
@@ -30,7 +31,8 @@
     "contributors": [],
     "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>cron-job.org</strong> is a free service that allows you to execute scheduled tasks (cron jobs) via HTTP requests. It&#39;s an essential tool for developers who need reliable scheduling without managing their own server infrastructure.</p>\n<blockquote>\n<p>[!TIP]\n<strong>Prevent App Sleeping</strong>: Many free hosting providers (like Render, Glitch, or Replit) put your app to &quot;sleep&quot; after 15 minutes of inactivity. You can use cron-job.org to send a request to your app every 10 minutes, ensuring it stays active and responsive 24/7.</p>\n</blockquote>\n<h2 id=\"key-features\">Key Features</h2>\n<ul>\n<li><strong>High Frequency</strong>: Execute jobs up to 60x/hour (once per minute).</li>\n<li><strong>Versatile Scheduling</strong>: Use pre-defined intervals or typical cron syntax.</li>\n<li><strong>Execution Prediction</strong>: Preview upcoming run times.</li>\n<li><strong>Detailed History</strong>: View timing and response data for past executions.</li>\n<li><strong>Custom Requests</strong>: Configure HTTP methods (GET, POST, etc.), headers, and body data.</li>\n<li><strong>Test Runs</strong>: Immediate verification of job configuration.</li>\n<li><strong>Status Notifications</strong>: Alerts for job failures or recoveries.</li>\n<li><strong>Status Pages &amp; Badges</strong>: Monitor and display service uptime.</li>\n<li><strong>Security</strong>: Supports multi-factor authentication (MFA) and YubiKey.</li>\n<li><strong>API</strong>: Manage jobs programmatically via REST API.</li>\n<li><strong>Eco-Friendly</strong>: Runs on 100% CO₂-neutral hydropower.</li>\n<li><strong>Open Source</strong>: GPL-licensed source code available on GitHub.</li>\n<li><strong>100% Free</strong>: Supported entirely by donations.</li>\n</ul>\n",
     "full_path": "projects/cron-joborg.html",
-    "date": "2026-01-02"
+    "date": "2026-01-02",
+    "filename": "cron-job.md"
   },
   {
     "title": "Design Arena",
@@ -46,7 +48,8 @@
     "contributors": [],
     "content": "<p>Design Arena helps designers and developers explore multiple AI-generated design directions efficiently.</p>\n",
     "full_path": "projects/design-arena.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "design-arena.md"
   },
   {
     "title": "Emailnator",
@@ -61,7 +64,8 @@
     "contributors": [],
     "content": "<p>Emailnator is a simple tool to create temporary email addresses for testing and privacy. No sign-up required, emails expire after 24 hours.</p>\n<p>Useful for developers to test forms without spam.</p>\n",
     "full_path": "projects/emailnator.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "emailnator.md"
   },
   {
     "title": "Google AI Studio",
@@ -77,7 +81,8 @@
     "contributors": [],
     "content": "<p>Google AI Studio lets developers prototype, test prompts, and integrate Gemini models into applications.</p>\n",
     "full_path": "projects/google-ai-studio.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "google-ai-studio.md"
   },
   {
     "title": "Kittl PNG to SVG",
@@ -93,7 +98,8 @@
     "contributors": [],
     "content": "<p>Kittl&#39;s PNG to SVG converter is a powerful tool that allows you to convert raster images into vector graphics without any login requirement.</p>\n<p>It offers unlimited usage (clearing cache/data resets limits if encountered) and produces high-quality vector results, making it one of the best free converters available.</p>\n",
     "full_path": "projects/kittl-png-to-svg.html",
-    "date": "2025-12-29"
+    "date": "2025-12-29",
+    "filename": "kittl-png-to-svg.md"
   },
   {
     "title": "LM Arena",
@@ -109,7 +115,8 @@
     "contributors": [],
     "content": "<p>LM Arena enables unbiased comparison of AI models by letting users vote on responses without knowing the model.</p>\n",
     "full_path": "projects/lm-arena.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "lm-arena.md"
   },
   {
     "title": "Netlify",
@@ -125,7 +132,8 @@
     "contributors": [],
     "content": "<p>Netlify provides CI/CD, serverless functions, and edge services for modern web development.</p>\n",
     "full_path": "projects/netlify.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "netlify.md"
   },
   {
     "title": "OpenRouter",
@@ -143,7 +151,8 @@
     "contributors": [],
     "content": "<p>OpenRouter is a unified API platform that lets you access hundreds (400+) of AI models from many providers (OpenAI, Anthropic, Google, Meta and others) via a single, consistent endpoint. It handles provider routing, fallbacks for higher availability, and exposes model-level pricing so you can choose speed vs. cost trade-offs.</p>\n<p>One API, many models — call different chat/completion/vision models with the same API shape instead of juggling many provider keys. \nOpenRouter</p>\n<p>Transparent pricing &amp; per-model costs — model pricing is shown in the UI/docs so you can compare cost per token or per request. \nOpenRouter\n+1</p>\n<p>Routing &amp; high availability — OpenRouter can route requests to different providers and fall back automatically if a provider is unavailable. \nOpenRouter</p>\n<p>Integrations &amp; ecosystem — provider support exists across SDKs, community integrations (examples, Laravel, Vercel/AI SDK provider) and official docs/GitHub.</p>\n",
     "full_path": "projects/openrouter.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "openrouter.md"
   },
   {
     "title": "Oxaam",
@@ -161,7 +170,8 @@
     "contributors": [],
     "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>Oxaam</strong> provides access to shared premium accounts for various popular services. It bypasses paywalls by sharing session cookies or credentials.</p>\n<blockquote>\n<p>[!CAUTION]\n<strong>Use at your own risk.</strong> These are shared accounts. Do not store sensitive data. This service resides in a legal gray area.</p>\n</blockquote>\n<h2 id=\"supported-services\">Supported Services</h2>\n<ul>\n<li><strong>Kaanvah Pro</strong> (Canva Pro)</li>\n<li><strong>ChatGPT Premium</strong></li>\n<li><strong>Crunchyroll Premium</strong></li>\n<li><strong>Perplexity Max</strong></li>\n<li><strong>Scribd Premium</strong></li>\n<li><strong>Skillshare Premium</strong></li>\n<li><strong>TradingView Premium</strong></li>\n</ul>\n<p><em>(Note: Names are often intentionally misspelled on the site to avoid detection)</em></p>\n<h2 id=\"how-to-access\">How to Access</h2>\n<ol>\n<li><strong>Login</strong>: The site asks for login credentials, but <strong>NO authentication is enforced</strong>. You can enter <strong>ANY</strong> random email, password, or mobile number to get in.</li>\n<li><strong>Canva Pro</strong>: The OTP login method is currently broken. Use the <strong>Cookie-Editor method</strong> provided on the page to access Canva Pro.</li>\n</ol>\n<blockquote>\n<p>[!WARNING]\n<strong>Privacy Alert</strong>: Since these are shared accounts, your edits (e.g., in Canva) are visible to other users.\n<strong>Pro Tip</strong>: Always <strong>delete your data</strong> and designs after downloading them. Do not leave personal work in these accounts.</p>\n</blockquote>\n",
     "full_path": "projects/oxaam.html",
-    "date": "2026-01-06"
+    "date": "2026-01-06",
+    "filename": "oxaam.md"
   },
   {
     "title": "Railway",
@@ -177,7 +187,8 @@
     "contributors": [],
     "content": "<p>Railway enables fast setup and scaling of production-ready applications with minimal configuration.</p>\n",
     "full_path": "projects/railway.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "railway.md"
   },
   {
     "title": "Render",
@@ -193,7 +204,8 @@
     "contributors": [],
     "content": "<p>Render simplifies backend and full-stack deployments with automatic scaling and managed infrastructure.</p>\n",
     "full_path": "projects/render.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "render.md"
   },
   {
     "title": "Replit",
@@ -209,7 +221,27 @@
     "contributors": [],
     "content": "<p>Replit allows developers to code, collaborate, and deploy directly from the browser without local setup.</p>\n",
     "full_path": "projects/replit.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "replit.md"
+  },
+  {
+    "title": "SaveWeb2Zip",
+    "slug": "saveweb2zip",
+    "link": "https://saveweb2zip.com/",
+    "description": "Download entire websites or landing pages as a ZIP archive with all assets (HTML, CSS, JS, Images, Fonts).",
+    "tags": [
+      "utilities",
+      "scraper",
+      "web-dev",
+      "cloner",
+      "free"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=saveweb2zip.com&sz=128",
+    "contributors": [],
+    "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>SaveWeb2Zip</strong> is a powerful online tool that allows you to download and save complete websites or specific landing pages. It packages all necessary assets into a single ZIP file, making it easy to archive or analyze web pages offline.</p>\n<h2 id=\"key-features\">Key Features</h2>\n<ul>\n<li><strong>Complete Asset Download</strong>: Captures HTML, CSS, JavaScript, Images, and Fonts.</li>\n<li><strong>Structure Preservation</strong>: Maintains the original directory structure of the website.</li>\n<li><strong>Mobile Version</strong>: Option to specifically copy the mobile version of a site.</li>\n<li><strong>Asset Renaming</strong>: Automatically handles asset renaming for consistent local paths.</li>\n<li><strong>Simplified Download</strong>: One-click process to archive landing pages or full sites.</li>\n<li><strong>Free to Use</strong>: Download any page absolutely for free.</li>\n</ul>\n<h2 id=\"how-it-works\">How it Works</h2>\n<ol>\n<li>Enter the URL of the webpage you want to save.</li>\n<li>Select options (Rename assets, Copy mobile version, etc.).</li>\n<li>Click <strong>Save</strong> to generate the archive.</li>\n<li>Download the ZIP file containing all site files.</li>\n</ol>\n",
+    "full_path": "projects/saveweb2zip.html",
+    "date": "2026-01-06",
+    "filename": "saveweb2zip.md"
   },
   {
     "title": "SSYouTube",
@@ -226,7 +258,8 @@
     "contributors": [],
     "content": "<p>SSYouTube is one of the best free online YouTube video downloaders available. It allows you to effortlessly download multimedia in the maximum possible quality.</p>\n<p><strong>Features:</strong></p>\n<ul>\n<li><strong>Max Quality:</strong> Retains original video quality.</li>\n<li><strong>No Ads:</strong> Clean experience with minimal redirects (only one).</li>\n<li><strong>Unlimited &amp; Free:</strong> No hidden costs or limits.</li>\n</ul>\n<blockquote>\n<p><strong>Note:</strong> For extremely large files or playlists where online tools might time out, we recommend using <strong><a href=\"https://github.com/yt-dlp/yt-dlp\">yt-dlp</a></strong>, an open-source command-line tool.</p>\n</blockquote>\n",
     "full_path": "projects/ssyoutube.html",
-    "date": "2025-12-30"
+    "date": "2025-12-30",
+    "filename": "ssyoutube.md"
   },
   {
     "title": "Temp Mail",
@@ -242,7 +275,8 @@
     "contributors": [],
     "content": "<p>Temp Mail provides temporary email addresses to avoid spam and protect personal inboxes.</p>\n",
     "full_path": "projects/temp-mail.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "temp-mail.md"
   },
   {
     "title": "Unmute.sh",
@@ -260,7 +294,8 @@
     "contributors": [],
     "content": "<h2 id=\"overview\">Overview</h2>\n<p><strong>Unmute.sh</strong> is a demo platform by <strong>Kyutai</strong> showcasing their low-latency open-source audio foundation models. It enables real-time, natural spoken conversations with AI.</p>\n<h2 id=\"features\">Features</h2>\n<ul>\n<li><strong>Real-time Interaction</strong>: Extremely low latency speech processing.</li>\n<li><strong>End-to-End Audio</strong>: Speech-to-text and text-to-speech integration.</li>\n<li><strong>Open Source</strong>: Based on Kyutai&#39;s open research and models.</li>\n<li><strong>Kyutai Labs</strong>: Developed by the Kyutai research lab.</li>\n</ul>\n",
     "full_path": "projects/unmutesh.html",
-    "date": "2026-01-04"
+    "date": "2026-01-04",
+    "filename": "unmute.md"
   },
   {
     "title": "Vercel",
@@ -276,7 +311,8 @@
     "contributors": [],
     "content": "<p>Vercel enables seamless deployment of React, Next.js, and static sites with global edge infrastructure.</p>\n",
     "full_path": "projects/vercel.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "vercel.md"
   },
   {
     "title": "Yupp AI",
@@ -292,6 +328,7 @@
     "contributors": [],
     "content": "<p>Yupp AI allows users to test prompts across different AI models and evaluate outputs side by side.</p>\n",
     "full_path": "projects/yupp-ai.html",
-    "date": "2024-01-01"
+    "date": "2024-01-01",
+    "filename": "yupp-ai.md"
   }
 ]
