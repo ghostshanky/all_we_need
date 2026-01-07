@@ -169,6 +169,7 @@ async function build() {
   // Create js dir and copy animations
   ensureDir(path.join(OUT_DIR, 'js'));
   try { fs.copyFileSync(path.join(TEMPLATES_DIR, 'animations.js'), path.join(OUT_DIR, 'js', 'animations.js')); } catch (e) { }
+  try { fs.copyFileSync(path.join(TEMPLATES_DIR, 'simple-view.js'), path.join(OUT_DIR, 'js', 'simple-view.js')); } catch (e) { }
 
   try { fs.copyFileSync(path.join(REPO_ROOT, 'logo.png'), path.join(OUT_DIR, 'logo.png')); } catch (e) { }
   try { fs.copyFileSync(path.join(REPO_ROOT, 'favicon.png'), path.join(OUT_DIR, 'favicon.png')); } catch (e) { }

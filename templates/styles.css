@@ -312,3 +312,39 @@ html.lenis {
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+/* --- Simplified View Mode --- */
+/* Activated by .simple-view class on body */
+
+body.simple-view {
+  background-color: #050510; /* Solid dark background */
+}
+
+body.simple-view .cinematic-bg,
+body.simple-view .live-bg,
+body.simple-view .noise-overlay,
+body.simple-view .reactor-ring,
+body.simple-view .cinematic-overlay,
+body.simple-view .cinematic-video,
+body.simple-view .cinematic-fallback {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body.simple-view .glass-card {
+  background: rgba(20, 20, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: none; /* Remove heavy blur */
+}
+
+body.simple-view .glass-card:hover {
+  background: rgba(30, 30, 45, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Simplified Header Search Button */
+body.simple-view #headerSearchBtn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: none;
+}

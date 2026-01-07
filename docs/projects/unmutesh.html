@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="../styles.css">
     <script defer src="../search.js"></script>
     <script defer src="../js/animations.js"></script>
+    <script defer src="../js/simple-view.js"></script>
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-white/20">
@@ -85,6 +86,13 @@
                 <a href="https://github.com/ghostshanky/allweneed.github.io" target="_blank"
                     class="hover:text-white transition-colors">GitHub</a>
             </nav>
+            <div class="flex items-center gap-4">
+                
+                <button id="headerSimpleBtn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md cursor-pointer"
+                    aria-label="Toggle Simplified View">
+                </button>
+            </div>
             <div class="w-8"></div>
         </div>
     </header>
