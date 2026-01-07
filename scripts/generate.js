@@ -364,7 +364,7 @@ async function build() {
   let sortedByDate = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // Pin Viral Hooks (Oxaam and SSYouTube)
-  const pinnedSlugs = ['oxaam', 'ssyoutube'];
+  const pinnedSlugs = ['unsplash', 'oxaam', 'ssyoutube'];
   const pinnedProjects = [];
 
   // Extract pinned projects
