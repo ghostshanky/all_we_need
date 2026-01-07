@@ -298,6 +298,23 @@
     "filename": "unmute.md"
   },
   {
+    "title": "Unsplash API",
+    "slug": "unsplash-api",
+    "link": "https://unsplash.com/developers",
+    "description": "The most powerful free image API associated with the world's largest free image library.",
+    "tags": [
+      "api",
+      "images",
+      "media"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=unsplash.com&sz=128",
+    "contributors": [],
+    "content": "<h1 id=\"why-its-great\">Why It&#39;s Great</h1>\n<p>The Unsplash API provides access to the world&#39;s most generous community of photographers. It&#39;s the engine behind thousands of apps, providing high-quality, royalty-free images for:</p>\n<ul>\n<li><strong>Poster Apps</strong>: Create stunning print-on-demand products.</li>\n<li><strong>Photo Editors</strong>: Offer a vast library of stock photos to users.</li>\n<li><strong>Wallpaper Apps</strong>: Access millions of high-res backgrounds.</li>\n<li><strong>UI Mockups</strong>: Populate your designs with beautiful, real-world imagery.</li>\n</ul>\n<h1 id=\"quick-start\">Quick Start</h1>\n<ol>\n<li><strong>Create Account</strong>: Sign up at <a href=\"https://unsplash.com/developers\">unsplash.com/developers</a>.</li>\n<li><strong>Get API Key</strong>: Create a new application to get your Access Key.</li>\n<li><strong>Fetch Photos</strong>: Use simple HTTP requests.</li>\n</ol>\n<h2 id=\"example-javascript\">Example (JavaScript)</h2>\n<pre><code class=\"language-javascript\">const url = &#39;https://api.unsplash.com/photos/random?client_id=YOUR_ACCESS_KEY&#39;;\n\nasync function fetchImage() {\n    try {\n        const response = await fetch(url);\n        const data = await response.json();\n        \n        console.log(&#39;Image URL:&#39;, data.urls.regular);\n        console.log(&#39;Photographer:&#39;, data.user.name);\n    } catch (error) {\n        console.error(&#39;Error fetching image:&#39;, error);\n    }\n}\n\nfetchImage();\n</code></pre>\n<h2 id=\"example-http\">Example (HTTP)</h2>\n<pre><code class=\"language-http\">GET /search/photos?query=nature\nHost: api.unsplash.com\nAuthorization: Client-ID YOUR_ACCESS_KEY\n</code></pre>\n<p>The API returns a JSON response containing image URLs (raw, full, regular, small), photographer details, and download links.</p>\n",
+    "full_path": "projects/unsplash-api.html",
+    "date": "2026-01-07T00:00:00.000Z",
+    "filename": "unsplash.md"
+  },
+  {
     "title": "Vercel",
     "slug": "vercel",
     "link": "https://vercel.com",
