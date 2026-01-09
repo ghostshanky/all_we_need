@@ -346,12 +346,6 @@ body.simple-view .glass-card:hover {
 }
 
 /* Simplified Header Search Button & Toggle */
-#headerSimpleBtn {
-  width: 3.5rem !important;
-  /* 56px */
-  height: 3.5rem !important;
-}
-
 body.simple-view #headerSimpleBtn {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: none;

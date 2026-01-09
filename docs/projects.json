@@ -191,6 +191,24 @@
     "filename": "railway.md"
   },
   {
+    "title": "Remove.photos",
+    "slug": "removephotos",
+    "link": "https://remove.photos/",
+    "description": "A completely free suite of AI tools for image manipulation including BG remover, cleanup, upscaler, and more. No premium features.",
+    "tags": [
+      "images",
+      "ai",
+      "utilities",
+      "converter"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=remove.photos&sz=128",
+    "contributors": [],
+    "content": "<h1 id=\"why-its-great\">Why It&#39;s Great</h1>\n<p>Remove.photos is a comprehensive utility hub for image editing that is <strong>completely free</strong>. Unlike many competitors that gate features behind subscriptions, every tool here is accessible without premium tiers.</p>\n<h1 id=\"features\">Features</h1>\n<h2 id=\"ai-editing\">AI Editing</h2>\n<ul>\n<li><strong>Remove Background</strong>: AI automatic cutout.</li>\n<li><strong>Cleanup Pictures</strong>: Remove unwanted objects or defects.</li>\n<li><strong>Restore Old Photos</strong>: Colorize and repair vintage images.</li>\n<li><strong>Remove Sky</strong>: Replace imaginative sky backgrounds.</li>\n<li><strong>AI Image Expander</strong>: Auto-expand images beyond their borders.<ul>\n<li><em>&gt; [!WARNING] Note: The AI Image Expander may be slow due to queue systems.</em></li>\n</ul>\n</li>\n<li><strong>AI Crop</strong>: Intelligent auto-cropping.</li>\n</ul>\n<h2 id=\"enhancements\">Enhancements</h2>\n<ul>\n<li><strong>Image Upscaler</strong>: Increase resolution without quality loss.</li>\n<li><strong>Brighten Image</strong>: Enhance image brightness and lighting.</li>\n<li><strong>Blur Background</strong>: Automatically highlight the subject.</li>\n</ul>\n<h2 id=\"converters--utilities\">Converters &amp; Utilities</h2>\n<ul>\n<li><strong>Image Converter</strong>: Convert between formats.</li>\n<li><strong>Compress Image</strong>: Reduce file size efficiently.</li>\n<li><strong>Text Recognition</strong>: Extract text from images (OCR).</li>\n<li><strong>Add White Background</strong>: Quick product photo prep.</li>\n</ul>\n<h1 id=\"pricing\">Pricing</h1>\n<ul>\n<li><strong>100% Free</strong>: No hidden costs or premium lockouts.</li>\n</ul>\n",
+    "full_path": "projects/removephotos.html",
+    "date": "2026-01-08",
+    "filename": "remove-photos.md"
+  },
+  {
     "title": "Render",
     "slug": "render",
     "link": "https://render.com",
