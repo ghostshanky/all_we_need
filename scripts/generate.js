@@ -364,21 +364,8 @@ async function build() {
   // Sort projects by creation time (newest first)
   let sortedByDate = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Pin Viral Hooks (Oxaam and SSYouTube)
-  const pinnedSlugs = ['unsplash', 'oxaam', 'ssyoutube'];
-  const pinnedProjects = [];
-
-  // Extract pinned projects
-  for (const slug of pinnedSlugs) {
-    const idx = sortedByDate.findIndex(p => p.filename.replace('.md', '').toLowerCase() === slug);
-    if (idx !== -1) {
-      pinnedProjects.push(sortedByDate[idx]);
-      sortedByDate.splice(idx, 1);
-    }
-  }
-
   // Combine pinned + rest
-  sortedByDate = [...pinnedProjects, ...sortedByDate].slice(0, 5); // display top 5
+  sortedByDate = sortedByDate.slice(0, 5); // display top 5
 
   let newlyAddedHtml = `
       <div class="mb-32">
